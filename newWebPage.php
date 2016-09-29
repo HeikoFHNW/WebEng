@@ -10,9 +10,11 @@ and open the template in the editor.
         <title>Miethaus</title>
     </head>
     <body>
+        <form>
         <?php
         // put your code here
         echo "Dürüm";
         ?>
+        </form>
     </body>
 </html>
