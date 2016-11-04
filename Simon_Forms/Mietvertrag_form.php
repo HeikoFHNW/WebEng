@@ -2,73 +2,64 @@
 <html>
 <body>
 
-    <form action="Rechnung_form.php" method="POST">
+    <form action="Mietvertrag_form.php" method="POST">
     <h2>Mietvertrag erfassen</h2>
     <table border="0" cellspacing="0" cellpadding="2">
     <tbody>
     <tr>
-        <td>Rechnungstyp:</td>
+        <td>Vertragspartner:</td>
         <td>
     <select name="top5">
-        <option>Reperatur Allgemein</option>
-        <option>Reperatur individuell</option>
-        <option>Hauswart</option>
-        <option>Heizkosten</option>
-        <option>Strom Allgemein</option>
-        <option>Strom Individuell</option>
-        <option>Wasser</option>
-        <option>Andere</option>
+        <option></option>
     </select>
         </td>
     </tr>
     
     <tr>
-        <td>Rechnungsdatum:*</td>
+        <td>Mietbeginn:*</td>
         <td>
-            <input type="date" name="rechnungsdatum" value="" />
+            <input type="date" name="mietbeginn" value="" />
+        </td>
+        
+        <td>Mietende:*</td>
+        <td>
+            <input type="date" name="mietende" value="" />
         </td>
     </tr>
     
     <tr>
-        <td>Rechnungsnummer:*</td>
+        <td>Mietobjekt:</td>
         <td>
-           <input type="number" name="rechnungsnummer" value="" /> 
+    <select name="top5">
+        <option></option>
+    </select>
+        </td>
+    </tr>
+   
+    <tr>
+        <td>Nettomietzins:*</td>
+        <td>
+           <input type="number" name="nettomietzins" value="" /> 
         </td>
     </tr>
     
     <tr>
-        <td>Betrag:*</td>
+        <td>Akontozahlung Nebenkosten:*</td>
         <td>
-           <input type="number" name="betrag" value="" />
+           <input type="number" name="akontozahlung" value="" /> 
         </td>
     </tr>
     
     <tr>
-        <td>Mieter:</td>
-        <td>
-           <select name="top5">
-            <option> </option>
-            </select>
-        </td>
-    </tr>
-    
-    <tr>
-        <td>Zahlung Vermieter:</td>
-        <td>
-           <input type="number" name="zahlungVermieter" value="" />
-        </td>
-    </tr>
-    
-    <tr>
-        <td>Bemerkung:</td>
+        <td>Kündigungsbestimmungen:*</td>
         <td>
            <textarea type="text" name="bemerkung" value=""> </textarea>
         </td>
     </tr>
     
     <tr>
-        <td><input type="submit" name="erfassen" value="erfassen" /></td>
-        <td><input type="reset" value="nochmals" /></td>
+        <td><input type="submit" name="Speichern" value="erfassen" /></td>
+        <td><input type="reset" value="Zurücksetzen" /></td>
     </tr>
     </tbody>
     </table>

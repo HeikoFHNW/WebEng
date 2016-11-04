@@ -62,6 +62,13 @@
     </tr>
     
     <tr>
+        <td>EMail:</td>
+        <td>
+            <input type="email" name="email" value=""> </input>
+        </td>
+    </tr>
+    
+    <tr>
         <td>Strasse:</td>
         <td>
             <input type="text" name="strasse" value=""> </input>

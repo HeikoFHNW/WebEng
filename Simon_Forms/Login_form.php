@@ -2,7 +2,7 @@
 <html>
 <body>
 
-    <form action="Rechnung_form.php" method="POST">
+    <form action="Login_form.php" method="POST">
     <h2>Login</h2>
     <table border="0" cellspacing="0" cellpadding="2">
     <tbody>

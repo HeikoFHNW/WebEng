@@ -2,73 +2,42 @@
 <html>
 <body>
 
-    <form action="Rechnung_form.php" method="POST">
+    <form action="Liegenschaft_form.php" method="POST">
     <h2>Liegenschaft erfassen</h2>
     <table border="0" cellspacing="0" cellpadding="2">
     <tbody>
     <tr>
-        <td>Rechnungstyp:</td>
+        <td>Strasse:*</td>
         <td>
-    <select name="top5">
-        <option>Reperatur Allgemein</option>
-        <option>Reperatur individuell</option>
-        <option>Hauswart</option>
-        <option>Heizkosten</option>
-        <option>Strom Allgemein</option>
-        <option>Strom Individuell</option>
-        <option>Wasser</option>
-        <option>Andere</option>
-    </select>
+            <input type="text" name="strasse" value="" />
         </td>
     </tr>
     
     <tr>
-        <td>Rechnungsdatum:*</td>
+        <td>Hausnummer:*</td>
         <td>
-            <input type="date" name="rechnungsdatum" value="" />
+            <input type="number" name="Hausnummer" value="" />
         </td>
     </tr>
     
     <tr>
-        <td>Rechnungsnummer:*</td>
+        <td>Ort:*</td>
         <td>
-           <input type="number" name="rechnungsnummer" value="" /> 
+            <input type="text" name="ort" value="" /> 
         </td>
     </tr>
     
     <tr>
-        <td>Betrag:*</td>
+        <td>PLZ:*</td>
         <td>
-           <input type="number" name="betrag" value="" />
+           <input type="number" name="plz" value="" />
         </td>
     </tr>
     
-    <tr>
-        <td>Mieter:</td>
-        <td>
-           <select name="top5">
-            <option> </option>
-            </select>
-        </td>
     </tr>
-    
-    <tr>
-        <td>Zahlung Vermieter:</td>
-        <td>
-           <input type="number" name="zahlungVermieter" value="" />
-        </td>
-    </tr>
-    
-    <tr>
-        <td>Bemerkung:</td>
-        <td>
-           <textarea type="text" name="bemerkung" value=""> </textarea>
-        </td>
-    </tr>
-    
-    <tr>
-        <td><input type="submit" name="erfassen" value="erfassen" /></td>
-        <td><input type="reset" value="nochmals" /></td>
+        <td><input type="submit" name="Speichern und zur Übersicht" value="erfassen" /></td>
+        <td><input type="submit" value="Speichern und neue Wohnung anlegen" /></td>
+        <td><input type="reset" value="Zurücksetzten" /></td>
     </tr>
     </tbody>
     </table>

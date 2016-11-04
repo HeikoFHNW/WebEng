@@ -2,7 +2,7 @@
 <html>
 <body>
 
-    <form action="Rechnung_form.php" method="POST">
+    <form action="Benutzer_form.php" method="POST">
     <h2>Benutzer erfassen</h2>
     <table border="0" cellspacing="0" cellpadding="2">
     <tbody>
