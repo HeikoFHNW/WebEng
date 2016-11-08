@@ -56,16 +56,27 @@ var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
     }  
 } 
 
-function initialize(){
-    var selectedRTyp = document.rechnung_form.rechnunstyp;
-    
-    inputCheck(selectedRTyp);
-}
-
-function inputCheck(type){
-    if(selectedRTyp == "Reperatur Allgemein"){
-        fR_mieter.disabled()=true;
-    }else{
-        fR_mieter.disabled()=false;
+function settopic(){
+     var selectHowTo = document.rechnung_form.rechnunstyp;
+     var theHowTo = selectHowTo.options[selectHowTo.selectedIndex].value;
+     disableEnable(theHowTo);
+            
+            }
+            
+function disableEnable(typ){
+     /* var disableMieter = ["Reperatur Allgemein","Hauswart","Heizkosten","Strom Allgemein","Wasser"];
+      var i;
+      for(i in disableMieter){
+          if(typ == disableMieter[i]){
+              document.getElementById("fR_mieter").disabled=true;
+          }else{
+              document.getElementById("fR_mieter").disabled=false;
+     }
+    }*/
+    if(typ == "Reperatur Allgemein"|| typ == "Hauswart"|| typ == "Heizkosten"||typ == "Strom Allgemein"|| typ == "Wasser"){
+        document.getElementById("fR_mieter").disabled=true;
+         }else{
+              document.getElementById("fR_mieter").disabled=false;
+     }
     }
-}
+  

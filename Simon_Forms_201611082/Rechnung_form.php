@@ -12,24 +12,29 @@
            
         </script>
         
-        <!--<script>
+        <script>
          function validateRechnungForm(){
-             
+            var a = notEmpty(fR_rechnungsnummer);
+            if(a==true){
+                return true;
+            }else{
+                return false;
+            }
          }
-        </script>-->
+        </script>
   
     </head>
-<body onload="initialize();">
+<body onload="settopic();">
     <div id="container">
     <form name="rechnung_form" action="Rechnung_form.php"
-    <!--onsubmit="return validateRechnungForm()" --> method="post">
+    onsubmit="return validateRechnungForm()" method="post">
     <h2>Rechnung erfassen</h2>
     <table border="0" cellspacing="0" cellpadding="2">
     <tbody>
     <tr>
         <td>Rechnungstyp:</td>
         <td>
-            <select name="rechnunstyp" id="fR_rechnungstyp" onchange="initialize();">
+            <select name="rechnunstyp" id="fR_rechnungstyp" onchange="settopic();">
         <option>Reperatur Allgemein</option>
         <option>Reperatur individuell</option>
         <option>Hauswart</option>
@@ -52,7 +57,7 @@
     <tr>
         <td>Rechnungsnummer:*</td>
         <td>
-           <input type="number" name="rechnungsnummer" value="" required/> 
+           <input type="number" id="fR_rechnungsnummer" name="rechnungsnummer" value="" required/> 
         </td>
     </tr>
     
