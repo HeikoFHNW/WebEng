@@ -2,6 +2,11 @@
 <html lang="en-GB">
 <head>
 <link type="text/css" href="css/style.css" rel="stylesheet" />
+<noscript> 
+<div id="noscript-warning">
+Bitte aktivieren Sie JavaScript
+</div>
+</noscript>
 <script type="text/javascript" src="js/jquery.js"></script>
 <script type="text/javascript" src="js/mocha.js"></script>
 <script type="text/javascript" src="js/form_val_inc.js"> </script>
