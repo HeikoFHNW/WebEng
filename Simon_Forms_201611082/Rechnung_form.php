@@ -48,7 +48,7 @@
     <tr>
         <td>Rechnungstyp:</td>
         <td>
-            <select name="rechnunstyp" id="fR_rechnungstyp" onchange="settopic();">
+        <select name="rechnunstyp" id="fR_rechnungstyp" onchange="settopic();">
         <option>Reperatur Allgemein</option>
         <option>Reperatur individuell</option>
         <option>Hauswart</option>
@@ -75,14 +75,15 @@
     <tr>
         <td>Rechnungsnummer:*</td>
         <td>
-           <input type="number" id="fR_rechnungsnummer" name="rechnungsnummer" value="" required/> 
+           <input type="text"  id="fR_rechnungsnummer" name="rechnungsnummer" value="" required/> 
         </td>
+     
     </tr>
     
     <tr>
         <td>Betrag:*</td>
         <td>
-           <input type="number" id="fR_betrag" name="betrag" value="" required/>
+           <input type="text" id="fR_betrag" name="betrag" value="" required/>
         </td>
     </tr>
     

@@ -92,4 +92,17 @@ function disableEnable(typ){
               document.getElementById("fR_mieter").disabled=false;
      }
     }
-  
+    
+  function checkNumber(fld){
+      
+      if(!isNan(fld.value)){
+          fld.style.background = 'White';
+          return true;   
+      }
+      else{
+          fld.value = 'Bitte eine korrekte Nummber eingeben!';
+          fld.style.background = 'Yellow';
+          
+          
+      }
+  }
