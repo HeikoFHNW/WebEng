@@ -27,6 +27,7 @@
             var a = notEmpty(datepicker);
             var b = notEmpty(fR_rechnungsnummer);
             var c = (notEmpty(fR_betrag)&&isNumber(fR_betrag));
+            var d = isNumber(fR_zahlungVermieter);
             
             if(c==false){
                 fR_betragMessag.innerHTML = "Bitte einen nummerischen Wert grösser 0 eintragen.";
@@ -34,7 +35,13 @@
                 fR_betragMessag.innerHTML = "";
             }
             
-            if(a==true&&b==true&&c==true){
+            if(d==false){
+                fR_zahlungVermieterMessag.innerHTML = "Bitte einen nummerischen Wert grösser 0 eintragen.";
+            }else{
+                fR_zahlungVermieterMessag.innerHTML = "";
+            }
+
+            if(a==true&&b==true&&c==true&&d==true){
                 return true;
             }else{
                 return false;
@@ -108,7 +115,10 @@
     <tr>
         <td>Zahlung Vermieter:</td>
         <td>
-           <input type="number" id="fR_zahlungVermieter" name="zahlungVermieter" value="" />
+           <input type="text" id="fR_zahlungVermieter" name="zahlungVermieter" value="" />
+        </td>
+         <td>
+            <p name="zahlungVermieterMessage" id="fR_zahlungVermieterMessag"></p>
         </td>
     </tr>
     
