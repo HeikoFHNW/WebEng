@@ -30,33 +30,37 @@ Bitte aktivieren Sie JavaScript
             var f = validateEmail(fM_email);
             var g = isNumber(fM_plz);
             
+            if (b){
+                isNotTextMessage.innerHTML = "";
+            }else{
+                isNotTextMessage.innerHTML = "Bitte keine Zahlen verwenden.";
+            }
+            
+            if (c){
+                isNotTextMessageToo.innerHTML = "";
+            }else{
+                isNotTextMessageToo.innerHTML = "Bitte keine Zahlen verwenden.";
+            }
+            
+            if (d){
+                isNotTextMessageStreet.innerHTML = "";
+            }else{
+                isNotTextMessageStreet.innerHTML = "Bitte keine Zahlen verwenden.";
+            }
+            
+            if (e){
+                isNotTextMessageOrt.innerHTML = "";
+            }else{
+                isNotTextMessageOrt.innerHTML = "Bitte keine Zahlen verwenden.";
+            }
+            
+            
+            
             if(a && b && c && d && e && f && g){
                 return true;
             }else{
                 return false;
-            }
-           /* var a = notEmpty(datepicker);
-            var b = notEmpty(fM_vorname);
-            var c = notEmpty(fM_nachname);
-          
-      
-            var d = checkTel(fM_telefon);
-            var e = checkTel(fM_mobile);
-            var f = !isNumber(fM_strasse);
-            var g = !isNumber(fM_ort);
-            
-            if(f == true){
-                isNotTextMessage.innerHTML("Bitte keine Zahlen eingeben");
-            }
-            
-            
-            if(a && b && c && d && e && f && g){
-                return true;
-            }else{
-                return false;
-            }*/
-            
-            
+            }  
         }
     
     </script>
@@ -156,9 +160,16 @@ Bitte aktivieren Sie JavaScript
             </tr>
     
             <tr>
+                <td>
+                    <p name="street" id="isNotTextMessageStreet"></p>
+                </td>
                 <td>Ort:</td>
                 <td>
                     <input type="text" id="fM_ort" name="ort" value=""> </input>
+                </td>
+                
+                <td>
+                    <p name="ort" id="isNotTextMessageOrt"></p>
                 </td>
             </tr>
     
