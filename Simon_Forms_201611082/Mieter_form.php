@@ -10,7 +10,20 @@ Bitte aktivieren Sie JavaScript
     <script type="text/javascript" src="js/form_val_inc.js">
     </script>
     
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script>
+    $( function() {
+    $( "#datepicker" ).datepicker();
+    } );
+    </script>
+    
+    <script>
+        function validateMieterForm(){
+            
+        }
     
     </script>
         
@@ -35,21 +48,24 @@ Bitte aktivieren Sie JavaScript
             <tr>
                 <td>Vorname:*</td>
                 <td>
-                <input type="text" name="vorname" value="" />
+                    <input type="text" id="fM_vorname" name="vorname"  value="" />
                 </td>
             </tr>
     
             <tr>
                 <td>Nachname:*</td>
                 <td>
-                    <input type="text" name="nachname" value="" /> 
+                    <input type="text" id="fM_nachname" name="nachname" value="" /> 
                 </td>
             </tr>
     
             <tr>
                 <td>Geburtsdatum:*</td>
                 <td>
-                    <input type="date" name="geburtsdatum" value="" />
+                    <input type="text" id="fM_geburtsdatum" name="geburtsdatum" id="datepicker" value="" required/>
+                </td>
+                <td>
+                    <p name="date" id="dateMessage">(tt/mm/yyyy)</p>
                 </td>
             </tr>
     
