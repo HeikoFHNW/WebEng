@@ -31,6 +31,19 @@ function isName(fld) {
     return true;
 }
 
+  function checkDate(fld){
+    // regular expression to match required date format
+    re = /^\d{1,2}\.\d{1,2}\.\d{4}$/;
+
+    if(fld.value != '' && !fld.value.match(re)) {
+      alert("falscher Datumstyp");
+     
+      return false;
+    }else{
+      return true;
+    }
+}
+
 function passwordEquals(fld1,fld2){
     if(fld1.value!=fld2.value){
     fld2.style.background = 'Yellow';

@@ -12,10 +12,24 @@
            
         </script>
         
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script>
+    $( function() {
+    $( "#datepicker" ).datepicker();
+    } );
+    </script>
+        
         <script>
          function validateRechnungForm(){
-            var a = notEmpty(fR_rechnungsnummer);
-            if(a==true){
+            var a = notEmpty(datepicker);
+            var b = notEmpty(fR_rechnungsnummer);
+            var c = notEmpty(fR_betrag);
+            
+            
+            if(a==true&&b==true&&c==true){
                 return true;
             }else{
                 return false;
@@ -26,7 +40,7 @@
     </head>
 <body onload="settopic();">
     <div id="container">
-    <form name="rechnung_form" action="Rechnung_form.php"
+    <form name="rechnung_form" id="form_Rechnung" action="Rechnung_form.php"
     onsubmit="return validateRechnungForm()" method="post">
     <h2>Rechnung erfassen</h2>
     <table border="0" cellspacing="0" cellpadding="2">
@@ -44,13 +58,17 @@
         <option>Wasser</option>
         <option>Andere</option>
     </select>
-        </td>
+            
+    </td>
     </tr>
     
     <tr>
         <td>Rechnungsdatum:*</td>
         <td>
-            <input type="date" name="rechnungsdatum" value="" required/>
+            <input type="text" name="rechnungsdatum" id="datepicker" value="" required/>
+        </td>
+        <td>
+            <p name="date" id="dateMessage">(tt/mm/yyyy)</p>
         </td>
     </tr>
     
@@ -64,7 +82,7 @@
     <tr>
         <td>Betrag:*</td>
         <td>
-           <input type="number" name="betrag" value="" required/>
+           <input type="number" id="fR_betrag" name="betrag" value="" required/>
         </td>
     </tr>
     
@@ -80,14 +98,14 @@
     <tr>
         <td>Zahlung Vermieter:</td>
         <td>
-           <input type="number" name="zahlungVermieter" value="" />
+           <input type="number" id="fR_zahlungVermieter" name="zahlungVermieter" value="" />
         </td>
     </tr>
     
     <tr>
         <td>Bemerkung:</td>
         <td>
-           <textarea type="text" name="bemerkung" value=""> </textarea>
+           <textarea type="text" name="bemerkung" id="fR_bemerkung" value=""> </textarea>
         </td>
     </tr>
     
