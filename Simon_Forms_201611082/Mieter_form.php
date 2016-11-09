@@ -23,8 +23,18 @@ Bitte aktivieren Sie JavaScript
     <script>
         function validateMieterForm(){
             var a = notEmpty(datepicker);
+            var b = (notEmpty(fM_vorname)&&isText(fM_vorname));
+            var c = notEmpty(fM_nachname);
+            
+            
+            if(a && b && c){
+                return true;
+            }else{
+                return false;
+            }
+           /* var a = notEmpty(datepicker);
             var b = notEmpty(fM_vorname);
-            var c = notEmpty(fM_nachname) ;
+            var c = notEmpty(fM_nachname);
           
       
             var d = checkTel(fM_telefon);
@@ -41,7 +51,7 @@ Bitte aktivieren Sie JavaScript
                 return true;
             }else{
                 return false;
-            }
+            }*/
             
             
         }

@@ -41,6 +41,17 @@ function isNumber(fld){
       }
   }
 
+function isText(fld){
+    if(isNaN(fld.value) || fld.value<0){
+          fld.style.background = 'White';
+          return true;   
+      }else{
+          fld.style.background = 'Yellow';
+          return false;
+      }
+}
+
+
   function checkDate(fld){
     // regular expression to match required date format
     re = /^\d{1,2}\.\d{1,2}\.\d{4}$/;
