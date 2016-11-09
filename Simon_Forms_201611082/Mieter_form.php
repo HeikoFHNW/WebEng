@@ -27,8 +27,9 @@ Bitte aktivieren Sie JavaScript
             var c = (notEmpty(fM_nachname)&&isText(fM_nachname));
             var d = isText(fM_strasse);
             var e = isText(fM_ort);
+            var f = validateEmail(fM_email);
             
-            if(a && b && c && d && e){
+            if(a && b && c && d && e && f){
                 return true;
             }else{
                 return false;

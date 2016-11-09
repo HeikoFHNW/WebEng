@@ -101,7 +101,7 @@ function passwordEquals(fld1,fld2){
 
 function validateEmail(fld){  
 var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;  
-    if(fld.value.match(mailformat)){
+    if(fld.value.match(mailformat) || fld.value==""){
     fld.style.background = 'White';
     return true;
     emailValidationMessage.innerHTML ="";  
