@@ -42,7 +42,7 @@ function isNumber(fld){
   }
 
 function isText(fld){
-    if(isNaN(fld.value)){
+    if(isNaN(fld.value)||fld.value==""){
           fld.style.background = 'White';
           return true;   
       }else{

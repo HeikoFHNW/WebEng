@@ -28,7 +28,7 @@ Bitte aktivieren Sie JavaScript
             var d = isText(fM_strasse);
             var e = isText(fM_ort);
             
-            if(a && b && c){
+            if(a && b && c && d && e){
                 return true;
             }else{
                 return false;
