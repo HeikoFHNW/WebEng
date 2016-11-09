@@ -54,6 +54,28 @@ function isNumber(fld){
     }
 }
 
+    function checkTel(fld){
+      for (var i = 0; i < fld.value.length; i++) {
+        if ((fld.value.charAt(i) > "9" ||
+            fld.value.charAt(i) < "0") &&
+            fld.value.charAt(i) != "/" &&
+            fld.value.charAt(i) != " " &&
+            fld.value.charAt(i) != "-" &&
+            fld.value.charAt(i) != "+" &&
+            fld.value.charAt(i) != ")" &&
+            fld.value.charAt(i) != "(" &&
+            fld.value.charAt(i) != "]" &&
+            fld.value.charAt(i) != "[" &&
+            fld.value.charAt(i) != "'") {
+            fld.style.background = 'Yellow';
+            return false;
+            }else{
+                fld.style.background = 'White';
+                return true;
+            }
+        }
+    }
+
 function passwordEquals(fld1,fld2){
     if(fld1.value!=fld2.value){
     fld2.style.background = 'Yellow';

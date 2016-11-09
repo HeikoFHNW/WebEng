@@ -22,7 +22,14 @@ Bitte aktivieren Sie JavaScript
     
     <script>
         function validateMieterForm(){
+            var a = checkTel(fM_telefon);
+            var b = checkTel(fM_mobile);
             
+            if(a&&b){
+                return true;
+            }else{
+                return false;
+            }
         }
     
     </script>
@@ -62,7 +69,7 @@ Bitte aktivieren Sie JavaScript
             <tr>
                 <td>Geburtsdatum:*</td>
                 <td>
-                    <input type="text" id="fM_geburtsdatum" name="geburtsdatum" id="datepicker" value="" required/>
+                    <input type="text" id="datepicker" name="geburtsdatum" value="" required/>
                 </td>
                 <td>
                     <p name="date" id="dateMessage">(tt/mm/yyyy)</p>
@@ -82,14 +89,14 @@ Bitte aktivieren Sie JavaScript
             <tr>
                 <td>Telefon:</td>
                 <td>
-                    <input type="tel" name="telefon" value="" />
+                    <input type="tel" id="fM_telefon" name="telefon" value="" />
                 </td>
             </tr>
     
             <tr>
                 <td>Mobile:</td>
                  <td>
-                    <input type="tel" name="mobile" value=""> </input>
+                     <input type="tel" id="fM_mobile" name="mobile" value=""> </input>
                 </td>
             </tr>
     
@@ -122,7 +129,7 @@ Bitte aktivieren Sie JavaScript
             <tr>
                 <td>PLZ:</td>
                 <td>
-                    <input type="number" name="plz" value=""> </input>
+                    <input type="text" name="plz" value=""> </input>
                 </td>
             </tr>
     
