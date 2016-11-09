@@ -80,7 +80,7 @@
             <input type="text" name="rechnungsdatum" id="datepicker" value="" required/>
         </td>
         <td>
-            <p name="date" id="dateMessage">(tt/mm/yyyy)</p>
+            <p name="date" id="dateMessage">(yyyy-mm-dd)</p>
         </td>
     </tr>
     

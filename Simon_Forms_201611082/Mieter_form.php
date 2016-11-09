@@ -65,7 +65,7 @@ Bitte aktivieren Sie JavaScript
                     <input type="text" id="fM_geburtsdatum" name="geburtsdatum" id="datepicker" value="" required/>
                 </td>
                 <td>
-                    <p name="date" id="dateMessage">(tt/mm/yyyy)</p>
+                    <p name="date" id="dateMessage">(yyyy-mm-dd)</p>
                 </td>
             </tr>
     
