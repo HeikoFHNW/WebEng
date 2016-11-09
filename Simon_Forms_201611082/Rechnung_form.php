@@ -26,8 +26,13 @@
          function validateRechnungForm(){
             var a = notEmpty(datepicker);
             var b = notEmpty(fR_rechnungsnummer);
-            var c = notEmpty(fR_betrag);
+            var c = (notEmpty(fR_betrag)&&isNumber(fR_betrag));
             
+            if(c==false){
+                fR_betragMessag.innerHTML = "Bitte einen nummerischen Wert grösser 0 eintragen.";
+            }else{
+                fR_betragMessag.innerHTML = "";
+            }
             
             if(a==true&&b==true&&c==true){
                 return true;
@@ -85,6 +90,10 @@
         <td>
            <input type="text" id="fR_betrag" name="betrag" value="" required/>
         </td>
+        <td>
+            <p name="betragMessag" id="fR_betragMessag"></p>
+        </td>
+        
     </tr>
     
     <tr>

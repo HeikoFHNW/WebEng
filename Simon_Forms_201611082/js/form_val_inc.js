@@ -31,6 +31,16 @@ function isName(fld) {
     return true;
 }
 
+function isNumber(fld){
+      if(isNaN(fld.value) || fld.value<0){
+          fld.style.background = 'Yellow';
+          return false;   
+      }else{
+          fld.style.background = 'White';
+          return true;
+      }
+  }
+
   function checkDate(fld){
     // regular expression to match required date format
     re = /^\d{1,2}\.\d{1,2}\.\d{4}$/;
@@ -93,16 +103,4 @@ function disableEnable(typ){
      }
     }
     
-  function checkNumber(fld){
-      
-      if(!isNan(fld.value)){
-          fld.style.background = 'White';
-          return true;   
-      }
-      else{
-          fld.value = 'Bitte eine korrekte Nummber eingeben!';
-          fld.style.background = 'Yellow';
-          
-          
-      }
-  }
+  
