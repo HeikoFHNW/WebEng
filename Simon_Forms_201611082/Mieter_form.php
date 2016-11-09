@@ -29,6 +29,8 @@ Bitte aktivieren Sie JavaScript
             var e = isText(fM_ort);
             var f = validateEmail(fM_email);
             var g = isNumber(fM_plz);
+            var h = checkTel(fM_telefon);
+            var i = checkTel(fM_mobile);
             
             if (b){
                 isNotTextMessage.innerHTML = "";
@@ -56,7 +58,7 @@ Bitte aktivieren Sie JavaScript
             
             
             
-            if(a && b && c && d && e && f && g){
+            if(a && b && c && d && e && f && g && h && i){
                 return true;
             }else{
                 return false;
@@ -156,13 +158,14 @@ Bitte aktivieren Sie JavaScript
                 <td>
                     <input type="text" id="fM_hausnummer" name="strasse" value=""> </input>
                 </td>
+                <td>
+                    <p name="street" id="isNotTextMessageStreet"></p>
+                </td>
            
             </tr>
     
             <tr>
-                <td>
-                    <p name="street" id="isNotTextMessageStreet"></p>
-                </td>
+
                 <td>Ort:</td>
                 <td>
                     <input type="text" id="fM_ort" name="ort" value=""> </input>
