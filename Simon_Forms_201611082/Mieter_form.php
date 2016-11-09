@@ -56,6 +56,24 @@ Bitte aktivieren Sie JavaScript
                 isNotTextMessageOrt.innerHTML = "Bitte keine Zahlen verwenden.";
             }
             
+            if (g){
+                plzMessage.innerHTML = "";
+            }else{
+                plzMessage.innerHTML = "Bitte keine Buchstaben.";
+            }
+            
+            if (h){
+                telMessage.innerHTML = "";
+            }else{
+                telMessage.innerHTML = "Bitte gültige Telefonnummer eingeben.";
+            }
+            
+            if (i){
+                mobileMessage.innerHTML = "";
+            }else{
+                mobileMessage.innerHTML = "Bitte gültige Telefonnummer eingeben.";
+            }
+            
             
             
             if(a && b && c && d && e && f && g && h && i){
@@ -130,12 +148,18 @@ Bitte aktivieren Sie JavaScript
                 <td>
                     <input type="tel" id="fM_telefon" name="telefon" value="" />
                 </td>
+                <td>
+                    <p name= "telMessage" id="telMessage"></p>
+                </td>
             </tr>
     
             <tr>
                 <td>Mobile:</td>
                  <td>
                      <input type="tel" id="fM_mobile" name="mobile" value=""> </input>
+                </td>
+                <td>
+                    <p name= "mobileMessage" id="mobileMessage"></p>
                 </td>
             </tr>
     
@@ -156,12 +180,11 @@ Bitte aktivieren Sie JavaScript
                 </td>
                 <td>Hausnummer:</td>
                 <td>
-                    <input type="text" id="fM_hausnummer" name="strasse" value=""> </input>
+                    <input type="text" id="fM_hausnummer" name="hausnummer" value=""> </input>
                 </td>
                 <td>
                     <p name="street" id="isNotTextMessageStreet"></p>
                 </td>
-           
             </tr>
     
             <tr>
@@ -181,6 +204,9 @@ Bitte aktivieren Sie JavaScript
                 <td>
                     <input type="text" id="fM_plz" name="plz" value=""> </input>
                 </td>
+                <td>
+                    <p name="plz" id="plzMessage"></p>
+                </td>
             </tr>
     
              <tr>
@@ -196,5 +222,6 @@ Bitte aktivieren Sie JavaScript
         </tbody>
         </table>
 </form>
+</div>
 </body>
 </html>
