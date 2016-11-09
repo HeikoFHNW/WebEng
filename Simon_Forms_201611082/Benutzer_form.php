@@ -21,7 +21,7 @@ Bitte aktivieren Sie JavaScript
         var g = validateEmail(fB_email);
         var h = passwordEquals(fB_passwort1, fB_passwort2);
         
-        if(a && b && c && d && e && f && g && h == true){
+        if(a && b && c && d && e && f && g && h){
             return true;
         }else{
             return false;

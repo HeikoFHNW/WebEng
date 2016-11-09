@@ -41,7 +41,7 @@
                 fR_zahlungVermieterMessag.innerHTML = "";
             }
 
-            if(a==true&&b==true&&c==true&&d==true){
+            if(a && b && c&& d){
                 return true;
             }else{
                 return false;

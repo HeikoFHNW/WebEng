@@ -15,7 +15,7 @@ Bitte aktivieren Sie JavaScript
         var a = notEmpty(fL_benutzername);
         var b = notEmpty(fL_passwort);
           
-        if(a && b == true){
+        if(a && b){
         return true;
         }else{
         return false;
