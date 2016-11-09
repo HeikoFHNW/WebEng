@@ -22,14 +22,28 @@ Bitte aktivieren Sie JavaScript
     
     <script>
         function validateMieterForm(){
-            var a = checkTel(fM_telefon);
-            var b = checkTel(fM_mobile);
+            var a = notEmpty(datepicker);
+            var b = notEmpty(fM_vorname);
+            var c = notEmpty(fM_nachname) ;
+          
+      
+            var d = checkTel(fM_telefon);
+            var e = checkTel(fM_mobile);
+            var f = !isNumber(fM_strasse);
+            var g = !isNumber(fM_ort);
             
-            if(a&&b){
+            if(f == true){
+                isNotTextMessage.innerHTML("Bitte keine Zahlen eingeben");
+            }
+            
+            
+            if(a && b && c && d && e && f && g){
                 return true;
             }else{
                 return false;
             }
+            
+            
         }
     
     </script>
@@ -57,12 +71,18 @@ Bitte aktivieren Sie JavaScript
                 <td>
                     <input type="text" id="fM_vorname" name="vorname"  value="" />
                 </td>
+                <td>
+                    <p name="firstname" id="isNotTextMessage"></p>
+                </td>
             </tr>
     
             <tr>
                 <td>Nachname:*</td>
                 <td>
                     <input type="text" id="fM_nachname" name="nachname" value="" /> 
+                </td>
+                <td>
+                    <p name="surname" id="isNotTextMessageToo"></p>
                 </td>
             </tr>
     
@@ -103,18 +123,21 @@ Bitte aktivieren Sie JavaScript
             <tr>
                 <td>EMail:</td>
                 <td>
-                    <input type="email" name="email" value=""> </input>
+                    <input type="email" id="fM_email" name="email" value=""> </input>
+                </td>
+                <td>
+                    <p name= "emailMessag" id="emailValidationMessage"></p>
                 </td>
             </tr>
     
             <tr>
                 <td>Strasse:</td>
                 <td>
-                <input type="text" name="strasse" value=""> </input>
+                <input type="text" id="fM_strasse" name="strasse" value=""> </input>
                 </td>
                 <td>Hausnummer:</td>
                 <td>
-                    <input type="text" name="strasse" value=""> </input>
+                    <input type="text" id="fM_hausnummer" name="strasse" value=""> </input>
                 </td>
            
             </tr>
@@ -122,7 +145,7 @@ Bitte aktivieren Sie JavaScript
             <tr>
                 <td>Ort:</td>
                 <td>
-                    <input type="text" name="ort" value=""> </input>
+                    <input type="text" id="fM_ort" name="ort" value=""> </input>
                 </td>
             </tr>
     
@@ -133,6 +156,12 @@ Bitte aktivieren Sie JavaScript
                 </td>
             </tr>
     
+             <tr>
+                <td>
+                       <p id= "requiredMessage"> </p>
+                </td>
+            </tr>
+            
             <tr>
                 <td><input type="submit" name="erfassen" value="erfassen" /></td>
                 <td><input type="reset" value="nochmals" /></td>
