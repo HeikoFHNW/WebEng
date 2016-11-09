@@ -24,8 +24,9 @@ Bitte aktivieren Sie JavaScript
         function validateMieterForm(){
             var a = notEmpty(datepicker);
             var b = (notEmpty(fM_vorname)&&isText(fM_vorname));
-            var c = notEmpty(fM_nachname);
-            
+            var c = (notEmpty(fM_nachname)&&isText(fM_nachname));
+            var d = isText(fM_strasse);
+            var e = isText(fM_ort);
             
             if(a && b && c){
                 return true;
@@ -162,7 +163,7 @@ Bitte aktivieren Sie JavaScript
             <tr>
                 <td>PLZ:</td>
                 <td>
-                    <input type="text" name="plz" value=""> </input>
+                    <input type="text" id="fM_plz" name="plz" value=""> </input>
                 </td>
             </tr>
     
