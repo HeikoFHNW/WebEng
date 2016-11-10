@@ -8,7 +8,7 @@ function notEmpty(fld){
         fld.style.background = 'White';  
     }
     return true;
-    requiredMessage.innerHTML = "";
+        requiredMessage.innerHTML = "";
 }
 
 function isName(fld) {

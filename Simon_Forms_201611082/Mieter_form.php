@@ -211,7 +211,7 @@ Bitte aktivieren Sie JavaScript
     
              <tr>
                 <td>
-                       <p id= "requiredMessage"> </p>
+                       <p class= "requiredMessage"> </p>
                 </td>
             </tr>
             
