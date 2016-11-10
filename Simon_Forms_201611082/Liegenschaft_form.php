@@ -7,17 +7,16 @@
 Bitte aktivieren Sie JavaScript
 </div>
 </noscript>
+
     <script type="text/javascript" src="js/form_val_inc.js">
     </script>
-    
-    
     
     <script>
         function validateLiegenschaftForm(){
             var a = (notEmpty(fLi_strasse)&&isText(fLi_strasse));
             var b = notEmpty(fLi_hausnummer);
             var c = (notEmpty(fLi_ort)&&isText(fLi_ort));
-            var d = isNumber(fLi_plz);
+            var d = (notEmpty(fLi_hausnummer)&&isNumber(fLi_plz));
             
             
             if (a){
@@ -95,9 +94,15 @@ Bitte aktivieren Sie JavaScript
         </td>
     </tr>
     
+    <tr>
+        <td>
+            <p id= "requiredMessage"> </p>
+       </td>
     </tr>
-        <td><input type="submit" name="Speichern und zur Übersicht" value="erfassen" /></td>
-        <td><input type="submit" value="Speichern und neue Wohnung anlegen" /></td>
+    
+    </tr>
+        <td><input type="submit" name="erfassen" value="erfassen" /></td>
+        
         <td><input type="reset" value="Zurücksetzten" /></td>
     </tr>
     </tbody>

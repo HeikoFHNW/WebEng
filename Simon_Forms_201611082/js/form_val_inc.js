@@ -34,7 +34,7 @@ function isName(fld) {
 function isNumber(fld){
       if(isNaN(fld.value) || fld.value<0){
           fld.style.background = 'Yellow';
-          return false;   
+          return false; 
       }else{
           fld.style.background = 'White';
           return true;
