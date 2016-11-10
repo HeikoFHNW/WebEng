@@ -16,7 +16,7 @@ Bitte aktivieren Sie JavaScript
             var a = (notEmpty(fLi_strasse)&&isText(fLi_strasse));
             var b = notEmpty(fLi_hausnummer);
             var c = (notEmpty(fLi_ort)&&isText(fLi_ort));
-            var d = (notEmpty(fLi_hausnummer)&&isNumber(fLi_plz));
+            var d = (notEmpty(fLi_plz)&&isNumber(fLi_plz));
             
             
             if (a){
