@@ -20,6 +20,7 @@ Benutzername varchar(55),
 Passwort varchar(55), 
 Email varchar(55), 
 Gesperrt tinyint, 
+Admin tinyint,
 `Session` varchar(50), 
 PRIMARY KEY (ID_Benutzer));
 
@@ -87,6 +88,9 @@ Anzahl_Zimmer int(10),
 Anzahl_Quadratmeter int(10), 
 Liegenschafts_ID int(10) NOT NULL, 
 PRIMARY KEY (ID_Wohnung));
+
+ALTER TABLE Benutzer
+ADD CONSTRAINT UCUsername UNIQUE (Benutzername);
 
 ALTER TABLE Liegenschaft 
 ADD INDEX FKLiegenscha502068 (Adresse), 
