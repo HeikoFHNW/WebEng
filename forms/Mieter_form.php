@@ -76,10 +76,15 @@
         
     </head>
         <body>
+            
         <?php include("../include/navigation.inc.php"); ?>
+            
+            
         <div class="container" id="mieter">
+       
         <form name="mieter_form" action="Mieter_form.php"
               accept-charset=""onsubmit="return validateMieterForm()" method="post">
+            
         <h2>Mieter erfassen</h2>
         <table border="0" cellspacing="0" cellpadding="2">
          <tbody>
@@ -171,7 +176,7 @@
                 
                 <td>Hausnummer:</td>
                 <td>
-                    <input type="text" id="fM_hausnummer" name="strasse" value=""> </input>
+                    <input type="text" id="fM_hausnummer" name="hausnummer" value=""> </input>
                 </td>
                 <td>
                     <p name="street" id="isNotTextMessageStreet"></p>
@@ -212,6 +217,7 @@
         </tbody>
         </table>
 </form>
+</div>
 </body>
 </html>
 
