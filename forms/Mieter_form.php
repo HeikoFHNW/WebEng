@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-    <?php include ("../include/head.inc.php");?>>
+    <?php include ("../include/head.inc.php");?>
     <script>
     $( function() {
     $( "#datepicker" ).datepicker({ dateFormat: 'yy-mm-dd' }).val();
