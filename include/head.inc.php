@@ -7,8 +7,8 @@
 </noscript>
 
 <script type='text/javascript' src='../js/form_val_inc.js'> </script>
-<script type="text/javascript" src="js/jquery.js"></script>
-<script type="text/javascript" src="js/mocha.js"></script>
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript" src="../js/mocha.js"></script>
 
 
 
