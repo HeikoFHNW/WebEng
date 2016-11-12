@@ -1,14 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link type="text/css" href="css/style.css" rel="stylesheet" />
-<noscript> 
-<div id="noscript-warning">
-Bitte aktivieren Sie JavaScript
-</div>
-</noscript>
-    <script type="text/javascript" src="js/form_val_inc.js">
-    </script>
+        <?php include ("../include/head.inc.php");?>
     
     <script>
       function validateLoginForm(){
@@ -28,7 +21,8 @@ Bitte aktivieren Sie JavaScript
     </head>
     
 <body>
-<div id="container">
+<?php include("../include/navigation.inc.php"); ?>
+<div class="container" id="login">
     <form name="login_form" action="Login_form.php"
     onsubmit="return validateLoginForm()" method="post">
     <h2>Login</h2>

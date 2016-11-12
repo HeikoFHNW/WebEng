@@ -1,15 +1,8 @@
 <!DOCTYPE html>
 <html>
     <head>
-      <link type="text/css" href="css/style.css" rel="stylesheet" />
-<noscript> 
-<div id="noscript-warning">
-Bitte aktivieren Sie JavaScript
-</div>
-</noscript>
+      <?php include ("../include/head.inc.php");?>
 
-    <script type="text/javascript" src="js/form_val_inc.js">
-    </script>
     
     <script>
         function validateLiegenschaftForm(){
@@ -49,8 +42,8 @@ Bitte aktivieren Sie JavaScript
         
     </head>
 <body>
-
-   <div id="container">
+   <?php include("../include/navigation.inc.php"); ?>
+   <div class="container" id="liegenschaft">
        <form name="liegenschaft_form" action="Liegenschaft_form.php"
     accept-charset="" onsubmit="return validateLiegenschaftForm()" method="post">
            

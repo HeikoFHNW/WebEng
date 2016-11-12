@@ -112,6 +112,19 @@ var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
     }  
 } 
 
+function validateChoice(fld){
+    //var a = document.getElementById("fMv_vertragspartner");
+    var selectedValue = fld.options[fld.selectedIndex].value;
+        if(selectedValue === "notselected"){
+           vertragspartnerMessage.innerHTML=("Bitte Vertragspartner auswählen");
+           vertragspartnerMessage.style.color ="Red";
+           return false;
+        } else{
+           vertragspartnerMessage.innerHTML=("");
+           return true;
+        }
+  }
+
 function settopic(){
      var selectHowTo = document.rechnung_form.rechnunstyp;
      var theHowTo = selectHowTo.options[selectHowTo.selectedIndex].value;

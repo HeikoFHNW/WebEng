@@ -1,26 +1,12 @@
 <!DOCTYPE html>
 <html>
     <head>
-    <link type="text/css" href="css/style.css" rel="stylesheet" />
-        <noscript> 
-            <div id="noscript-warning">
-            Bitte aktivieren Sie JavaScript
-            </div>
-        </noscript>
-        
-        <script type="text/javascript" src="js/form_val_inc.js">
-           
-        </script>
-        
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-    <link rel="stylesheet" href="/resources/demos/style.css">
-    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    <script>
-    $( function() {
-    $( "#datepicker" ).datepicker({ dateFormat: 'yy-mm-dd' }).val();
-    } );
-    </script>
+    <?php include ("../include/head.inc.php");?>
+        <script>
+        $( function() {
+        $( "#datepicker" ).datepicker({ dateFormat: 'yy-mm-dd' }).val();
+        } );
+         </script>
         
         <script>
          function validateRechnungForm(){
@@ -51,7 +37,11 @@
   
     </head>
 <body onload="settopic();">
-    <div id="container">
+    
+    <?php include("../include/navigation.inc.php"); ?>
+    
+    
+    <div class="container" id="rechnung">
     <form name="rechnung_form" id="form_Rechnung" action="Rechnung_form.php"
     onsubmit="return validateRechnungForm()" method="post">
     <h2>Rechnung erfassen</h2>

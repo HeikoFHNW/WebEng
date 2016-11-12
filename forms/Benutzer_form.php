@@ -1,15 +1,8 @@
 <!DOCTYPE html>
 <html lang="en-GB">
 <head>
-<link type="text/css" href="css/style.css" rel="stylesheet" />
-<noscript> 
-<div id="noscript-warning">
-Bitte aktivieren Sie JavaScript
-</div>
-</noscript>
-<script type="text/javascript" src="js/jquery.js"></script>
-<script type="text/javascript" src="js/mocha.js"></script>
-<script type="text/javascript" src="js/form_val_inc.js"> </script>
+<?php include ("../include/head.inc.php");?>
+    
 <script>
          function validateBenutzerForm() {
         var a = notEmpty(fB_vorname);
@@ -31,8 +24,8 @@ Bitte aktivieren Sie JavaScript
         </script>
 </head>
 <body>
-
-<div id="container">
+<?php include("../include/navigation.inc.php"); ?>
+<div class="container" id="benutzer">
 <div class="block">
     <form id="benutzer_form" action="Login_form.php"
     onsubmit="return validateBenutzerForm()" method="post">

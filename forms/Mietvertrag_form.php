@@ -1,67 +1,62 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link type="text/css" href="css/style.css" rel="stylesheet" />
-<noscript> 
-<div id="noscript-warning">
-Bitte aktivieren Sie JavaScript
-</div>
-</noscript>
-    <script type="text/javascript" src="js/form_val_inc.js">
-    </script>
+        <meta charset="utf-8">
+        <?php include ("../include/head.inc.php");?>
+        
+        <script>
+        $( function() {
+        $( "#datepicker1, #datepicker2" ).addClass('datepicker');
+        $(".datepicker").datepicker({ dateFormat: 'yy-mm-dd' }).val();
+        } );
+        </script>
     
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-    <link rel="stylesheet" href="/resources/demos/style.css">
-    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    <script>
-    $( function() {
-    $( ".datepicker" ).datepicker({ dateFormat: 'yy-mm-dd' }).val();
-    } );
-    </script>
-    
-    <script>
-        function validateMietvertragForm(){
-            
-            
-            
-            
-            if(a && b && c && d && e && f && g && h && i){
+        <script>
+           function validateMietvertragForm(){ 
+           var a = validateChoice(fMv_vertragspartner);
+           //var b = (notEmpty(datepicker1) && notEmpty(datepicker2));
+                if(a){
                 return true;
-            }else{
+                
+                }else{
                 return false;
-            }  
-        }
-    
-    </script>
+                }    
+            }
+  
+        </script>
         
     </head>
     
 <body>
-    <div id="container">
+    <?php include("../include/navigation.inc.php"); ?>
+    <div class="container" id="mietvertrag">
         <form name="mietvertrag_form" action="Mietvertrag_form.php"
      accept-charset=""onsubmit="return validateMietvertragForm()" method="post">
     <h2>Mietvertrag erfassen</h2>
     <table border="0" cellspacing="0" cellpadding="2">
     <tbody>
     <tr>
-        <td>Vertragspartner:</td>
+        <td>Vertragspartner*:</td>
         <td>
-    <select name="top5">
-        <option></option>
+    <select  id = "fMv_vertragspartner" name="top5">
+        <option value="notselected" selected>Bitte auswählen</option>
+        <option> Thomas Müller</option>
     </select>
+        </td>
+        <td>
+            <p id="vertragspartnerMessage"></p>
         </td>
     </tr>
     
     <tr>
         <td>Mietbeginn:*</td>
         <td>
-            <input type="date" class="datepicker" name="mietbeginn" value="" />
+            <input type="date" id="datepicker1" name="mietbeginn" value="" />
         </td>
         
         <td>Mietende:*</td>
         <td>
-            <input type="date" class="datepicker" name="mietende" value="" />
+            <input type="date" id="datepicker2" name="mietende" value="" />
         </td>
     </tr>
     
