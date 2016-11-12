@@ -66,6 +66,9 @@ function isText(fld){
 }
 
     function checkTel(fld){
+        if(fld.value==""){
+            return true;
+        }
       for (var i = 0; i < fld.value.length; i++) {
         if ((fld.value.charAt(i) > "9" ||
             fld.value.charAt(i) < "0") &&

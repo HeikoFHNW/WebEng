@@ -2,12 +2,12 @@
 <html>
     <head>
     <?php include ("../include/head.inc.php");?>
+        
     <script>
     $( function() {
     $( "#datepicker" ).datepicker({ dateFormat: 'yy-mm-dd' }).val();
     } );
-     </script>
-   
+    </script>
     
     <script>
         function validateMieterForm(){
@@ -21,7 +21,7 @@
             var h = checkTel(fM_telefon);
             var i = checkTel(fM_mobile);
             
-            if (b){
+           if (b){
                 isNotTextMessage.innerHTML = "";
             }else{
                 isNotTextMessage.innerHTML = "Bitte keine Zahlen verwenden.";
@@ -33,7 +33,7 @@
                 isNotTextMessageToo.innerHTML = "Bitte keine Zahlen verwenden.";
             }
             
-            if (d){
+           if (d){
                 isNotTextMessageStreet.innerHTML = "";
             }else{
                 isNotTextMessageStreet.innerHTML = "Bitte keine Zahlen verwenden.";
@@ -65,7 +65,7 @@
             
             
             
-            if(a && b && c && d && e && f && g && h && i){
+            if(a&&b&&c&&d&&e&&f&&g&&h&&i){
                 return true;
             }else{
                 return false;
@@ -78,7 +78,7 @@
         <body>
         <?php include("../include/navigation.inc.php"); ?>
         <div class="container" id="mieter">
-            <form name="mieter_form" action="Mieter_form.php"
+        <form name="mieter_form" action="Mieter_form.php"
               accept-charset=""onsubmit="return validateMieterForm()" method="post">
         <h2>Mieter erfassen</h2>
         <table border="0" cellspacing="0" cellpadding="2">
@@ -168,22 +168,22 @@
                 <td>
                 <input type="text" id="fM_strasse" name="strasse" value=""> </input>
                 </td>
+                
                 <td>Hausnummer:</td>
                 <td>
-                    <input type="text" id="fM_hausnummer" name="hausnummer" value=""> </input>
+                    <input type="text" id="fM_hausnummer" name="strasse" value=""> </input>
                 </td>
                 <td>
                     <p name="street" id="isNotTextMessageStreet"></p>
                 </td>
+           
             </tr>
     
             <tr>
-
                 <td>Ort:</td>
                 <td>
                     <input type="text" id="fM_ort" name="ort" value=""> </input>
                 </td>
-                
                 <td>
                     <p name="ort" id="isNotTextMessageOrt"></p>
                 </td>
@@ -201,7 +201,7 @@
     
              <tr>
                 <td>
-                       <p class= "requiredMessage"> </p>
+                       <p id= "requiredMessage"> </p>
                 </td>
             </tr>
             
@@ -212,6 +212,18 @@
         </tbody>
         </table>
 </form>
-</div>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
