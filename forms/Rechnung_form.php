@@ -26,8 +26,15 @@
             }else{
                 fR_zahlungVermieterMessag.innerHTML = "";
             }
+            
+            if((document.getElementById("fR_mieter").disabled)==false){
+                e = validateChoice(fR_mieter);
+            }else{
+                fR_mieter.value.innerHTML = notselected;
+                e = true;
+            }
 
-            if(a && b && c&& d){
+            if(a && b && c&& d && e){
                 return true;
             }else{
                 return false;
@@ -97,7 +104,8 @@
         <td>Mieter:</td>
         <td>
            <select name="mieter" id="fR_mieter">
-            <option> </option>
+            <option value="notselected" selected>Bitte auswählen</option>
+            <option> Thomas Müller</option>
             </select>
         </td>
     </tr>

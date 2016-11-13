@@ -158,9 +158,8 @@ function disableEnable(typ){
     }*/
     if(typ == "Reperatur Allgemein"|| typ == "Hauswart"|| typ == "Heizkosten"||typ == "Strom Allgemein"|| typ == "Wasser"){
         document.getElementById("fR_mieter").disabled=true;
-        
          }else{
-              document.getElementById("fR_mieter").disabled=false;
+        document.getElementById("fR_mieter").disabled=false;
      }
     }
     
