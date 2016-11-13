@@ -65,14 +65,16 @@ function isText(fld){
     }
 }
 function compareDate(fld1, fld2){
-    if(fld1.value>fld2.value){
-        alert("Achtung Datum ist scheisse");
+    if(notEmpty(fld1)||notEmpty(fld2)){
+        if(fld1.value>=fld2.value){
         fld2.style.background = 'Yellow';
         return false;
     }else{
         fld2.style.background = 'White';
         return true;
     }
+    }
+    
 }
 
     function checkTel(fld){

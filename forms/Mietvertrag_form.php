@@ -14,15 +14,31 @@
         <script>
            function validateMietvertragForm(){ 
            var a = validateChoice(fMv_vertragspartner);
-           var b = notEmpty(datepicker1);
-           var c = compareDate(datepicker1, datepicker2);
-           var d = notEmpty(datepicker2);
-           var e = validateChoice(fMv_mietobjekt);
-           var f = (notEmpty(fMv_nettomietzins)&&isNumber(fMv_nettomietzins));
-           var g = (notEmpty(fMv_akontozahlung)&&isNumber(fMv_akontozahlung));
+           var b = compareDate(datepicker1, datepicker2);
+           var c = validateChoice(fMv_mietobjekt);
+           var d = (notEmpty(fMv_nettomietzins)&&isNumber(fMv_nettomietzins));
+           var e = (notEmpty(fMv_akontozahlung)&&isNumber(fMv_akontozahlung));
+           
+           if (b){
+                fMv_dateMessage.innerHTML = "";
+            }else{
+                fMv_dateMessage.innerHTML = "Mietende muss in der Zukunft liegen.";
+            }
+            
+            if(d){
+                fMv_nettomietzinsMessage.innerHTML = "";
+            }else{
+                fMv_nettomietzinsMessage.innerHTML = "Bitte einen nummerischen Wert grösser 0 eintragen.";
+            }
+            
+            if(e){
+                fMv_nebenkosten.innerHTML = "";
+            }else{
+                fMv_nebenkosten.innerHTML = "Bitte einen nummerischen Wert grösser 0 eintragen.";
+            }
            
                 
-        if(a&&b&&c&&d&&e&&f&&g){
+        if(a&&b&&c&&d&&e){
                 return true;
                 
                 }else{
@@ -50,9 +66,6 @@
         <option> Thomas Müller</option>
     </select>
         </td>
-        <td>
-            <p id="vertragspartnerMessage"></p>
-        </td>
     </tr>
     
     <tr>
@@ -64,6 +77,10 @@
         <td>Mietende:*</td>
         <td>
             <input type="date" id="datepicker2" name="mietende" value="" />
+        </td>
+        
+        <td>
+            <p name="date" id="fMv_dateMessage">(yyyy-mm-dd)</p>
         </td>
     </tr>
     
@@ -82,12 +99,20 @@
         <td>
             <input type="text" id="fMv_nettomietzins" name="nettomietzins" value="" /> 
         </td>
+        
+        <td>
+            <p name="nettomietzins" id="fMv_nettomietzinsMessage">(yyyy-mm-dd)</p>
+        </td>
     </tr>
     
     <tr>
         <td>Akontozahlung Nebenkosten:*</td>
         <td>
             <input type="text" id="fMv_akontozahlung" name="akontozahlung" value="" /> 
+        </td>
+        
+        <td>
+            <p name="nebenkosten" id="fMv_nebenkosten">(yyyy-mm-dd)</p>
         </td>
     </tr>
     
