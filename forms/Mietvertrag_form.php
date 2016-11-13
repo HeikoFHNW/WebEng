@@ -14,8 +14,15 @@
         <script>
            function validateMietvertragForm(){ 
            var a = validateChoice(fMv_vertragspartner);
-           //var b = (notEmpty(datepicker1) && notEmpty(datepicker2));
-                if(a){
+           var b = notEmpty(datepicker1);
+           var c = compareDate(datepicker1, datepicker2);
+           var d = notEmpty(datepicker2);
+           var e = validateChoice(fMv_mietobjekt);
+           var f = (notEmpty(fMv_nettomietzins)&&isNumber(fMv_nettomietzins));
+           var g = (notEmpty(fMv_akontozahlung)&&isNumber(fMv_akontozahlung));
+           
+                
+        if(a&&b&&c&&d&&e&&f&&g){
                 return true;
                 
                 }else{
@@ -63,7 +70,8 @@
     <tr>
         <td>Mietobjekt:</td>
         <td>
-    <select name="top5">
+    <select id = "fMv_mietobjekt" name="top5">
+        <option value="notselected" selected>Bitte auswählen</option>
         <option></option>
     </select>
         </td>
@@ -92,7 +100,7 @@
     
     <tr>
         <td>
-            <p class= "requiredMessage"> </p>
+            <p id= "requiredMessage"> </p>
         </td>
     </tr>
     

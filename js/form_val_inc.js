@@ -64,6 +64,16 @@ function isText(fld){
       return true;
     }
 }
+function compareDate(fld1, fld2){
+    if(fld1.value>fld2.value){
+        alert("Achtung Datum ist scheisse");
+        fld2.style.background = 'Yellow';
+        return false;
+    }else{
+        fld2.style.background = 'White';
+        return true;
+    }
+}
 
     function checkTel(fld){
         if(fld.value==""){
@@ -119,11 +129,10 @@ function validateChoice(fld){
     //var a = document.getElementById("fMv_vertragspartner");
     var selectedValue = fld.options[fld.selectedIndex].value;
         if(selectedValue === "notselected"){
-           vertragspartnerMessage.innerHTML=("Bitte Vertragspartner auswählen");
-           vertragspartnerMessage.style.color ="Red";
+           fld.style.background = 'Yellow';
            return false;
         } else{
-           vertragspartnerMessage.innerHTML=("");
+           fld.style.background = 'White';
            return true;
         }
   }
@@ -147,6 +156,7 @@ function disableEnable(typ){
     }*/
     if(typ == "Reperatur Allgemein"|| typ == "Hauswart"|| typ == "Heizkosten"||typ == "Strom Allgemein"|| typ == "Wasser"){
         document.getElementById("fR_mieter").disabled=true;
+        
          }else{
               document.getElementById("fR_mieter").disabled=false;
      }
