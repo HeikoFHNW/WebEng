@@ -21,7 +21,7 @@
     </head>
     
 <body>
-<?php include("../include/navigation.inc.php"); ?>
+
 <div class="container" id="login">
     <form name="login_form" action="Login_form.php"
     onsubmit="return validateLoginForm()" method="post">

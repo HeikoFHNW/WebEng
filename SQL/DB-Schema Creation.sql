@@ -120,7 +120,7 @@ ALTER TABLE Rechnung
 ADD INDEX FKRechnung953470 (ID_Mietvertrag), 
 ADD INDEX FKRechnungstyp (Rechnungstyp),
 ADD CONSTRAINT FKRechnung953470 FOREIGN KEY (ID_Mietvertrag) REFERENCES Mietvertrag (ID_Mietvertrag),
-ADD CONSTRAINT FKRechnungstyp FOREIGN KEY (Rechnungstyp) REFERENCES Rechnungstyp (ID_Rechn_Typ);
+ADD CONSTRAINT FKRechnungstyp FOREIGN KEY (Rechnungstyp) REFERENCES Rechnungstyp (ID_Rech_Typ);
 
 ALTER TABLE Mietvertrag 
 ADD INDEX FKMietvertra158055 (WohnungID), 
