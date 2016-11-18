@@ -39,10 +39,10 @@ class UserController
 
     public function read()
     {
-        if (!empty($_GET['ID_Benutzer'])) {
-            $id = $_REQUEST['ID_Benutzer'];
+        if (!empty($_GET['id'])) {
+            $id = $_REQUEST['id'];
         }else{
-            $id = $_GET['ID_Benutzer'];
+            $id = $_GET['id'];
         }
         if ($id==="")
             return Route::call('Error', 'error');

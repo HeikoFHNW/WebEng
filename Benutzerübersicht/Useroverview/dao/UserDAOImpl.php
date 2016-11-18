@@ -57,7 +57,8 @@ class UserDAOImpl extends AbstractDAO implements UserDAOInterface
     public function readUser($id)
     {
         $stmt = $this->pdoInstance->prepare('
-            SELECT Vorname, Nachname, Benutzername, Passwort, Email FROM Benutzer WHERE ID_Benutzer = :id
+            SELECT Benutzer.ID_Benutzer, Benutzer.Vorname, Benutzer.Nachname, Benutzer.Benutzername, Benutzer.Passwort, Benutzer.Email 
+            FROM Benutzer WHERE ID_Benutzer = :id
         ');
         $stmt->bindValue(':id', $id);
         $stmt->execute();
@@ -81,7 +82,7 @@ class UserDAOImpl extends AbstractDAO implements UserDAOInterface
     public function findAll()
     {
         $stmt = $this->pdoInstance->prepare('
-            SELECT Benutzer.* FROM Benutzer
+            SELECT * FROM `Benutzer`
         ');
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_CLASS, 'User');
