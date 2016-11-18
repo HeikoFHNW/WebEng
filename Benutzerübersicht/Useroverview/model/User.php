@@ -14,7 +14,7 @@ class User{
     private $lastname;
     private $password;
     private $email;
-    private $admin;
+   
 
 
     public function __construct($id=null, $username=null, $firstname=null, $lastname=null, $password=null, $email=null)
@@ -22,15 +22,15 @@ class User{
         if (isset($id))
             $this->id = $id;
         if (isset($username))
-            $this->name = $username;
+            $this->username = $username;
         if (isset($firstname))
-            $this->email = $firstname;
+            $this->firstname = $firstname;
         if (isset($lastname))
-            $this->mobile = $lastname;
+            $this->lastname = $lastname;
         if (isset($password))
-            $this->mobile = $password;
+            $this->password = $password;
         if (isset($email))
-            $this->mobile = $email;
+            $this->email = $email;
         
         
     }
@@ -59,9 +59,7 @@ class User{
         return $this->email;
     }
 
-    function getAdmin() {
-        return $this->admin;
-    }
+    
 
     function setId($id) {
         $this->id = $id;
@@ -87,8 +85,6 @@ class User{
         $this->email = $email;
     }
 
-    function setAdmin($admin) {
-        $this->admin = $admin;
-    }
+    
 
 }

@@ -17,8 +17,8 @@ class UserDAOImpl extends AbstractDAO implements UserDAOInterface
             return $this->updateUser($user);
         }
         $stmt = $this->pdoInstance->prepare('
-            INSERT INTO `Benutzer`(`ID_Benutzer`, `Vorname`, `Nachname`, `Benutzername`, `Passwort`, `Email`, `Gesperrt`, `Admin`)
-            VALUES (:firstname,:lastname,:username:, :password, :email');
+            INSERT INTO `Benutzer` (`Vorname`, `Nachname`, `Benutzername`, `Passwort`, `Email`)
+            VALUES (:firstname,:lastname,:username, :password, :email)' );
         $stmt->bindValue(':firstname', $user->getFirstname());
         $stmt->bindValue(':lastname', $user->getLastname());
         $stmt->bindValue(':username', $user->getUsername());
@@ -39,7 +39,7 @@ class UserDAOImpl extends AbstractDAO implements UserDAOInterface
         }
         $stmt = $this->pdoInstance->prepare('
            
-       UPDATE `Benutzer` SET `Vorname`=:firstname,`Nachname`=:lastname,`Benutzername`=:username,`Passwort`=:password,`Email`=:email,`Admin`=:admin
+            UPDATE `Benutzer` SET `Vorname`=:firstname,`Nachname`=:lastname,`Benutzername`=:username,`Passwort`=:password,`Email`=:email
             WHERE ID_Benutzer = :id
         ');
         $stmt->bindValue(':firstname', $user->getFirstname());
@@ -47,6 +47,7 @@ class UserDAOImpl extends AbstractDAO implements UserDAOInterface
         $stmt->bindValue(':username', $user->getUsername());
         $stmt->bindValue(':password', $user->getPassword());
         $stmt->bindValue(':email', $user->getEmail());
+        $stmt->bindValue(':id', $user->getId());
         $stmt->execute();
         return $user;
     }
@@ -56,7 +57,7 @@ class UserDAOImpl extends AbstractDAO implements UserDAOInterface
     public function readUser($id)
     {
         $stmt = $this->pdoInstance->prepare('
-            SELECT `Vorname`, `Nachname`, `Benutzername`, `Passwort`, `Email`, `Gesperrt`, `Admin`, `Session` FROM `Benutzer` WHERE ID_Benutzer =:id
+            SELECT Vorname, Nachname, Benutzername, Passwort, Email FROM Benutzer WHERE ID_Benutzer = :id
         ');
         $stmt->bindValue(':id', $id);
         $stmt->execute();

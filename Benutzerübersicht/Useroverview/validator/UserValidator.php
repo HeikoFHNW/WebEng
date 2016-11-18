@@ -18,7 +18,10 @@ class UserValidator
 
  
     private $valid = true;
-    private $nameError = null;
+    private $firstnameError = null;
+    private $lastnameError = null;
+    private $usernameError = null;
+    private $passwordError = null;
     private $emailError = null;
 
     
@@ -32,20 +35,20 @@ class UserValidator
 
         if(!is_null($this->user)) {
             if (empty($this->user->getFirstname())) {
-                $this->nameError = 'Please enter a Firstname';
+                $this->firstnameError = 'Please enter a Firstname';
                 $this->valid = false;
             }
             if (empty($this->user->getLastname())) {
-                $this->nameError = 'Please enter Lastname';
+                $this->lastnameError = 'Please enter Lastname';
                 $this->valid = false;
             }
             if (empty($this->user->getUsername())) {
-                $this->nameError = 'Please enter Username';
+                $this->usernameError = 'Please enter Username';
                 $this->valid = false;
             }
             
             if (empty($this->user->getPassword())) {
-                $this->nameError = 'Please enter Password';
+                $this->passwordError = 'Please enter Password';
                 $this->valid = false;
             }
 
@@ -81,9 +84,25 @@ class UserValidator
     /**
      * @return String
      */
-    public function getNameError()
+    public function getFirstnameError()
     {
-        return $this->nameError;
+        return $this->firstnameError;
+    }
+    
+    public function getLastnameError()
+    {
+        return $this->lastnameError;
+    }
+    
+    public function getUsernameError()
+    {
+        return $this->usernameError;
+    }
+    
+    
+    public function getPasswordError()
+    {
+        return $this->passwordError;
     }
 
     /**
