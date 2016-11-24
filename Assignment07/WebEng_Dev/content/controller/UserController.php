@@ -1,7 +1,7 @@
 <?php
 
 include '../dao/Database.php';
-include '../dao/UserDAOImpl.php';
+include '../dao/userDAO/UserDAOImpl.php';
 include '../validator/UserValidator.php';
 
 /**
@@ -15,12 +15,20 @@ class UserController
 
     public function show()
     {
+        if(!isset($_SESSION)) 
+        { 
+            session_start(); 
+        } 
         $users = (new UserDAOImpl(Database::connect()))->findAll();
-        require_once('../view/showUser.php');
+        require_once('../view/viewUser/showUser.php');
     }
 
     public function create()
     {
+        if(!isset($_SESSION)) 
+        { 
+            session_start(); 
+        } 
         $user = new User();
         $userValidator = new UserValidator();
 
@@ -34,11 +42,15 @@ class UserController
                 return Route::call('User', 'show');
             }
         }
-        require_once('../view/createUser.php');
+        require_once('../view/viewUser/createUser.php');
     }
 
     public function read()
     {
+        if(!isset($_SESSION)) 
+        { 
+            session_start(); 
+        } 
         if (!empty($_GET['id_user'])) {
             $id_user = $_REQUEST['id_user'];
         }else{
@@ -48,11 +60,15 @@ class UserController
             return Route::call('Error', 'error');
 
         $user = (new UserDAOImpl(Database::connect()))->readUser($id_user);
-        require_once('../view/readUser.php');
+        require_once('../view/viewUser/readUser.php');
     }
 
     public function update()
     {
+        if(!isset($_SESSION)) 
+        { 
+            session_start(); 
+        } 
         $user = new user();
         $userValidator = new UserValidator();
 
@@ -76,11 +92,15 @@ class UserController
         } else {
             $user = (new UserDAOImpl(Database::connect()))->readUser($id_user);
         }
-        require_once('../view/updateUser.php');
+        require_once('../view/viewUser/updateUser.php');
     }
 
     public function deleteAsk()
     {
+        if(!isset($_SESSION)) 
+        { 
+            session_start(); 
+        } 
         if (!empty($_GET['id_user'])) {
             $id_user = $_REQUEST['id_user'];
         }else{
@@ -90,11 +110,15 @@ class UserController
             return Route::call('Error', 'error');
 
         $user = (new UserDAOImpl(Database::connect()))->readUser($id_user);
-        require_once('../view/deleteUser.php');
+        require_once('../view/viewUser/deleteUser.php');
     }
 
     public function delete()
     {
+        if(!isset($_SESSION)) 
+        { 
+            session_start(); 
+        } 
         if (!empty($_POST)) {
             // keep track post values
             $id_user = $_POST['id_user'];
@@ -110,24 +134,39 @@ class UserController
     
     public function loginShow() 
     {
-        require_once('../view/login.php');
+        if(!isset($_SESSION)) 
+        { 
+            session_start(); 
+        } 
+        require_once('../view/viewLogin/login.php');
     }
     public function login()
     {
-        $user = new User();
-        $userValidator = new UserValidator();
+        if(!isset($_SESSION)) 
+        { 
+            session_start(); 
+        } 
         if (!empty($_POST)) {
             // keep track post values
             $username = $_POST['username'];
             $password = $_POST['password'];
             $login = (new UserDAOImpl(Database::connect()))->checkUser($username, $password);
             if($login == true){
-                return Route::call('User', 'show');
+                $_SESSION['login'] = true;
+                $_SESSION['login_user'] = $username;
+                return Route::call('Homepage', 'show');
             } else {
-                return Route::call('User', 'login');
+                $_SESSION['login'] = false;
+                return Route::call('User', 'loginShow');
             }
+        }   
+    }
+    
+    public function logout(){
+        session_start();
+        if(session_destroy()){
+            return Route::call('User', 'loginShow');
         }
-        
     }
 
 }
