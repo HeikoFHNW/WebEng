@@ -14,7 +14,7 @@
                 <th>Vorname</th>
                 <th>Nachname</th>
                 <th>Benutzername</th>
-                <th>Passwort</th>
+                <!--<th>Passwort</th>-->
                 <th>Email</th>
                 <th>lock</th>
                 <th>Admin</th>
@@ -29,7 +29,7 @@
                 echo '<td>' . $user->getFirstname() . '</td>';
                 echo '<td>' . $user->getLastname() . '</td>';
                 echo '<td>' . $user->getUsername() . '</td>';
-                echo '<td>' . $user->getPassword() . '</td>';
+               // echo '<td>' . $user->getPassword() . '</td>';
                 echo '<td>' . $user->getEmail() . '</td>';
                 echo '<td>' . $user->getLocked() . '</td>';
                 echo '<td>' . $user->getAdmin() . '</td>';

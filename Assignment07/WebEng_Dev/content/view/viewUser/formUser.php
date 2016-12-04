@@ -50,6 +50,7 @@
         <?php if (!empty($userValidator->getPasswordError2())): ?>
             <span class="help-inline"><?php echo $userValidator->getPasswordError2(); ?></span>
         <?php endif; ?>
+        <span id="passwortBestätigungMessage"></span> 
     </div>
 </div>
 <div class="control-group <?php echo !empty($userValidator->getEmailError()) ? 'error' : ''; ?>">
@@ -60,6 +61,7 @@
         <?php if (!empty($userValidator->getEmailError())): ?>
             <span class="help-inline"><?php echo $userValidator->getEmailError(); ?></span>
         <?php endif; ?>
+        <span id="emailValidationMessage"></span>
             <p id="requiredMessage"></p>
             
     </div>
