@@ -50,7 +50,21 @@ function isText(fld){
           return false;
       }
 }
+ 
+ function dateCorrect(fld){
+            var datep = $('#datepicker').val();
 
+            if(Date.parse(datep)-Date.parse(new Date())>0)
+              {
+                fld.style.background = 'Yellow';
+                return false; 
+    
+                      
+              }else{
+                fld.style.background = 'White';
+                return true; 
+              }
+     }
 
   function checkDate(fld){
     // regular expression to match required date format

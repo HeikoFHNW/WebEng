@@ -14,28 +14,31 @@
 <div class="control-group <?php echo !empty($tenantValidator->getFirstnameError()) ? 'error' : ''; ?>">
     <label class="control-label">Vorname</label>
     <div class="controls">
-        <input name="firstname" type="text" placeholder="Vorname"
+        <input name="firstname" type="text" id="fM_vorname" placeholder="Vorname" 
                value="<?php echo !empty($tenant->getFirstname()) ? $tenant->getFirstname() : ''; ?>">
         <?php if (!empty($tenantValidator->getFirstnameError())): ?>
             <span class="help-inline"><?php echo $tenantValidator->getFirstnameError(); ?></span>
         <?php endif; ?>
+            <span id="isNotTextMessage"></span>
     </div>
 </div>
 <div class="control-group <?php echo !empty($tenantValidator->getLastnameError()) ? 'error' : ''; ?>">
     <label class="control-label">Nachname</label>
     <div class="controls">
-        <input name="lastname" type="text" placeholder="Nachname"
+        <input name="lastname" type="text" id="fM_nachname" placeholder="Nachname" 
                value="<?php echo !empty($tenant->getLastname()) ? $tenant->getLastname() : ''; ?>">
         <?php if (!empty($tenantValidator->getLastnameError())): ?>
             <span class="help-inline"><?php echo $tenantValidator->getLastnameError(); ?></span>
         <?php endif; ?>
+            <span id="isNotTextMessageToo"></span>   
     </div>
 </div>
 <div class="control-group">
     <label class="control-label">Geburtsdatum</label>
     <div class="controls">
-        <input name="birthday" type="text" placeholder="DD/MM/YYYY" 
+        <input name="birthday" type="text" id="datepicker" placeholder="DD/MM/YYYY" 
                value="<?php echo !empty($tenant->getBirthday()) ? $tenant->getBirthday() : ''; ?>">
+        <span id="isNotaValidDate"></span>  
     </div>
 </div>
 <div class="control-group">
@@ -51,15 +54,17 @@
     <div class="control-group">
     <label class="control-label">Telefon:</label>
     <div class="controls">
-        <input name="phone" type="text" placeholder="+41 12 345 67 89" 
+        <input name="phone" type="text" id="fM_telefon" placeholder="+41 12 345 67 89" id="fM_telefon"
                value="<?php echo !empty($tenant->getPhone()) ? $tenant->getPhone() : ''; ?>">
+        <span id="telMessage"></span>
     </div>
 </div>
 <div class="control-group">
     <label class="control-label">Mobil:</label>
     <div class="controls">
-        <input name="mobile" type="text" placeholder="+41 12 345 67 89" 
+        <input name="mobile" type="text" id="fM_mobile" placeholder="+41 12 345 67 89" 
                value="<?php echo !empty($tenant->getMobile()) ? $tenant->getMobile() : ''; ?>">
+        <span id="mobileMessage"></span>
     </div>
 </div>
 <div class="control-group <?php echo !empty($tenantValidator->getEmailError()) ? 'error' : ''; ?>">
@@ -75,8 +80,9 @@
 <div class="control-group">
     <label class="control-label">Strasse:</label>
     <div class="controls">
-        <input name="street" type="text" placeholder="Strasse" 
+        <input name="street" type="text" id="fM_strasse" placeholder="Strasse" 
                value="<?php echo !empty($tenant->getStreet()) ? $tenant->getStreet() : ''; ?>">
+        <span id="isNotTextMessageStreet"></span>
     </div>
 </div>
 <div class="control-group">
@@ -89,16 +95,20 @@
 <div class="control-group">
     <label class="control-label">PLZ:</label>
     <div class="controls">
-        <input name="postcode" type="text" placeholder="PLZ" 
+        <input name="postcode" type="text" id="fM_plz" placeholder="PLZ" 
                value="<?php echo !empty($tenant->getPostcode()) ? $tenant->getPostcode() : ''; ?>">
+        <span id="plzMessage"></span>
     </div>
 </div>
  <div class="control-group">
     <label class="control-label">Ort:</label>
     <div class="controls">
-        <input name="city" type="text" placeholder="Wohnort" 
+        <input name="city" type="text" id="fM_ort" placeholder="Wohnort"
                value="<?php echo !empty($tenant->getCity()) ? $tenant->getCity() : ''; ?>">
+         <span id="isNotTextMessageOrt"></span>
+         <p id="requiredMessage"></p>
     </div>
+    
 </div>
  
 
