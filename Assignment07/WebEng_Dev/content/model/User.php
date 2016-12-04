@@ -8,12 +8,13 @@ class User
     private $lastname;
     private $username;
     private $password;
+    private $password2;
     private $email;
     private $locked;
     private $admin;
 
 
-    public function __construct($id_user=null, $firstname=null, $lastname=null, $username=null, $password=null, $email=null, $locked =null, $admin=null)
+    public function __construct($id_user=null, $firstname=null, $lastname=null, $username=null, $password=null, $password2=null, $email=null, $locked =null, $admin=null)
     {
         if (isset($id_user)) {
             $this->id_user = $id_user;
@@ -29,6 +30,9 @@ class User
         }
         if (isset($password)) {
             $this->password = $password;
+        }
+        if (isset($password2)){
+            $this->password2 =$password2;
         }
         if (isset($email)) {
             $this->email = $email;
@@ -59,6 +63,10 @@ class User
 
     function getPassword() {
         return $this->password;
+    }
+    
+    function getPassword2(){
+        return $this->password2;
     }
 
     function getEmail() {

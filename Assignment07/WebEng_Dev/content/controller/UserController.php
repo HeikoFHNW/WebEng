@@ -34,7 +34,7 @@ class UserController
 
         if (!empty($_POST)) {
 
-            $user = new User(null, $_POST['firstname'],$_POST['lastname'],$_POST['username'],$_POST['password'],$_POST['email'],$_POST['locked'],$_POST['admin']);
+            $user = new User(null, $_POST['firstname'],$_POST['lastname'],$_POST['username'],$_POST['password'],$_POST['password2'],$_POST['email'],$_POST['locked'],$_POST['admin']);
             $userValidator = new UserValidator($user);
 
             if ($userValidator->isValid()) {

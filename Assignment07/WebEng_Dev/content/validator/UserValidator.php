@@ -26,6 +26,7 @@ class UserValidator
     private $lastnameError = null;
     private $usernameError = null;
     private $passwordError = null;
+    private $passwordError2 = null;
     private $emailError = null;
 
     /**
@@ -60,6 +61,16 @@ class UserValidator
                 $this->passwordError = 'Please enter Password';
                 $this->valid = false;
             }
+            
+            if (empty($this->user->getPassword2())){
+                $this->passwordError2 = 'Passwort erneut eingeben';
+                $this->valid = false;
+            }  else if ($this->user->getPassword()!== $this->user->getPassword2()){
+                $this->passwordError2 = 'Die Passwörter sind nicht gleich, bitte erneut eingeben';
+                $this->valid = false;
+            }
+            
+         
 
             if (empty($this->user->getEmail())) {
                 $this->emailError = 'Please enter Email Address';
@@ -108,8 +119,15 @@ class UserValidator
         return $this->passwordError;
     }
     
+    function getPasswordError2(){
+        return $this->passwordError2;
+    }
+    
     function getEmailError() {
         return $this->emailError;
     }
+    
+    
+    
 
 }

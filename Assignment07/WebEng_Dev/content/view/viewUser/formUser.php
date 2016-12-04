@@ -40,6 +40,18 @@
         <?php endif; ?>
     </div>
 </div>
+
+<div class="control-group <?php echo !empty($userValidator->getPasswordError2()) ? 'error' : ''; ?>">
+    <label class="control-label">Passwort wiederholen</label>
+    <div class="controls">
+        <input name="password2" type="password" id="password2" placeholder="Passwort"
+               value="<?php echo !empty($user->getPassword2()) ? $user->getPassword2() : ''; ?>">
+        
+        <?php if (!empty($userValidator->getPasswordError2())): ?>
+            <span class="help-inline"><?php echo $userValidator->getPasswordError2(); ?></span>
+        <?php endif; ?>
+    </div>
+</div>
 <div class="control-group <?php echo !empty($userValidator->getEmailError()) ? 'error' : ''; ?>">
     <label class="control-label">Email Addresse</label>
     <div class="controls">
@@ -49,6 +61,7 @@
             <span class="help-inline"><?php echo $userValidator->getEmailError(); ?></span>
         <?php endif; ?>
             <p id="requiredMessage"></p>
+            
     </div>
 </div>
   <div class="form-check">
@@ -65,3 +78,4 @@
       Admin-Rechte
     </label>
   </div>
+
