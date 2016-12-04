@@ -70,11 +70,12 @@
 <div class="control-group <?php echo !empty($tenantValidator->getEmailError()) ? 'error' : ''; ?>">
     <label class="control-label">Email Addresse</label>
     <div class="controls">
-        <input name="email" type="text" placeholder="Email Addresse"
+        <input name="email" id="fM_email" type="text" placeholder="Email Addresse"
                value="<?php echo !empty($tenant->getEmail()) ? $tenant->getEmail() : ''; ?>">
         <?php if (!empty($tenantValidator->getEmailError())): ?>
             <span class="help-inline"><?php echo $tenantValidator->getEmailError(); ?></span>
         <?php endif; ?>
+        <span id="emailValidationMessage"></span>
     </div>
 </div>
 <div class="control-group">

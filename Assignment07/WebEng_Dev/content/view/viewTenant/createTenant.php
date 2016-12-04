@@ -44,7 +44,7 @@
                 var g = isNumber(fM_plz);
                 var h = checkTel(fM_telefon);
                 var i = checkTel(fM_mobile);
-            //var f = validateEmail(fM_email);
+                var f = validateEmail(fM_email);
                
             if (a){
                 isNotaValidDate.innerHTML ="";
@@ -96,7 +96,8 @@
             
             
             
-            if (a&&b&&c&&d&&e&&g&&h&&i){ //
+            
+            if (a&&b&&c&&d&&e&&g&&h&&i&&f){ //
                 return true;
             }else{
                 return false;

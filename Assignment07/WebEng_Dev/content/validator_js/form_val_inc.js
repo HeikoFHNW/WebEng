@@ -128,9 +128,10 @@ function passwordEquals(fld1,fld2){
     }
 }
 
-function validateEmail(fld){  
+function validateEmail(fld){
+    
 var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;  
-    if(fld.value.match(mailformat) && !fld.value==""){
+    if(fld.value.trim().match(mailformat) && !fld.value==""){
     fld.style.background = 'White';
     emailValidationMessage.innerHTML ="";
     return true;
