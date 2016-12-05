@@ -55,6 +55,12 @@ class TenantDAOImpl extends AbstractDAO implements TenantDAOInterface
             );
         }
         $stmt = $this->pdoInstance->prepare('
+            INSERT IGNORE INTO city (postcode, city)
+            VALUES (:postcode, :city);
+            
+            INSERT IGNORE INTO adress (street, streetnumber, postcode)
+            VALUES (:street, :streetnumber, :postcode);            
+
             UPDATE propertymanagement.tenant
             SET
             id_tenant = :id_tenant,
@@ -66,17 +72,22 @@ class TenantDAOImpl extends AbstractDAO implements TenantDAOInterface
             phone = :phone,
             mobile = :mobile,
             email = :email,
-            id_adress = :id_adress
+            id_adress = (SELECT id_adress FROM adress WHERE street = :street AND streetnumber = :streetnumber AND postcode = :postcode)
             WHERE id_tenant = :id_tenant;
         ');
+        $stmt->bindValue(':id_tenant', $tenant->getId_tenant());
+        $stmt->bindValue(':title', $tenant->getTitle());
         $stmt->bindValue(':firstname', $tenant->getFirstname());
         $stmt->bindValue(':lastname', $tenant->getLastname());
-        $stmt->bindValue(':tenantname', $tenant->getTenantname());
-        $stmt->bindValue(':password', $tenant->getPassword());
+        $stmt->bindValue(':birthday', $tenant->getBirthday());
+        $stmt->bindValue(':marital_status', $tenant->getMarital_status());
+        $stmt->bindValue(':phone', $tenant->getPhone());
+        $stmt->bindValue(':mobile', $tenant->getMobile());
         $stmt->bindValue(':email', $tenant->getEmail());
-        $stmt->bindValue(':locked', $tenant->getLocked());
-        $stmt->bindValue(':admin', $tenant->getAdmin());
-        $stmt->bindValue(':id', $tenant->getId_tenant());
+        $stmt->bindValue(':postcode', $tenant->getPostcode());
+        $stmt->bindValue(':city', $tenant->getCity());
+        $stmt->bindValue(':street', $tenant->getStreet());
+        $stmt->bindValue(':streetnumber', $tenant->getStreetnumber());
         $stmt->execute();
         unset($stmt);
         return $tenant;

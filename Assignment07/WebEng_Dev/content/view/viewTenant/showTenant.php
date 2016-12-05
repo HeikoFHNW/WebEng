@@ -1,6 +1,6 @@
 <div class="container">
     <div class="row">
-        <h3>User Overview</h3>
+        <h3>Tenant Overview</h3>
     </div>
     <div class="row">
         <p>

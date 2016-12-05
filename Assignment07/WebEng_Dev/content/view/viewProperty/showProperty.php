@@ -27,7 +27,7 @@
                 echo '<td>' . $property->getId_property() . '</td>';
                 echo '<td>' . $property->getApartments() . '</td>';
                 echo '<td width=50>';
-                echo '<a class="btn btn-success" href="?controller=Apartment&action=create&id_property=' . $property->getId_property() .'">neue Wohnung</a>';
+                echo '<a class="btn btn-success" href="?controller=Apartment&action=create&id_property=' . $property->getId_property() . '">neue Wohnung</a>';
                 echo '</td>';
                 echo '<td>' . $property->getStreet() . '</td>';
                 echo '<td>' . $property->getStreetnumber() . '</td>';

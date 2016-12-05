@@ -20,6 +20,8 @@ class TenantController
 
     public function create()
     {
+        /**ANGEPASST 05.12.16**/
+        
         if(!isset($_SESSION)) 
         { 
             session_start(); 
@@ -77,7 +79,7 @@ class TenantController
         }
 
         if (!empty($_POST)) {
-            $tenant = new Tenant(null,$_POST['title'],$_POST['firstname'],$_POST['lastname'],$_POST['birthday'],$_POST['marital_status'], $_POST['phone'], $_POST['mobile'],$_POST['email'],$_POST['postcode'],$_POST['city'],$_POST['id_adress'],$_POST['street'],$_POST['streetnumber']);
+            $tenant = new Tenant($id_tenant,$_POST['title'],$_POST['firstname'],$_POST['lastname'],$_POST['birthday'],$_POST['marital_status'], $_POST['phone'], $_POST['mobile'],$_POST['email'],$_POST['postcode'],$_POST['city'],null,$_POST['street'],$_POST['streetnumber']);
             $tenantValidator = new TenantValidator($tenant);
 
             if ($tenantValidator->isValid()) {
