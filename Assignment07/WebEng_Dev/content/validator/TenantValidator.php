@@ -25,6 +25,7 @@ class TenantValidator
     private $firstnameError = null;
     private $lastnameError = null;
     private $emailError = null;
+    private $birthdayError = null;
 
     /**
      * TenantValidator constructor.
@@ -56,6 +57,14 @@ class TenantValidator
                 $this->emailError = 'Please enter a valid Email Address';
                 $this->valid = false;
             }
+            
+            if (!empty($this->tenant->getBirthday())){
+              if(!$this->validateDate($this->tenant->getBirthday())){
+                $this->birthdayError = 'Falsches Datumsformat (yyyy-mm-dd)';
+                $this->valid = false;
+            }
+            }
+            
         }
         else {
             $this->valid = false;
@@ -91,5 +100,16 @@ class TenantValidator
     function getEmailError() {
         return $this->emailError;
     }
+    
+    function getBirthdayError(){
+    return $this->birthdayError;
+    }
+    
+    function validateDate($date)
+    {
+    $format = 'Y-m-d';
+    $d = DateTime::createFromFormat($format, $date);
+    return $d && $d->format($format) == $date;
+     }
 
 }

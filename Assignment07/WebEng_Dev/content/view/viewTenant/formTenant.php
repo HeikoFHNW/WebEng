@@ -33,11 +33,14 @@
             <span id="isNotTextMessageToo"></span>   
     </div>
 </div>
-<div class="control-group">
+<div class="control-group <?php echo !empty($tenantValidator->getBirthdayError()) ? 'error' : ''; ?>">
     <label class="control-label">Geburtsdatum</label>
     <div class="controls">
         <input name="birthday" type="text" id="datepicker" placeholder="DD/MM/YYYY" 
                value="<?php echo !empty($tenant->getBirthday()) ? $tenant->getBirthday() : ''; ?>">
+               <?php if (!empty($tenantValidator->getBirthdayError())): ?>
+               <span class="help-inline"><?php echo $tenantValidator->getBirthdayError(); ?></span>
+               <?php endif;?>
         <span id="isNotaValidDate"></span>  
     </div>
 </div>
