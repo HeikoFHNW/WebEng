@@ -26,6 +26,7 @@ class TenantValidator
     private $lastnameError = null;
     private $emailError = null;
     private $birthdayError = null;
+    private $phoneError = null;
 
     /**
      * TenantValidator constructor.
@@ -64,7 +65,12 @@ class TenantValidator
                 $this->valid = false;
             }
             }
-            
+            if((preg_match("/^(\+[0-9]{2,3}|0+[0-9]{2,5}).+[\d\s\/\(\)-]/", $this->tenant->getPhone())) || $this->tenant->getPhone()==""){
+                
+            }else{
+                $this->phoneError = 'Please enter a valid Tel. Number';
+                $this->valid = false;
+            }  
         }
         else {
             $this->valid = false;
@@ -110,6 +116,10 @@ class TenantValidator
     $format = 'Y-m-d';
     $d = DateTime::createFromFormat($format, $date);
     return $d && $d->format($format) == $date;
+     }
+     
+     function getPhoneError(){
+         return $this->phoneError;
      }
 
 }

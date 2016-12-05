@@ -93,6 +93,7 @@ function compareDate(fld1, fld2){
 
     function checkTel(fld){
         if(fld.value==""){
+            fld.style.background = 'White';
             return true;
         }
       for (var i = 0; i < fld.value.length; i++) {

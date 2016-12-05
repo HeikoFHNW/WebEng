@@ -54,11 +54,14 @@
     </select>
   </div>
 </div>
-    <div class="control-group">
+    <div class="control-group <?php echo !empty($tenantValidator->getPhoneError()) ? 'error' : ''; ?>" >
     <label class="control-label">Telefon:</label>
     <div class="controls">
         <input name="phone" type="text" id="fM_telefon" placeholder="+41 12 345 67 89" id="fM_telefon"
                value="<?php echo !empty($tenant->getPhone()) ? $tenant->getPhone() : ''; ?>">
+               <?php if (!empty($tenantValidator->getPhoneError())): ?>
+               <span class="help-inline"><?php echo $tenantValidator->getPhoneError(); ?></span>
+               <?php endif;?>
         <span id="telMessage"></span>
     </div>
 </div>
