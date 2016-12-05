@@ -28,6 +28,9 @@ class TenantValidator
     private $birthdayError = null;
     private $phoneError = null;
     private $mobileError = null;
+    private $streetError = null;
+    private $postcodeError = null;
+    private $cityError = null;
 
     /**
      * TenantValidator constructor.
@@ -43,20 +46,20 @@ class TenantValidator
 
         if(!is_null($this->tenant)) {
             if (empty($this->tenant->getFirstname())) {
-                $this->firstnameError = 'Please enter Firstname';
+                $this->firstnameError = 'Bitte gib einen Vornamen ein.';
                 $this->valid = false;
             }
             
             if (empty($this->tenant->getLastname())) {
-                $this->lastnameError = 'Please enter Lastname';
+                $this->lastnameError = 'Bitte gib einen Nachnamen ein.';
                 $this->valid = false;
             }
 
             if (empty($this->tenant->getEmail())) {
-                $this->emailError = 'Please enter Email Address';
+                $this->emailError = 'Bitte tippe eine gültige EMail Adresse ein.';
                 $this->valid = false;
             } else if (!filter_var($this->tenant->getEmail(), FILTER_VALIDATE_EMAIL)) {
-                $this->emailError = 'Please enter a valid Email Address';
+                $this->emailError = 'Bitte tippe eine gültige EMail Adresse ein.';
                 $this->valid = false;
             }
             
@@ -69,16 +72,34 @@ class TenantValidator
             if((preg_match("/^(\+[0-9]{2,3}|0+[0-9]{2,5}).+[\d\s\/\(\)-]/", $this->tenant->getPhone())) || $this->tenant->getPhone()==""){
                 
             }else{
-                $this->phoneError = 'Please enter a valid Tel. Number';
+                $this->phoneError = 'Bitte tippe eine gültige Telefonnummer ein.';
                 $this->valid = false;
             }
             
             if((preg_match("/^(\+[0-9]{2,3}|0+[0-9]{2,5}).+[\d\s\/\(\)-]/", $this->tenant->getMobile())) || $this->tenant->getMobile()==""){
                 
             }else{
-                $this->mobileError = 'Please enter a valid Tel. Number';
+                $this->mobileError = 'Bitte tippe eine gültige Telefonnummer ein.';
                 $this->valid = false;
-            }  
+            }
+            
+            if(is_numeric($this->tenant->getStreet())){
+                $this->streetError = 'Bitte keine Nummern';
+                $this->valid = false;
+            }
+            
+            if(!($this->tenant->getPostcode()=="")){
+            if(!(is_numeric($this->tenant->getPostcode()))){
+                $this->postcodeError = 'Bitte keine Buchstaben';
+                $this->valid = false;
+            }
+            }
+            
+            if(is_numeric($this->tenant->getCity())){
+                $this->cityError = 'Bitte keine Nummern';
+                $this->valid = false;
+            }
+            
         }
         else {
             $this->valid = false;
@@ -132,6 +153,18 @@ class TenantValidator
      
      function getMobileError(){
          return $this->mobileError;
+     }
+     
+     function getStreetError(){
+         return $this->streetError;
+     }
+     
+     function getPostcodeError(){
+         return $this->postcodeError;
+     }
+     
+     function getCityError(){
+         return $this->cityError;
      }
 
 }
