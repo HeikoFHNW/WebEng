@@ -1,3 +1,5 @@
+<?php include ("../../content/includes/head.inc.php");?>
+
 <div class="container">
 
     <div class="span10 offset1">

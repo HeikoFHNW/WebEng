@@ -24,6 +24,8 @@ class PropertyValidator
     private $valid = true;
     private $streetError = null;
     private $postcodeError = null;
+    private $cityError = null;
+    private $streetnumberError = null;
 
     /**
      * PropertyValidator constructor.
@@ -38,13 +40,24 @@ class PropertyValidator
     public function validate(){
 
         if(!is_null($this->property)) {
-            if (empty($this->property->getStreet())) {
-                $this->StreetError = 'Please enter Street';
+           if(is_numeric($this->property->getStreet()) || empty($this->property->getStreet())){
+                $this->streetError = 'Bitte keine Nummern.';
                 $this->valid = false;
             }
             
-            if (empty($this->property->getPostcode())) {
-                $this->postcodeError = 'Please enter Postcode';
+            
+            if(!(is_numeric($this->property->getPostcode())) || empty($this->property->getPostcode())){
+                $this->postcodeError = 'Bitte keine Buchstaben.';
+                $this->valid = false;
+            }
+            
+            if(is_numeric($this->property->getCity()) || empty($this->property->getCity())){
+                $this->cityError = 'Bitte keine Nummern.';
+                $this->valid = false;
+            }
+            
+            if(empty($this->property->getStreetnumber())){
+                $this->streetnumberError = 'Bitte nicht leer lassen.';
                 $this->valid = false;
             }
 
@@ -78,4 +91,13 @@ class PropertyValidator
     function getPostcodeError() {
         return $this->postcodeError;
     }
+    
+    function getCityError() {
+        return $this->cityError;
+    }
+    
+    function getStreetNumberError(){
+        return $this->streetnumberError;
+    }
+    
 }

@@ -31,7 +31,7 @@
             <h3>Create a Tenant</h3>
         </div>
 
-        <form class="form-horizontal" action="?controller=Tenant&action=create"    onkeyup="return validateMieterForm()" method="post">
+        <form class="form-horizontal" action="?controller=Tenant&action=create"   onkeyup="return validateMieterForm()" method="post">
             <?php include_once("formTenant.php"); ?>
             <div class="form-actions">
                 <button type="submit" class="btn btn-success">Create</button>
