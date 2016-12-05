@@ -1,6 +1,9 @@
 <?php include ("../../content/includes/head.inc.php");?>
 
+
+
  <script>
+    
     $( function() {
     $( "#datepicker" ).datepicker({ 
     dateFormat: 'yy-mm-dd',
@@ -11,6 +14,15 @@
        }).val();
     });
     </script>
+    
+<script>  
+ window.onload = function setReady() {
+ document.getElementById("datepicker").readOnly = true;
+} 
+</script>
+   
+       
+   
 
 <div class="container">
 
@@ -19,7 +31,7 @@
             <h3>Create a Tenant</h3>
         </div>
 
-        <form class="form-horizontal" action="?controller=Tenant&action=create" onkeyup="return validateMieterForm()" method="post">
+        <form class="form-horizontal" action="?controller=Tenant&action=create"    onkeyup="return validateMieterForm()" method="post">
             <?php include_once("formTenant.php"); ?>
             <div class="form-actions">
                 <button type="submit" class="btn btn-success">Create</button>
@@ -30,12 +42,11 @@
 
 </div>
 
-
     
- 
+  
        <script>
         function validateMieterForm(){
-           
+  
                 var a = dateCorrect(datepicker);
                 var b = (notEmpty(fM_vorname) &&isText(fM_vorname));
                 var c = (notEmpty(fM_nachname)&&isText(fM_nachname));
