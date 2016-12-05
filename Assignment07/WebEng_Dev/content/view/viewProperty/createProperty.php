@@ -7,7 +7,7 @@
             <h3>Create a Property</h3>
         </div>
 
-        <form class="form-horizontal" action="?controller=Property&action=create" method="post">
+        <form class="form-horizontal" action="?controller=Property&action=create" onkeyup="return validatePropertyForm()" method="post">
             <?php include_once("formProperty.php"); ?>
             <div class="form-actions">
                 <button type="submit" class="btn btn-success">Create</button>
@@ -17,3 +17,41 @@
     </div>
 
 </div>
+
+
+<script>
+        function validatePropertyForm(){
+  
+                
+                var a = (notEmpty(fP_strasse)&&isText(fP_strasse));
+                var b = (notEmpty(fP_ort)&&isText(fP_ort));
+                var c = (notEmpty(fP_plz)&&isNumber(fP_plz));
+                var d = notEmpty(fP_strassennummer);
+               
+            
+            
+           if (a){
+                isNotTextMessageStreet.innerHTML = "";
+            }else{
+                isNotTextMessageStreet.innerHTML = "Bitte keine Zahlen verwenden.";
+            }
+            
+            if (b){
+                isNotTextMessageOrt.innerHTML = "";
+            }else{
+                isNotTextMessageOrt.innerHTML = "Bitte keine Zahlen verwenden.";
+            }
+            
+            if (c){
+                plzMessage.innerHTML = "";
+            }else{
+                plzMessage.innerHTML = "Bitte keine Buchstaben.";
+            }
+           
+            if (a&&b&&c&&d){
+                return true;
+            }else{
+                return false;
+            }  
+        }
+        </script>
