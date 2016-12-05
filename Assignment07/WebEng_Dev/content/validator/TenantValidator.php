@@ -27,6 +27,7 @@ class TenantValidator
     private $emailError = null;
     private $birthdayError = null;
     private $phoneError = null;
+    private $mobileError = null;
 
     /**
      * TenantValidator constructor.
@@ -69,6 +70,13 @@ class TenantValidator
                 
             }else{
                 $this->phoneError = 'Please enter a valid Tel. Number';
+                $this->valid = false;
+            }
+            
+            if((preg_match("/^(\+[0-9]{2,3}|0+[0-9]{2,5}).+[\d\s\/\(\)-]/", $this->tenant->getMobile())) || $this->tenant->getMobile()==""){
+                
+            }else{
+                $this->mobileError = 'Please enter a valid Tel. Number';
                 $this->valid = false;
             }  
         }
@@ -120,6 +128,10 @@ class TenantValidator
      
      function getPhoneError(){
          return $this->phoneError;
+     }
+     
+     function getMobileError(){
+         return $this->mobileError;
      }
 
 }

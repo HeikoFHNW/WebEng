@@ -65,11 +65,14 @@
         <span id="telMessage"></span>
     </div>
 </div>
-<div class="control-group">
+<div class="control-group <?php echo !empty($tenantValidator->getMobileError()) ? 'error' : ''; ?>">
     <label class="control-label">Mobil:</label>
     <div class="controls">
         <input name="mobile" type="text" id="fM_mobile" placeholder="+41 12 345 67 89" 
                value="<?php echo !empty($tenant->getMobile()) ? $tenant->getMobile() : ''; ?>">
+               <?php if (!empty($tenantValidator->getMobileError())): ?>
+               <span class="help-inline"><?php echo $tenantValidator->getMobileError(); ?></span>
+               <?php endif;?>
         <span id="mobileMessage"></span>
     </div>
 </div>
