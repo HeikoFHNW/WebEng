@@ -16,10 +16,10 @@ class TenantDAOImpl extends AbstractDAO implements TenantDAOInterface
         }
         
         $stmt = $this->pdoInstance->prepare('
-            INSERT INTO city (postcode, city)
+            INSERT IGNORE INTO city (postcode, city)
             VALUES (:postcode, :city);
             
-            INSERT INTO adress (street, streetnumber, postcode)
+            INSERT IGNORE INTO adress (street, streetnumber, postcode)
             VALUES (:street, :streetnumber, :postcode);
             
             INSERT INTO tenant (title, firstname, lastname, birthday, marital_status, phone, mobile, email, id_adress)
@@ -38,6 +38,7 @@ class TenantDAOImpl extends AbstractDAO implements TenantDAOInterface
         $stmt->bindValue(':street', $tenant->getStreet());
         $stmt->bindValue(':streetnumber', $tenant->getStreetnumber());
         $stmt->execute();
+        unset($stmt);
         $tenant = $this->readTenant($this->pdoInstance->lastInsertId());
         return $tenant;
     }
@@ -77,6 +78,7 @@ class TenantDAOImpl extends AbstractDAO implements TenantDAOInterface
         $stmt->bindValue(':admin', $tenant->getAdmin());
         $stmt->bindValue(':id', $tenant->getId_tenant());
         $stmt->execute();
+        unset($stmt);
         return $tenant;
     }
 

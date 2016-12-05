@@ -50,7 +50,7 @@
     <select name="marital_status" class="form-control">
       <option>ledig</option>
       <option>verheiratet</option>
-      <option>Konkurbinat</option>
+      <option>Konkubinat</option>
     </select>
   </div>
 </div>

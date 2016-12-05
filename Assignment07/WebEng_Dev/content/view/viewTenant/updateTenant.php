@@ -11,7 +11,13 @@
        }).val();
     });
     </script>
-
+    
+<script>  
+ window.onload = function setReady() {
+ document.getElementById("datepicker").readOnly = true;
+} 
+</script>
+   
 <div class="container">
 
     <div class="span10 offset1">
