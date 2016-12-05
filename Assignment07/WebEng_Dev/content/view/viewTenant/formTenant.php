@@ -87,11 +87,14 @@
         <span id="emailValidationMessage"></span>
     </div>
 </div>
-<div class="control-group">
+<div class="control-group <?php echo !empty($tenantValidator->getStreetError()) ? 'error' : ''; ?>">
     <label class="control-label">Strasse:</label>
     <div class="controls">
         <input name="street" type="text" id="fM_strasse" placeholder="Strasse" 
                value="<?php echo !empty($tenant->getStreet()) ? $tenant->getStreet() : ''; ?>">
+               <?php if (!empty($tenantValidator->getStreetError())): ?>
+               <span class="help-inline"><?php echo $tenantValidator->getStreetError(); ?></span>
+               <?php endif; ?>
         <span id="isNotTextMessageStreet"></span>
     </div>
 </div>
@@ -102,19 +105,25 @@
                value="<?php echo !empty($tenant->getStreetnumber()) ? $tenant->getStreetnumber() : ''; ?>">
     </div>
 </div>
-<div class="control-group">
+<div class="control-group <?php echo !empty($tenantValidator->getPostcodeError()) ? 'error' : ''; ?>">
     <label class="control-label">PLZ:</label>
     <div class="controls">
         <input name="postcode" type="text" id="fM_plz" placeholder="PLZ" 
                value="<?php echo !empty($tenant->getPostcode()) ? $tenant->getPostcode() : ''; ?>">
+               <?php if (!empty($tenantValidator->getPostcodeError())): ?>
+               <span class="help-inline"><?php echo $tenantValidator->getPostcodeError(); ?></span>
+               <?php endif; ?>
         <span id="plzMessage"></span>
     </div>
 </div>
- <div class="control-group">
+ <div class="control-group <?php echo !empty($tenantValidator->getCityError()) ? 'error' : ''; ?>">
     <label class="control-label">Ort:</label>
     <div class="controls">
         <input name="city" type="text" id="fM_ort" placeholder="Wohnort"
                value="<?php echo !empty($tenant->getCity()) ? $tenant->getCity() : ''; ?>">
+               <?php if (!empty($tenantValidator->getCityError())): ?>
+               <span class="help-inline"><?php echo $tenantValidator->getCityError(); ?></span>
+               <?php endif; ?>
          <span id="isNotTextMessageOrt"></span>
          <p id="requiredMessage"></p>
     </div>
