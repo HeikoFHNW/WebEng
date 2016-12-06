@@ -39,7 +39,7 @@ class ApartmentValidator
 
         if(!is_null($this->apartment)) {
             if (empty($this->apartment->getApartment_type())) {
-                $this->apartment_typeError = 'Please enter a type';
+                $this->apartment_typeError = 'Bitte einen Typ eingeben.';
                 $this->valid = false;
             }
             
