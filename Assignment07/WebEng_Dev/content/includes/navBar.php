@@ -102,7 +102,7 @@ function buildNavbar() {
 <ul class="topnav" id="myTopnav">
   <li><a class="active" href="#home">Home</a></li>
   <li><a href="?controller=Bill&action=show">Rechnungen</a></li>
-  <li><a href="?controller=Contract&action=show">Verträge</a></li>
+  <li><a href="?controller=tenancy_agreement&action=show">Verträge</a></li>
   <li><a href="?controller=Tenant&action=show">Mieter</a></li>
   <li><a href="?controller=Property&action=show">Liegenschaften</a></li>
   <li><a href="?controller=Report&action=show">Berichte</a></li>
