@@ -20,8 +20,10 @@ class ApartmentValidator
      * @var bool
      */
     private $valid = true;
-    private $id_propertyError = null;
     private $apartment_typeError = null;
+    private $roomsError = null;
+    private $squaremeterError = null;
+    private $id_propertyError = null;
 
     /**
      * ApartmentValidator constructor.
@@ -37,14 +39,27 @@ class ApartmentValidator
 
         if(!is_null($this->apartment)) {
             if (empty($this->apartment->getApartment_type())) {
-                $this->StreetError = 'Please enter a type';
+                $this->apartment_typeError = 'Please enter a type';
                 $this->valid = false;
             }
             
-            if (empty($this->apartment->getId_property())) {
-                $this->postcodeError = 'Please enter Property ID';
+            
+            
+            if(!(is_numeric($this->apartment->getRooms())) || empty($this->apartment->getRooms())){
+                $this->roomsError = 'Bitte keine Buchstaben.';
                 $this->valid = false;
             }
+            
+            if(!(is_numeric($this->apartment->getSquaremeter())) || empty($this->apartment->getSquaremeter())){
+                $this->squaremeterError = 'Bitte keine Buchstaben.';
+                $this->valid = false;
+            }
+            
+            if(!(is_numeric($this->apartment->getId_property())) || empty($this->apartment->getId_property())){
+                $this->id_propertyError = 'Bitte keine Buchstaben.';
+                $this->valid = false;
+            }
+            
 
         }
         else {
@@ -73,25 +88,42 @@ class ApartmentValidator
         return $this->valid;
     }
 
-    function getId_propertyError() {
+    function getId_PropertyError() {
         return $this->id_propertyError;
     }
 
     function getApartment_typeError() {
         return $this->apartment_typeError;
     }
+    
+    function getRoomsError(){
+        return $this->roomsError;
+    }
+    
+    function getSquaremeterError(){
+        return $this->squaremeterError;
+    }
+    
+    
 
     function setValid($valid) {
         $this->valid = $valid;
     }
 
-    function setId_propertyError($id_propertyError) {
+    function setId_PropertyError($id_propertyError) {
         $this->id_propertyError = $id_propertyError;
     }
 
     function setApartment_typeError($apartment_typeError) {
         $this->apartment_typeError = $apartment_typeError;
     }
-
-
+    
+    function setRoomsError(){
+        $this->roomsError = $roomsError;
+    }
+    
+    function setSquaremeterError(){
+        $this->squaremeterError = $squaremeterError;
+    }
+    
 }
