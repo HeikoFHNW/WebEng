@@ -6,7 +6,7 @@
         </div>
 
         <form class="form-horizontal" action="?controller=Tenant&action=delete" method="post">
-            <input type="hidden" name="id_tenant" value="<?php echo $user->getId_tenant(); ?>"/>
+            <input type="hidden" name="id_tenant" value="<?php echo $tenant->getId_tenant(); ?>"/>
             <p class="alert alert-error">Are you sure to delete ?</p>
             <div class="form-actions">
                 <button type="submit" class="btn btn-danger">Yes</button>

@@ -9,11 +9,10 @@ class Property
     private $id_adress;
     private $street;
     private $streetnumber;
-    private $apartments;
 
 
 
-    public function __construct($id_property=null, $postcode=null, $city=null, $id_adress=null, $street=null, $streetnumber=null, $apartments=null)
+    public function __construct($id_property=null, $postcode=null, $city=null, $id_adress=null, $street=null, $streetnumber=null)
     {
         if (isset($id_property)) {
             $this->id_property = $id_property;
@@ -32,9 +31,6 @@ class Property
         }
         if (isset($streetnumber)){
             $this->streetnumber = $streetnumber;
-        }
-        if (isset($apartments)){
-            $this->apartments = $apartments;
         }
     }
 
@@ -62,10 +58,6 @@ class Property
         return $this->streetnumber;
     }
 
-    function getApartments() {
-        return $this->apartments;
-    }
-
     function setId_property($id_property) {
         $this->id_property = $id_property;
     }
@@ -89,11 +81,6 @@ class Property
     function setStreetnumber($streetnumber) {
         $this->streetnumber = $streetnumber;
     }
-
-    function setApartments($apartments) {
-        $this->apartments = $apartments;
-    }
-
 }
 
 

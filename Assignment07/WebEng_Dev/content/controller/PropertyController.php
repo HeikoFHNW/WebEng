@@ -77,7 +77,7 @@ class PropertyController
         }
 
         if (!empty($_POST)) {
-            $property = new Property(null,$_POST['postcode'],$_POST['city'],null,$_POST['street'],$_POST['streetnumber'], null);
+            $property = new Property($id_property,$_POST['postcode'],$_POST['city'],null,$_POST['street'],$_POST['streetnumber'], null);
             $propertyValidator = new PropertyValidator($property);
 
             if ($propertyValidator->isValid()) {

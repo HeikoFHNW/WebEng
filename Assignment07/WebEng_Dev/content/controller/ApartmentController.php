@@ -21,6 +21,24 @@ class ApartmentController
         $apartments = (new ApartmentDAOImpl(Database::connect()))->findAll();
         require_once('../view/viewApartment/showApartment.php');
     }
+    
+        public function showForProperty()
+    {
+        if(!isset($_SESSION)) 
+        { 
+            session_start(); 
+        } 
+                if (!empty($_GET['id_property'])) {
+            $id_property = $_REQUEST['id_property'];
+        }else{
+            $id_property = $_GET['id_property'];
+        }
+        if ($id_property==="")
+            return Route::call('Error', 'error');
+        
+        $apartments = (new ApartmentDAOImpl(Database::connect()))->findForProperty($id_property);
+        require_once('../view/viewApartment/showApartment.php');
+    }
 
     public function create()
     {
@@ -28,21 +46,13 @@ class ApartmentController
         { 
             session_start(); 
         }
-        
-        if (!empty($_GET['id_property'])) {
-            $id_property = $_REQUEST['id_property'];
-        }else{
-            $id_property = $_GET['id_property'];
-        }
-        if ($id_property==="")
-            return Route::call('Error', 'error');
        
         $apartment = new Apartment();
         $apartmentValidator = new ApartmentValidator();
 
         if (!empty($_POST)) {
             
-            $apartment = new Apartment(null,$_POST['apartment_type'],$_POST['rooms'],$_POST['squaremeter'],$id_property);
+            $apartment = new Apartment(null,$_POST['apartment_type'],$_POST['rooms'],$_POST['squaremeter'],$_POST['id_property']);
             $apartmentValidator = new ApartmentValidator($apartment);
 
             if ($apartmentValidator->isValid()) {

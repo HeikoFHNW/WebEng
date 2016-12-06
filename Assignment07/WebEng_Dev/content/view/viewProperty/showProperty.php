@@ -11,7 +11,6 @@
             <thead>
             <tr>
                 <th>ID</th>
-                <th>Wohnungen</th>
                 <th>anlegen</th>
                 <th>Strasse</th>
                 <th>Nr.</th>
@@ -25,9 +24,8 @@
             foreach ($propertys as $property) {
                 echo '<tr>';
                 echo '<td>' . $property->getId_property() . '</td>';
-                echo '<td>' . $property->getApartments() . '</td>';
                 echo '<td width=50>';
-                echo '<a class="btn btn-success" href="?controller=Apartment&action=create&id_property=' . $property->getId_property() . '">neue Wohnung</a>';
+                echo '<a class="btn" href="?controller=Apartment&action=showForProperty&id_property=' . $property->getId_property() . '">Wohnungen</a>';
                 echo '</td>';
                 echo '<td>' . $property->getStreet() . '</td>';
                 echo '<td>' . $property->getStreetnumber() . '</td>';

@@ -23,8 +23,8 @@ class PropertyDAOImpl extends AbstractDAO implements PropertyDAOInterface
             INSERT IGNORE INTO adress (street, streetnumber, postcode)
             VALUES (:street, :streetnumber, :postcode);
             
-            INSERT INTO property (id_adress, apartments)
-            VALUES ((SELECT id_adress FROM adress WHERE street = :street AND streetnumber = :streetnumber AND postcode = :postcode), "0");');
+            INSERT INTO property (id_adress)
+            VALUES ((SELECT id_adress FROM adress WHERE street = :street AND streetnumber = :streetnumber AND postcode = :postcode));');
         
         $stmt->bindValue(':postcode', $property->getPostcode());
         $stmt->bindValue(':city', $property->getCity());
@@ -57,7 +57,6 @@ class PropertyDAOImpl extends AbstractDAO implements PropertyDAOInterface
             UPDATE propertymanagement.property
             SET
             id_adress = (SELECT id_adress FROM adress WHERE street = :street AND streetnumber = :streetnumber AND postcode = :postcode)
-            apartments = (SELECT COUNT(id_property) FROM apartments WHERE apartments.id_property = property.id_property)
             WHERE id_property = :id_property;
         ');
         $stmt->bindValue(':street', $property->getStreet());
@@ -78,7 +77,7 @@ class PropertyDAOImpl extends AbstractDAO implements PropertyDAOInterface
     public function readProperty($id_property)
     {
         $stmt = $this->pdoInstance->prepare('
-            SELECT C.id_property, B.postcode, B.city, A.id_adress, A.street, A.streetnumber, C.apartments 
+            SELECT C.id_property, B.postcode, B.city, A.id_adress, A.street, A.streetnumber  
                 FROM adress = A, city = B, property = C
                 WHERE A.postcode = B.postcode 
                 AND A.id_adress = C.id_adress
@@ -110,7 +109,7 @@ class PropertyDAOImpl extends AbstractDAO implements PropertyDAOInterface
     public function findAll()
     {
         $stmt = $this->pdoInstance->prepare('
-            SELECT C.id_property, C.apartments, B.postcode, B.city, A.id_adress, A.street, A.streetnumber 
+            SELECT C.id_property, B.postcode, B.city, A.id_adress, A.street, A.streetnumber 
                 FROM adress = A, city = B, property = C
                 WHERE A.postcode = B.postcode 
                 AND A.id_adress = C.id_adress

@@ -15,15 +15,6 @@
                 </div>
             </div>
             <div class="control-group">
-                <label class="control-label">Wohnungen</label>
-                <div class="controls">
-                    <label class="checkbox">
-                        <?php echo $property->getApartments(); ?>
-                    </label>
-                </div>
-            </div>
-
-            <div class="control-group">
                 <label class="control-label">Strasse</label>
                 <div class="controls">
                     <label class="checkbox">

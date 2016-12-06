@@ -19,11 +19,9 @@ class ApartmentDAOImpl extends AbstractDAO implements ApartmentDAOInterface
         }
         
         $stmt = $this->pdoInstance->prepare('
-            
-            SET FOREIGN_KEY_CHECKS=0;
                         
-            INSERT INTO apartment (apartment_type, rooms, squaremeter, id_property)
-            VALUES (apartment_type = :apartment_type, rooms = :rooms, squaremeter = :squaremeter, id_property = :id_property);');
+            INSERT INTO apartment (id_property, apartment_type, rooms, squaremeter)
+            VALUES ((SELECT id_property FROM property WHERE id_property = :id_property), :apartment_type, :rooms, :squaremeter);');
         
         $stmt->bindValue(':apartment_type', $apartment->getApartment_type());
         $stmt->bindValue(':rooms', $apartment->getRooms());
@@ -105,6 +103,17 @@ class ApartmentDAOImpl extends AbstractDAO implements ApartmentDAOInterface
         $stmt = $this->pdoInstance->prepare('
             SELECT * FROM apartment;
         ');
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_CLASS, 'Apartment');
+    }
+    
+    public function findForProperty($id_property)
+    {
+        $stmt = $this->pdoInstance->prepare('
+            SELECT * FROM apartment
+            WHERE id_property = :id_property;
+        ');
+        $stmt->bindValue(':id_property', $id_property);
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_CLASS, 'Apartment');
     }
