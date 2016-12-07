@@ -10,10 +10,6 @@ class TenantController
 
     public function show()
     {
-        if(!isset($_SESSION)) 
-        { 
-            session_start(); 
-        } 
         $tenants = (new TenantDAOImpl(Database::connect()))->findAll();
         require_once('../view/viewTenant/showTenant.php');
     }
@@ -21,11 +17,7 @@ class TenantController
     public function create()
     {
         /**ANGEPASST 05.12.16**/
-        
-        if(!isset($_SESSION)) 
-        { 
-            session_start(); 
-        } 
+         
         $tenant = new Tenant();
         $tenantValidator = new TenantValidator();
 
@@ -43,11 +35,7 @@ class TenantController
     }
 
     public function read()
-    {
-        if(!isset($_SESSION)) 
-        { 
-            session_start(); 
-        } 
+    { 
         if (!empty($_GET['id_tenant'])) {
             $id_tenant = $_REQUEST['id_tenant'];
         }else{
@@ -61,11 +49,7 @@ class TenantController
     }
 
     public function update()
-    {
-        if(!isset($_SESSION)) 
-        { 
-            session_start(); 
-        } 
+    { 
         $tenant = new tenant();
         $tenantValidator = new TenantValidator();
 
@@ -93,11 +77,7 @@ class TenantController
     }
 
     public function deleteAsk()
-    {
-        if(!isset($_SESSION)) 
-        { 
-            session_start(); 
-        } 
+    { 
         if (!empty($_GET['id_tenant'])) {
             $id_tenant = $_REQUEST['id_tenant'];
         }else{
@@ -111,11 +91,7 @@ class TenantController
     }
 
     public function delete()
-    {
-        if(!isset($_SESSION)) 
-        { 
-            session_start(); 
-        } 
+    { 
         if (!empty($_POST)) {
             // keep track post values
             $id_tenant = $_POST['id_tenant'];

@@ -14,20 +14,12 @@ class ApartmentController
 
     public function show()
     {
-        if(!isset($_SESSION)) 
-        { 
-            session_start(); 
-        } 
         $apartments = (new ApartmentDAOImpl(Database::connect()))->findAll();
         require_once('../view/viewApartment/showApartment.php');
     }
     
         public function showForProperty()
     {
-        if(!isset($_SESSION)) 
-        { 
-            session_start(); 
-        } 
                 if (!empty($_GET['id_property'])) {
             $id_property = $_REQUEST['id_property'];
         }else{
@@ -42,11 +34,7 @@ class ApartmentController
 
     public function create()
     {
-        if(!isset($_SESSION)) 
-        { 
-            session_start(); 
-        }
-       
+
         $apartment = new Apartment();
         $apartmentValidator = new ApartmentValidator();
 
@@ -65,10 +53,7 @@ class ApartmentController
 
     public function read()
     {
-        if(!isset($_SESSION)) 
-        { 
-            session_start(); 
-        } 
+ 
         if (!empty($_GET['id_apartment'])) {
             $id_apartment = $_REQUEST['id_apartment'];
         }else{
@@ -83,10 +68,7 @@ class ApartmentController
 
     public function update()
     {
-        if(!isset($_SESSION)) 
-        { 
-            session_start(); 
-        } 
+
         $apartment = new apartment();
         $apartmentValidator = new ApartmentValidator();
 
@@ -115,10 +97,7 @@ class ApartmentController
 
     public function deleteAsk()
     {
-        if(!isset($_SESSION)) 
-        { 
-            session_start(); 
-        } 
+
         if (!empty($_GET['id_apartment'])) {
             $id_apartment = $_REQUEST['id_apartment'];
         }else{
@@ -133,10 +112,6 @@ class ApartmentController
 
     public function delete()
     {
-        if(!isset($_SESSION)) 
-        { 
-            session_start(); 
-        } 
         if (!empty($_POST)) {
             // keep track post values
             $id_apartment = $_POST['id_apartment'];

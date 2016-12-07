@@ -14,21 +14,13 @@ class UserController
 {
 
     public function show()
-    {
-        if(!isset($_SESSION)) 
-        { 
-            session_start(); 
-        } 
+    { 
         $users = (new UserDAOImpl(Database::connect()))->findAll();
         require_once('../view/viewUser/showUser.php');
     }
 
     public function create()
-    {
-        if(!isset($_SESSION)) 
-        { 
-            session_start(); 
-        } 
+    { 
         $user = new User();
         $userValidator = new UserValidator();
 
@@ -46,11 +38,7 @@ class UserController
     }
 
     public function read()
-    {
-        if(!isset($_SESSION)) 
-        { 
-            session_start(); 
-        } 
+    { 
         if (!empty($_GET['id_user'])) {
             $id_user = $_REQUEST['id_user'];
         }else{
@@ -64,11 +52,7 @@ class UserController
     }
 
     public function update()
-    {
-        if(!isset($_SESSION)) 
-        { 
-            session_start(); 
-        } 
+    { 
         $user = new user();
         $userValidator = new UserValidator();
 
@@ -96,11 +80,7 @@ class UserController
     }
 
     public function deleteAsk()
-    {
-        if(!isset($_SESSION)) 
-        { 
-            session_start(); 
-        } 
+    { 
         if (!empty($_GET['id_user'])) {
             $id_user = $_REQUEST['id_user'];
         }else{
@@ -115,10 +95,6 @@ class UserController
 
     public function delete()
     {
-        if(!isset($_SESSION)) 
-        { 
-            session_start(); 
-        } 
         if (!empty($_POST)) {
             // keep track post values
             $id_user = $_POST['id_user'];
@@ -133,19 +109,11 @@ class UserController
     }
     
     public function loginShow() 
-    {
-        if(!isset($_SESSION)) 
-        { 
-            session_start(); 
-        } 
+    { 
         require_once('../view/viewLogin/login.php');
     }
     public function login()
     {
-        if(!isset($_SESSION)) 
-        { 
-            session_start(); 
-        } 
         if (!empty($_POST)) {
             // keep track post values
             $username = $_POST['username'];

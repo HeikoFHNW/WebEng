@@ -11,25 +11,19 @@ class InvoiceController
     public function show()
     {
         if(!isset($_SESSION)) 
-        { 
-            session_start(); 
-        } 
         $invoices = (new InvoiceDAOImpl(Database::connect()))->findAll();
         require_once('../view/viewInvoice/showInvoice.php');
     }
 
     public function create()
     {
-        if(!isset($_SESSION)) 
-        { 
-            session_start(); 
-        } 
+
         $invoice = new Invoice();
         $invoiceValidator = new InvoiceValidator();
 
         if (!empty($_POST)) {
             
-            $invoice = new Invoice(null,$_POST['amount'],$_POST['invoice_date'],$_POST['id_tenancy_agreement'],$_POST['invoice_type'],$_POST['invoicenr'],$_POST[''],$_POST['comment']);
+            $invoice = new Invoice(null,$_POST['amount'],$_POST['invoice_date'],$_POST['id_tenancy_agreement'],$_POST['invoice_type'],$_POST['invoicenr'],$_POST['comment']);
             $invoiceValidator = new InvoiceValidator($invoice);
 
             if ($invoiceValidator->isValid()) {
@@ -42,10 +36,6 @@ class InvoiceController
 
     public function read()
     {
-        if(!isset($_SESSION)) 
-        { 
-            session_start(); 
-        } 
         if (!empty($_GET['id_invoice'])) {
             $id_invoice = $_REQUEST['id_invoice'];
         }else{
@@ -60,10 +50,6 @@ class InvoiceController
 
     public function update()
     {
-        if(!isset($_SESSION)) 
-        { 
-            session_start(); 
-        } 
         $invoice = new invoice();
         $invoiceValidator = new InvoiceValidator();
 
@@ -77,7 +63,7 @@ class InvoiceController
         }
 
         if (!empty($_POST)) {
-            $invoice = new Invoice($id_invoice,$_POST['amount'],$_POST['invoice_date'],$_POST['id_tenancy_agreement'],$_POST['invoice_type'],$_POST['invoicenr'],$_POST[''],$_POST['comment']);
+            $invoice = new Invoice($id_invoice,$_POST['amount'],$_POST['invoice_date'],$_POST['id_tenancy_agreement'],$_POST['invoice_type'],$_POST['invoicenr'],$_POST['comment']);
             $invoiceValidator = new InvoiceValidator($invoice);
 
             if ($invoiceValidator->isValid()) {
@@ -92,10 +78,6 @@ class InvoiceController
 
     public function deleteAsk()
     {
-        if(!isset($_SESSION)) 
-        { 
-            session_start(); 
-        } 
         if (!empty($_GET['id_invoice'])) {
             $id_invoice = $_REQUEST['id_invoice'];
         }else{
@@ -110,10 +92,6 @@ class InvoiceController
 
     public function delete()
     {
-        if(!isset($_SESSION)) 
-        { 
-            session_start(); 
-        } 
         if (!empty($_POST)) {
             // keep track post values
             $id_invoice = $_POST['id_invoice'];

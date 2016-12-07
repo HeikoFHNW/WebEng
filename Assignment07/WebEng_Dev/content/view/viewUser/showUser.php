@@ -34,11 +34,11 @@
                 echo '<td>' . $user->getLocked() . '</td>';
                 echo '<td>' . $user->getAdmin() . '</td>';
                 echo '<td width=250>';
-                echo '<a class="btn" href="?controller=User&action=read&id_user=' . $user->getId_user() . '">Read</a>';
+                echo '<a class="btn" href="?controller=User&action=read&id_user=' . $user->getId_user() . '"><span class="glyphicon glyphicon-zoom-in" aria-hidden="true"></span></a>';
                 echo '&nbsp;';
-                echo '<a class="btn btn-success" href="?controller=User&action=update&id_user=' . $user->getId_user() . '">Update</a>';
+                echo '<a class="btn btn-success" href="?controller=User&action=update&id_user=' . $user->getId_user() . '"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>';
                 echo '&nbsp;';
-                echo '<a class="btn btn-danger" href="?controller=User&action=deleteAsk&id_user=' . $user->getId_user() . '">Delete</a>';
+                echo '<a class="btn btn-danger" href="?controller=User&action=deleteAsk&id_user=' . $user->getId_user() . '"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>';
                 echo '</td>';
                 echo '</tr>';
             }

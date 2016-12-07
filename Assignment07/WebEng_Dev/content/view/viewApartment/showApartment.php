@@ -4,7 +4,8 @@
     </div>
     <div class="row">
         <p>
-            <a href="?controller=Apartment&action=create" class="btn btn-success">Create</a>
+            <a class="btn btn-success" href="?controller=Apartment&action=create&id_property=' <?php  echo $_GET['id_property'] ?> '" class="btn btn-success">Create</a>
+            <a class="btn btn" href="?controller=Property&action=show" class="btn btn">Back</a>
         </p>
 
         <table class="table table-striped table-bordered">
@@ -27,11 +28,11 @@
                 echo '<td>' . $apartment->getSquaremeter() . '</td>';
                 echo '<td>' . $apartment->getId_property() . '</td>';
                 echo '<td width=250>';
-                echo '<a class="btn" href="?controller=Apartment&action=read&id_apartment=' . $apartment->getId_apartment() . '">Read</a>';
+                echo '<a class="btn" href="?controller=Apartment&action=read&id_apartment=' . $apartment->getId_apartment() . '"><span class="glyphicon glyphicon-zoom-in" aria-hidden="true"></span></a>';
                 echo '&nbsp;';
-                echo '<a class="btn btn-success" href="?controller=Apartment&action=update&id_apartment=' . $apartment->getId_apartment() . '">Update</a>';
+                echo '<a class="btn btn-success" href="?controller=Apartment&action=update&id_apartment=' . $apartment->getId_apartment() . '"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>';
                 echo '&nbsp;';
-                echo '<a class="btn btn-danger" href="?controller=Apartment&action=deleteAsk&id_apartment=' . $apartment->getId_apartment() . '">Delete</a>';
+                echo '<a class="btn btn-danger" href="?controller=Apartment&action=deleteAsk&id_apartment=' . $apartment->getId_apartment() . '"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>';
                 echo '</td>';
                 echo '</tr>';
             }

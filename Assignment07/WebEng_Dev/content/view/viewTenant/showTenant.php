@@ -36,11 +36,11 @@
                 echo '<td>' . $tenant->getCity() . '</td>';
                 echo '<td>' . $tenant->getEmail() . '</td>';
                 echo '<td width=250>';
-                echo '<a class="btn" href="?controller=Tenant&action=read&id_tenant=' . $tenant->getId_tenant() . '">Read</a>';
+                echo '<a class="btn" href="?controller=Tenant&action=read&id_tenant=' . $tenant->getId_tenant() . '"><span class="glyphicon glyphicon-zoom-in" aria-hidden="true"></span></a>';
                 echo '&nbsp;';
-                echo '<a class="btn btn-success" href="?controller=Tenant&action=update&id_tenant=' . $tenant->getId_tenant() . '">Update</a>';
+                echo '<a class="btn btn-success" href="?controller=Tenant&action=update&id_tenant=' . $tenant->getId_tenant() . '"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>';
                 echo '&nbsp;';
-                echo '<a class="btn btn-danger" href="?controller=Tenant&action=deleteAsk&id_tenant=' . $tenant->getId_tenant() . '">Delete</a>';
+                echo '<a class="btn btn-danger" href="?controller=Tenant&action=deleteAsk&id_tenant=' . $tenant->getId_tenant() . '"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>';
                 echo '</td>';
                 echo '</tr>';
             }

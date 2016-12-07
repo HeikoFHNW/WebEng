@@ -48,9 +48,9 @@ class ApartmentDAOImpl extends AbstractDAO implements ApartmentDAOInterface
 
             UPDATE propertymanagement.apartment
             SET
-            apartment_type = :apartment_type
-            rooms = :rooms
-            squaremeter = :squaremeter
+            apartment_type = :apartment_type,
+            rooms = :rooms,
+            squaremeter = :squaremeter,
             id_property = :id_property
             WHERE id_apartment = :id_apartment;
         ');

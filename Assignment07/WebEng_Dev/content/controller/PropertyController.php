@@ -10,20 +10,12 @@ class PropertyController
 
     public function show()
     {
-        if(!isset($_SESSION)) 
-        { 
-            session_start(); 
-        } 
         $propertys = (new PropertyDAOImpl(Database::connect()))->findAll();
         require_once('../view/viewProperty/showProperty.php');
     }
 
     public function create()
     {
-        if(!isset($_SESSION)) 
-        { 
-            session_start(); 
-        } 
         $property = new Property();
         $propertyValidator = new PropertyValidator();
 
@@ -42,10 +34,6 @@ class PropertyController
 
     public function read()
     {
-        if(!isset($_SESSION)) 
-        { 
-            session_start(); 
-        } 
         if (!empty($_GET['id_property'])) {
             $id_property = $_REQUEST['id_property'];
         }else{
@@ -60,10 +48,6 @@ class PropertyController
 
     public function update()
     {
-        if(!isset($_SESSION)) 
-        { 
-            session_start(); 
-        } 
         $property = new property();
         $propertyValidator = new PropertyValidator();
 
@@ -92,10 +76,6 @@ class PropertyController
 
     public function deleteAsk()
     {
-        if(!isset($_SESSION)) 
-        { 
-            session_start(); 
-        } 
         if (!empty($_GET['id_property'])) {
             $id_property = $_REQUEST['id_property'];
         }else{
@@ -110,10 +90,6 @@ class PropertyController
 
     public function delete()
     {
-        if(!isset($_SESSION)) 
-        { 
-            session_start(); 
-        } 
         if (!empty($_POST)) {
             // keep track post values
             $id_property = $_POST['id_property'];

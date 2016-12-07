@@ -1,5 +1,3 @@
-
-
 <div class="control-group <?php echo !empty($userValidator->getFirstnameError()) ? 'error' : ''; ?>">
     <label class="control-label">Vorname</label>
     <div class="controls">

@@ -14,20 +14,12 @@ class Tenancy_agreementController
 
     public function show()
     {
-        if(!isset($_SESSION)) 
-        { 
-            session_start(); 
-        } 
         $tenancy_agreements = (new Tenancy_agreementDAOImpl(Database::connect()))->findAll();
         require_once('../view/viewTenancy_agreement/showTenancy_agreement.php');
     }
 
     public function create()
     {
-        if(!isset($_SESSION)) 
-        { 
-            session_start(); 
-        } 
         $tenancy_agreement = new Tenancy_agreement();
         $tenancy_agreementValidator = new Tenancy_agreementValidator();
 
@@ -46,10 +38,6 @@ class Tenancy_agreementController
 
     public function read()
     {
-        if(!isset($_SESSION)) 
-        { 
-            session_start(); 
-        } 
         if (!empty($_GET['id_tenancy_agreement'])) {
             $id_tenancy_agreement = $_REQUEST['id_tenancy_agreement'];
         }else{
@@ -64,10 +52,6 @@ class Tenancy_agreementController
 
     public function update()
     {
-        if(!isset($_SESSION)) 
-        { 
-            session_start(); 
-        } 
         $tenancy_agreement = new tenancy_agreement();
         $tenancy_agreementValidator = new Tenancy_agreementValidator();
 
@@ -96,10 +80,6 @@ class Tenancy_agreementController
 
     public function deleteAsk()
     {
-        if(!isset($_SESSION)) 
-        { 
-            session_start(); 
-        } 
         if (!empty($_GET['id_tenancy_agreement'])) {
             $id_tenancy_agreement = $_REQUEST['id_tenancy_agreement'];
         }else{
@@ -113,11 +93,7 @@ class Tenancy_agreementController
     }
 
     public function delete()
-    {
-        if(!isset($_SESSION)) 
-        { 
-            session_start(); 
-        } 
+    { 
         if (!empty($_POST)) {
             // keep track post values
             $id_tenancy_agreement = $_POST['id_tenancy_agreement'];

@@ -32,11 +32,11 @@
                 echo '<td>' . $property->getPostcode() . '</td>';
                 echo '<td>' . $property->getCity() . '</td>';
                 echo '<td width=250>';
-                echo '<a class="btn" href="?controller=Property&action=read&id_property=' . $property->getId_property() . '">Read</a>';
+                echo '<a class="btn" href="?controller=Property&action=read&id_property=' . $property->getId_property() . '"><span class="glyphicon glyphicon-zoom-in" aria-hidden="true"></span></a>';
                 echo '&nbsp;';
-                echo '<a class="btn btn-success" href="?controller=Property&action=update&id_property=' . $property->getId_property() . '">Update</a>';
+                echo '<a class="btn btn-success" href="?controller=Property&action=update&id_property=' . $property->getId_property() . '"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>';
                 echo '&nbsp;';
-                echo '<a class="btn btn-danger" href="?controller=Property&action=deleteAsk&id_property=' . $property->getId_property() . '">Delete</a>';
+                echo '<a class="btn btn-danger" href="?controller=Property&action=deleteAsk&id_property=' . $property->getId_property() . '"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>';
                 echo '</td>';
                 echo '</tr>';
             }

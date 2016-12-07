@@ -100,19 +100,18 @@ function buildNavbar() {
 }
 </script>
 <ul class="topnav" id="myTopnav">
-  <li><a class="active" href="#home">Home</a></li>
-  <li><a href="?controller=Bill&action=show">Rechnungen</a></li>
-  <li><a href="?controller=tenancy_agreement&action=show">Verträge</a></li>
+  <li><a class="active" href="#home"><span class="glyphicon glyphicon-home"></span></a></li>
+  <li><a href="?controller=Invoice&action=show">Rechnungen</a></li>
+  <li><a href="?controller=Tenancy_agreement&action=show">Verträge</a></li>
   <li><a href="?controller=Tenant&action=show">Mieter</a></li>
   <li><a href="?controller=Property&action=show">Liegenschaften</a></li>
   <li><a href="?controller=Report&action=show">Berichte</a></li>
   <li class="icon">
     <a href="javascript:void(0);" style="font-size:15px;" onclick="myFunction()">☰</a>
   </li>
-    <ri> <?php if (isset($_SESSION['login_user'])) : ?> 
-        <a href="?controller=User&action=show" <?php echo $_SESSION['login_user'] ?>><span class="glyphicon glyphicon-user"></span> 
-        <?php else: ?>
-        <a href="?controller=User&action=show" ><span class="glyphicon glyphicon-white-user">User</span>
-    <?php endif ?></a></ri>
-  <ri><a href="?controller=User&action=logout"><span class="glyphicon glyphicon-log-in"></span> LogOut</a></ri>
+    <ri>  
+        <a href="?controller=User&action=show"><span class="glyphicon glyphicon-user"></span><?php echo !empty($_SESSION['login_user']) ? 'error' : ''; ?></a>
+    </ri>
+  <ri>
+      <a href="?controller=User&action=logout"><span class="glyphicon glyphicon-log-in"></span></a></ri>
 </ul>

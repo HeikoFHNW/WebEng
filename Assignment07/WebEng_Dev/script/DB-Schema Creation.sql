@@ -12,7 +12,7 @@ streetnumber int(10),
 postcode int(8) NOT NULL, 
 PRIMARY KEY (id_adress));
 
-CREATE TABLE user 
+CREATE TABLE `user` 
 (id_user int(10) NOT NULL AUTO_INCREMENT, 
 firstname varchar(55), 
 lastname varchar(55), 
@@ -26,7 +26,6 @@ PRIMARY KEY (id_user));
 CREATE TABLE property 
 (id_property int(10) NOT NULL AUTO_INCREMENT, 
 id_adress int(10) NOT NULL, 
-apartments int(3), 
 PRIMARY KEY (id_property));
 
 CREATE TABLE tenant 
@@ -62,20 +61,16 @@ CREATE TABLE invoice
 amount decimal(10, 2) NOT NULL, 
 invoice_date date NOT NULL, 
 id_tenancy_agreement int(10) NOT NULL, 
-id_invoice_type int(3), 
+invoice_type varchar(25), 
 invoicenr int(10) NOT NULL, 
 comment varchar(255),
+payed BOOLEAN NOT NULL DEFAULT FALSE,
 PRIMARY KEY (id_invoice));
-
-CREATE TABLE invoice_type
-(id_invoice_type int(3) NOT NULL AUTO_INCREMENT,
-label varchar(25),
-PRIMARY KEY (id_invoice_type));
 
 CREATE TABLE apartment 
 (id_apartment int(10) NOT NULL AUTO_INCREMENT, 
 apartment_type varchar(50), 
-rooms int(10), 
+rooms double(3,1), 
 squaremeter int(10), 
 id_property int(10) NOT NULL, 
 PRIMARY KEY (id_apartment));
@@ -104,10 +99,7 @@ ALTER TABLE city
 ADD CONSTRAINT ucOrt UNIQUE (postcode, city);
 
 ALTER TABLE invoice 
-ADD INDEX FKRechnung953470 (id_tenancy_agreement), 
-ADD INDEX FKRechnungstyp (id_invoice_type),
-ADD CONSTRAINT FKRechnung953470 FOREIGN KEY (id_tenancy_agreement) REFERENCES tenancy_agreement (id_tenancy_agreement),
-ADD CONSTRAINT FKRechnungstyp FOREIGN KEY (id_invoice_type) REFERENCES invoice_type (id_invoice_type);
+ADD INDEX FKRechnung953470 (id_tenancy_agreement); 
 
 ALTER TABLE tenancy_agreement 
 ADD INDEX FKMietvertra158055 (id_apartment), 

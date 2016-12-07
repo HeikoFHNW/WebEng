@@ -1,7 +1,7 @@
 <div class="control-group">
   <label class="control-label" for="sel1">Anrede:</label>
   <div class="controls">
-    <select name="title" class="form-control" 
+    <select name="title" 
             value="<?php echo !empty($tenant->getTitle()) ? $tenant->getTitle() : ''; ?>">
       <option>Herr</option>
       <option>Frau</option>
@@ -36,7 +36,7 @@
 <div class="control-group <?php echo !empty($tenantValidator->getBirthdayError()) ? 'error' : ''; ?>">
     <label class="control-label">Geburtsdatum</label>
     <div class="controls">
-        <input name="birthday" type="text" id="datepicker" placeholder="yyyy-mm-dd" 
+        <input name="birthday" type="text" id="datepicker" placeholder="DD/MM/YYYY" 
                value="<?php echo !empty($tenant->getBirthday()) ? $tenant->getBirthday() : ''; ?>">
                <?php if (!empty($tenantValidator->getBirthdayError())): ?>
                <span class="help-inline"><?php echo $tenantValidator->getBirthdayError(); ?></span>
@@ -47,7 +47,7 @@
 <div class="control-group">
   <label class="control-label" for="sel1">Zivilstand:</label>
   <div class="controls">
-    <select name="marital_status" class="form-control">
+    <select name="marital_status">
       <option>ledig</option>
       <option>verheiratet</option>
       <option>Konkubinat</option>
