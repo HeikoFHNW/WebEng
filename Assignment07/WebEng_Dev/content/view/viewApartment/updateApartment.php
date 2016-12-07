@@ -5,7 +5,7 @@
             <h3>Update a Apartment</h3>
         </div>
 
-        <form class="form-horizontal" action="?controller=Apartment&action=update&id_apartment=<?php echo $apartment->getId_apartment() ?>" onkeyup="return validateApartmentForm()" method="post">
+        <form class="form-horizontal" action="?controller=Apartment&action=update&id_apartment=<?php echo $apartment->getId_apartment() ?>" onsubmit="return validateApartmentForm()" onkeyup="return validateApartmentForm()" method="post">
             <?php include_once("formApartment.php"); ?>
             <div class="form-actions">
                 <button type="submit" class="btn btn-success">Update</button>

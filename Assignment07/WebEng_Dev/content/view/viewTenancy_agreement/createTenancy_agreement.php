@@ -9,6 +9,10 @@
     dateFormat: 'yy-mm-dd',
     changeMonth: true,
     changeYear: true,
+    onSelect: function (selected){
+        $("#datepicker2").datepicker("option", "minDate", selected);
+    }
+    ,
     onClose: function(){ this.focus()}
        }).val();
     });
@@ -17,6 +21,10 @@
     dateFormat: 'yy-mm-dd',
     changeMonth: true,
     changeYear: true,
+    onSelect: function (selected){
+        $("#datepicker").datepicker("option", "maxDate", selected);
+    }
+    ,
     onClose: function(){ this.focus()}
        }).val();
     });
@@ -40,7 +48,7 @@
             <h3>Create a Tenancy_agreement</h3>
         </div>
 
-        <form class="form-horizontal" action="?controller=Tenancy_agreement&action=create"   onkeyup="return validateMieterForm()" method="post">
+        <form class="form-horizontal" action="?controller=Tenancy_agreement&action=create"  onsubmit="return validateVertragForm()" onkeyup="return validateVertragForm()" method="post">
             <?php include_once("formTenancy_agreement.php"); ?>
             <div class="form-actions">
                 <button type="submit" class="btn btn-success">Create</button>
@@ -54,73 +62,42 @@
     
   
        <script>
-        function validateMieterForm(){
-  
-                var a = dateCorrect(datepicker);
-                var b = (notEmpty(fM_vorname) &&isText(fM_vorname));
-                var c = (notEmpty(fM_nachname)&&isText(fM_nachname));
-                var d = isText(fM_strasse);
-                var e = isText(fM_ort);
-                var g = isNumber(fM_plz);
-                var h = checkTel(fM_telefon);
-                var i = checkTel(fM_mobile);
-                var f = validateEmail(fM_email);
-               
-            if (a){
-                isNotaValidDate.innerHTML ="";
-            }else{
-                isNotaValidDate.innerHTML="Bitte eine Zahl in der Vergangenheit eingeben.";
-            } 
+        function validateVertragForm(){
             
-            if (b){
-                isNotTextMessage.innerHTML = "";
-            }else{
-                isNotTextMessage.innerHTML = "Bitte keine Zahlen verwenden.";
-            }
+                var a = notEmpty(datepicker);
+                var c = (notEmpty(fTA_netrent) && isNumber(fTA_netrent));
+                var d = (notEmpty(fTA_id_apartment) && isNumber(fTA_id_apartment));
+                var e = (notEmpty(fTA_id_tenant) && isNumber(fTA_id_tenant));
+                
             
             if (c){
-                isNotTextMessageToo.innerHTML = "";
+                netrentMessage.innerHTML = "";
             }else{
-                isNotTextMessageToo.innerHTML = "Bitte keine Zahlen verwenden.";
+                netrentMessage.innerHTML = "Bitte keine Buchstaben verwenden.";
             }
             
            if (d){
-                isNotTextMessageStreet.innerHTML = "";
+                id_apartmentMessage.innerHTML = "";
             }else{
-                isNotTextMessageStreet.innerHTML = "Bitte keine Zahlen verwenden.";
+                id_apartmentMessage.innerHTML = "Bitte keine Buchstaben verwenden.";
             }
             
             if (e){
-                isNotTextMessageOrt.innerHTML = "";
+                id_tenantMessage.innerHTML = "";
             }else{
-                isNotTextMessageOrt.innerHTML = "Bitte keine Zahlen verwenden.";
+                id_tenantMessage.innerHTML = "Bitte keine Buchstaben verwenden.";
             }
             
-            if (g){
-                plzMessage.innerHTML = "";
-            }else{
-                plzMessage.innerHTML = "Bitte keine Buchstaben.";
-            }
+   
             
-            if (h){
-                telMessage.innerHTML = "";
-            }else{
-                telMessage.innerHTML = "Bitte gültige Telefonnummer eingeben.";
-            }
-            
-            if (i){
-                mobileMessage.innerHTML = "";
-            }else{
-                mobileMessage.innerHTML = "Bitte gültige Telefonnummer eingeben.";
-            }
-            
-            
-            
-            
-            if (a&&b&&c&&d&&e&&g&&h&&i&&f){ //
+            if (a&&c&&d&&e){ //
                 return true;
             }else{
                 return false;
             }  
         }
         </script>
+     
+    
+    
+- 

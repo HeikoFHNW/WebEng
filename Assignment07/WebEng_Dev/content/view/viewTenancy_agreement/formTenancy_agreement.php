@@ -59,6 +59,7 @@
                <span class="help-inline"><?php echo $tenancy_agreementValidator->getId_TenantError(); ?></span>
                <?php endif; ?>
             <span id="id_tenantMessage"></span>   
+            <p id="requiredMessage"</p> 
     </div>
 </div>
 

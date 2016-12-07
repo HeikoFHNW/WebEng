@@ -7,7 +7,7 @@
             <h3>Create a Apartment</h3>
         </div>
 
-        <form class="form-horizontal" action="?controller=Apartment&action=create" onkeyup="return validateApartmentForm()" method="post">
+        <form class="form-horizontal" action="?controller=Apartment&action=create" onsubmit="return validateApartmentForm()" onkeyup="return validateApartmentForm()" method="post">
             <?php include_once("formApartment.php"); ?>
             <div class="form-actions">
                 <button type="submit" class="btn btn-success">Create</button>

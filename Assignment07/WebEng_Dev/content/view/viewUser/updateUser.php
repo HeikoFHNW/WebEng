@@ -8,7 +8,7 @@
             <h3>Update a User</h3>
         </div>
 
-        <form class="form-horizontal" action="?controller=User&action=update&id_user=<?php echo $user->getId_user() ?>" onkeyup="return validateBenutzerForm()" method="post">
+        <form class="form-horizontal" action="?controller=User&action=update&id_user=<?php echo $user->getId_user() ?>" onsubmit="return ValidateBenutzerForm()" onkeyup="return validateBenutzerForm()" method="post">
             <?php include_once("formUser.php"); ?>
             <div class="form-actions">
                 <button type="submit" class="btn btn-success">Update</button>

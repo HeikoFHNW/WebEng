@@ -7,7 +7,7 @@
             <h3>Create a Property</h3>
         </div>
 
-        <form class="form-horizontal" action="?controller=Property&action=create" onkeyup="return validatePropertyForm()" method="post">
+        <form class="form-horizontal" action="?controller=Property&action=create" onsubmit="return validatePropertyForm()" onkeyup="return validatePropertyForm()" method="post">
             <?php include_once("formProperty.php"); ?>
             <div class="form-actions">
                 <button type="submit" class="btn btn-success">Create</button>

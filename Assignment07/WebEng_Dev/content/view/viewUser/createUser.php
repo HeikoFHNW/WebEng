@@ -7,7 +7,7 @@
             <h3>Create a User</h3>
         </div>
 
-        <form class="form-horizontal" action="?controller=User&action=create" onkeyup="return validateBenutzerForm()"  method="post">
+        <form class="form-horizontal" action="?controller=User&action=create" onsubmit="return validateBenutzerForm()" onkeyup="return validateBenutzerForm()"  method="post">
             <?php include_once("formUser.php"); ?>
             <div class="form-actions">
                 <button type="submit"  class="btn btn-success">Create</button>
