@@ -67,5 +67,6 @@
         <textarea rows = "5" name="comment" type="text" placeholder="Fliesstext">
             <?php echo !empty($invoice->getComment()) ? $invoice->getComment() : ''; ?>
         </textarea>
+         <p id="requiredMessage"></p>
     </div>
 </div>
