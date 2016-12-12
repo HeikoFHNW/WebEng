@@ -38,32 +38,40 @@ class InvoiceValidator
 
     public function validate(){
 
-         if(!is_null($this->invoice)) {
-             
-             if(empty($this->invoice->getAmount()) || is_nan($this->invoice->getAmount())){
-                $this->amountError = 'Bitte keine Buchstaben eingeben.';
-                $this->valid = false;
+        if(!is_null($this->invoice)) {
+            
+           
+                
+                if(!is_numeric($this->invoice->getAmount()) || empty($this->invoice->getAmount())){
+                    $this->amountError = 'Bitte keine Buchstaben';
+                    $this->valid = false;
                 }
+            
+            
             
             if((!$this->validateDate($this->invoice->getInvoice_date())) || empty($this->invoice->getInvoice_date())){
                 $this->invoice_dateError = 'Falsches Datumsformat (yyyy-mm-dd)';
                 $this->valid = false;
             }
-                
             
             
-            if(!($this->invoice->getId_tenancy_agreement()=="")){
-                if(!(is_numeric($this->invoice->getAmount()))){
+            
+            if(!is_numeric($this->invoice->getId_tenancy_agreement()) ||empty($this->invoice->getId_tenancy_agreement())){
                     $this->id_tenancy_agreementError = 'Bitte keine Buchstaben';
                     $this->valid = false;
-                }
+                
             }
             
-            if(empty($this->invoice->getInvoicenr()) || is_nan($this->invoice->getInvoicenr())){
-                $this->invoicenrError = 'Bitte keine Buchstaben eingeben.';
-                $this->valid = false;
+            if (!is_numeric($this->invoice->getInvoicenr())|| empty($this->invoice->getInvoicenr())){
+                    $this->invoicenrError = 'Bitte keine Buchstaben';
+                    $this->valid = false;
+                
+            }else {
+                    $this->valid = false;
             }
-         }
+        }
+        return $this->valid;
+             
     }
     function getInvoice() {
         return $this->invoice;

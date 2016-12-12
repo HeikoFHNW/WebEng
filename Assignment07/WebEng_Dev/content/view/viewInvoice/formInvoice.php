@@ -79,4 +79,5 @@
           </label>
         </div>
     </div>
+     <p id="requiredMessage"</p> 
 </div>

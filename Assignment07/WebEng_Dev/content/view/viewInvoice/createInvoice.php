@@ -53,9 +53,7 @@
             }else{
                 amountMessage.innerHTML = "Bitte keine Buchstaben verwenden.";
             }
-            
-            
-            
+
             if (c){
                 id_tenancy_agreementMessage.innerHTML = "";
             }else{
