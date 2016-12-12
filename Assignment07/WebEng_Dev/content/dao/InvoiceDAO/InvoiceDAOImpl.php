@@ -54,7 +54,7 @@ class InvoiceDAOImpl extends AbstractDAO implements InvoiceDAOInterface
             id_tenancy_agreement = (SELECT id_tenancy_agreement FROM tenancy_agreement WHERE id_tenancy_agreement =:id_tenancy_agreement), 
             invoice_type = :invoice_type, 
             invoicenr = :invoicenr, 
-            comment = :comment
+            comment = :comment,
             payed = :payed
             WHERE id_invoice = :id_invoice;
         ');

@@ -1,7 +1,7 @@
 <div class="control-group <?php echo !empty($invoiceValidator->getAmountError()) ? 'error' : ''; ?>">
     <label class="control-label">Betrag:</label>
     <div class="controls">
-        <input name="amount" type="number" id="fI_amount" placeholder="CHF" 
+        <input name="amount" type="text" id="fI_amount" placeholder="CHF" 
                value="<?php echo !empty($invoice->getAmount()) ? $invoice->getAmount() : ''; ?>">
                <?php if (!empty($invoiceValidator->getAmountError())): ?>
                <span class="help-inline"><?php echo $invoiceValidator->getAmountError(); ?></span>
@@ -34,7 +34,7 @@
 <div class="control-group <?php echo !empty($invoiceValidator->getInvoice_typeError()) ? 'error' : ''; ?>">
     <label class="control-label">Rechnungstyp:</label>
     <div class="controls">
-        <select name="invoice_type" type="number" id="fI_invoice_type" placeholder="Miete/Reparatur/Nebenkosten"
+        <select name="invoice_type" type="text" id="fI_invoice_type" placeholder="Miete/Reparatur/Nebenkosten"
                value="<?php echo !empty($invoice->getInvoice_type()) ? $invoice->getInvoice_type() : ''; ?>">
             <option>Miete</option>
             <option>Reparatur</option>
@@ -53,7 +53,7 @@
 <div class="control-group <?php echo !empty($invoiceValidator->getInvoicenrError()) ? 'error' : ''; ?>">
     <label class="control-label">Rechnungsnr:</label>
     <div class="controls">
-        <input name="invoicenr" type="number" id="fI_Invoicenr" placeholder="Nr." 
+        <input name="invoicenr" type="text" id="fI_Invoicenr" placeholder="Nr." 
                value="<?php echo !empty($invoice->getInvoicenr()) ? $invoice->getInvoicenr() : ''; ?>">
                <?php if (!empty($invoiceValidator->getInvoicenrError())): ?>
                <span class="help-inline"><?php echo $invoiceValidator->getInvoicenrError(); ?></span>
@@ -74,10 +74,9 @@
     <div class="controls">
         <div class="form-check">
           <label class="form-check-label">
-            <input type="hidden" name="locked" value="0">
-            <input name="payed" value="1" type="checkbox" class="form-check-input">
+            <input type="hidden" name="payed" value="0"<?php echo ($invoice->getPayed()==0 ? 'unchecked' : '');?>>
+            <input type="checkbox" class="form-check-input" name="payed" value="1"<?php echo ($invoice->getPayed()==1 ? 'checked' : '');?>>
           </label>
         </div>
-        <p id="requiredMessage"></p>
     </div>
 </div>
