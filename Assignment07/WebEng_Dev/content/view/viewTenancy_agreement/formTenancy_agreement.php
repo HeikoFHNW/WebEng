@@ -24,7 +24,7 @@
 <div class="control-group <?php echo !empty($tenancy_agreementValidator->getNetrentError()) ? 'error' : ''; ?>">
     <label class="control-label">Nettomiete:</label>
     <div class="controls">
-        <input name="netrent" type="text" id="fTA_netrent" placeholder="CHF" 
+        <input name="netrent" type="number" id="fTA_netrent" placeholder="CHF" 
                value="<?php echo !empty($tenancy_agreement->getNetrent()) ? $tenancy_agreement->getNetrent() : ''; ?>">
                <?php if (!empty($tenancy_agreementValidator->getNetrentError())): ?>
                <span class="help-inline"><?php echo $tenancy_agreementValidator->getNetrentError(); ?></span>
@@ -42,7 +42,7 @@
 <div class="control-group <?php echo !empty($tenancy_agreementValidator->getId_ApartmentError()) ? 'error' : ''; ?>">
     <label class="control-label">Apartment:</label>
     <div class="controls">
-        <input name="id_apartment" type="text" id="fTA_id_apartment" placeholder="Wohnungsnummer" 
+        <input name="id_apartment" type="number" id="fTA_id_apartment" placeholder="Wohnungsnummer" 
                value="<?php echo !empty($tenancy_agreement->getId_apartment()) ? $tenancy_agreement->getId_apartment() : ''; ?>">
                <?php if (!empty($tenancy_agreementValidator->getId_ApartmentError())): ?>
                <span class="help-inline"><?php echo $tenancy_agreementValidator->getId_ApartmentError(); ?></span>
@@ -53,7 +53,7 @@
 <div class="control-group <?php echo !empty($tenancy_agreementValidator->getId_TenantError()) ? 'error' : ''; ?>">
     <label class="control-label">Mieter:</label>
     <div class="controls">
-        <input name="id_tenant" type="text" id="fTA_id_tenant" placeholder="Mieternummer" 
+        <input name="id_tenant" type="number" id="fTA_id_tenant" placeholder="Mieternummer" 
                value="<?php echo !empty($tenancy_agreement->getId_tenant()) ? $tenancy_agreement->getId_tenant() : ''; ?>">
                <?php if (!empty($tenancy_agreementValidator->getId_TenantError())): ?>
                <span class="help-inline"><?php echo $tenancy_agreementValidator->getId_TenantError(); ?></span>

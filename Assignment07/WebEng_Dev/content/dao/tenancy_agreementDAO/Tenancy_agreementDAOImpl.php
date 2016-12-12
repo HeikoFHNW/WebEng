@@ -73,8 +73,18 @@ class Tenancy_agreementDAOImpl extends AbstractDAO implements Tenancy_agreementD
     public function readTenancy_agreement($id_tenancy_agreement)
     {
         $stmt = $this->pdoInstance->prepare('
-            SELECT *
+            SELECT tenancy_agreement.id_tenancy_agreement, tenancy_agreement.start_of_tenancy, tenancy_agreement.end_of_tenancy, tenancy_agreement.netrent, tenancy_agreement.cancellationterms, tenancy_agreement.id_apartment, tenancy_agreement.id_tenant, adress.street, adress.streetnumber, city.postcode, city.city
                 FROM tenancy_agreement
+                JOIN apartment
+                    ON tenancy_agreement.id_apartment=apartment.id_apartment
+                JOIN property
+                    ON apartment.id_property=property.id_property
+                JOIN adress
+                    ON property.id_adress=adress.id_adress
+                JOIN city
+                    ON adress.postcode=city.postcode
+                JOIN tenant 
+                    ON tenancy_agreement.id_tenant=tenant.id_tenant
                 WHERE id_tenancy_agreement = :id_tenancy_agreement;
         ');
         $stmt->bindValue(':id_tenancy_agreement', $id_tenancy_agreement);
@@ -101,8 +111,18 @@ class Tenancy_agreementDAOImpl extends AbstractDAO implements Tenancy_agreementD
     public function findAll()
     {
         $stmt = $this->pdoInstance->prepare('
-            SELECT * 
-                FROM tenancy_agreement;
+            SELECT tenancy_agreement.id_tenancy_agreement, tenancy_agreement.start_of_tenancy, tenancy_agreement.end_of_tenancy, tenancy_agreement.netrent, tenancy_agreement.cancellationterms, tenancy_agreement.id_apartment, tenancy_agreement.id_tenant, adress.street, adress.streetnumber, city.postcode, city.city
+                FROM tenancy_agreement
+                JOIN apartment
+                    ON tenancy_agreement.id_apartment=apartment.id_apartment
+                JOIN property
+                    ON apartment.id_property=property.id_property
+                JOIN adress
+                    ON property.id_adress=adress.id_adress
+                JOIN city
+                    ON adress.postcode=city.postcode
+                JOIN tenant 
+                    ON tenancy_agreement.id_tenant=tenant.id_tenant;
         ');
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_CLASS, 'Tenancy_agreement');

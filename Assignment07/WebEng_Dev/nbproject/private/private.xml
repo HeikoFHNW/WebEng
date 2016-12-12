@@ -3,22 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/xampp/htdocs/WebEng_Dev/content/controller/TenantController.php</file>
-            <file>file:/C:/xampp/htdocs/WebEng_Dev/content/model/Tenant.php</file>
-            <file>file:/C:/xampp/htdocs/WebEng_Dev/content/dao/AdressDAO/CityDAOInterface.php</file>
-            <file>file:/C:/xampp/htdocs/WebEng_Dev/content/dao/AdressDAO/CityDAOImpl.php</file>
-            <file>file:/C:/xampp/htdocs/WebEng_Dev/content/view/viewTenant/showTenant.php</file>
-            <file>file:/C:/xampp/htdocs/WebEng_Dev/content/dao/AdressDAO/AdressDAOImpl.php</file>
-            <file>file:/C:/xampp/htdocs/WebEng_Dev/content/dao/tenantDAO/TenantDAOInterface.php</file>
-            <file>file:/C:/xampp/htdocs/WebEng_Dev/content/config/config.ini</file>
-            <file>file:/C:/xampp/htdocs/WebEng_Dev/content/validator/TenantValidator.php</file>
-            <file>file:/C:/xampp/htdocs/WebEng_Dev/content/dao/Database.php</file>
-            <file>file:/C:/xampp/htdocs/WebEng_Dev/content/dao/tenantDAO/TenantDAOImpl.php</file>
-            <file>file:/C:/xampp/htdocs/WebEng_Dev/content/validator/UserValidator.php</file>
-            <file>file:/C:/xampp/htdocs/WebEng_Dev/content/dao/AdressDAO/AdressDAOInterface.php</file>
-            <file>file:/C:/xampp/htdocs/WebEng_Dev/content/model/City.php</file>
-            <file>file:/C:/xampp/htdocs/WebEng_Dev/content/model/User.php</file>
-            <file>file:/C:/xampp/htdocs/WebEng_Dev/content/model/Adress.php</file>
+            <file>file:/C:/xampp/htdocs/WebEng_Dev/content/view/viewTenancy_agreement/createTenancy_agreement.php</file>
+            <file>file:/C:/xampp/htdocs/WebEng_Dev/content/view/viewTenancy_agreement/updateTenancy_agreement.php</file>
+            <file>file:/C:/xampp/htdocs/WebEng_Dev/content/view/viewApartment/updateApartment.php</file>
         </group>
     </open-files>
 </project-private>

@@ -6,6 +6,9 @@
         <p>
             <a href="?controller=Invoice&action=create" class="btn btn-success">Create</a>
         </p>
+        <p>
+            <a href="?controller=Auxiliary_Cost&action=create" class="btn btn-success">Create Auxiliary Cost Invoice</a>
+        </p>
         <table data-toggle="table" data-sort-name="invoice_date" data-sort-order="desc">
             <thead>
             <tr>

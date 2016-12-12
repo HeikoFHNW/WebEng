@@ -12,10 +12,16 @@ class Tenancy_Agreement
     private $cancellationterms;
     private $id_apartment;
     private $id_tenant;
+    private $firstname;
+    private $lastname;
+    private $street;
+    private $streetnumber;
+    private $postcode;
+    private $city;
 
 
 
-    public function __construct($id_tenancy_agreement=null, $start_of_tenancy=null, $end_of_tenancy=null, $netrent=null, $cancellationterms=null, $id_apartment=null, $id_tenant=null)
+    public function __construct($id_tenancy_agreement=null, $start_of_tenancy=null, $end_of_tenancy=null, $netrent=null, $cancellationterms=null, $id_apartment=null, $id_tenant=null,$firstname=null,$lastname=null,$street=null,$streetnumber=null,$postcode=null,$city=null)
     {
         if (isset($id_tenancy_agreement)) {
             $this->id_tenancy_agreement = $id_tenancy_agreement;
@@ -37,6 +43,24 @@ class Tenancy_Agreement
         }
         if (isset($id_tenant)){
             $this->id_tenant = $id_tenant;
+        }
+        if (isset($firstname)){
+            $this->firstname = $firstname;
+        }
+        if (isset($lastname)){
+            $this->lastname = $lastname;
+        }
+        if (isset($street)){
+            $this->street = $street;
+        }
+        if (isset($streetnumber)){
+            $this->streetnumber = $streetnumber;
+        }
+        if (isset($postcode)){
+            $this->postcode = $postcode;
+        }
+        if (isset($city)){
+            $this->city = $city;
         }
     }
     function getId_tenancy_agreement() {
@@ -66,6 +90,30 @@ class Tenancy_Agreement
     function getId_tenant() {
         return $this->id_tenant;
     }
+    function getFirstname() {
+        return $this->firstname;
+    }
+
+    function getLastname() {
+        return $this->lastname;
+    }
+
+    function getStreet() {
+        return $this->street;
+    }
+
+    function getStreetnumber() {
+        return $this->streetnumber;
+    }
+
+    function getPostcode() {
+        return $this->postcode;
+    }
+
+    function getCity() {
+        return $this->city;
+    }
+
 }
 
 

@@ -100,17 +100,17 @@ function buildNavbar() {
 }
 </script>
 <ul class="topnav" id="myTopnav">
-  <li><a class="active" href="#home"><span class="glyphicon glyphicon-home"></span></a></li>
+  <li><a href="?controller=Homepage&action=show"><span class="glyphicon glyphicon-home"></span></a></li>
   <li><a href="?controller=Invoice&action=show">Rechnungen</a></li>
   <li><a href="?controller=Tenancy_agreement&action=show">Verträge</a></li>
   <li><a href="?controller=Tenant&action=show">Mieter</a></li>
   <li><a href="?controller=Property&action=show">Liegenschaften</a></li>
-  <li><a href="?controller=Report&action=show">Berichte</a></li>
+  <li><a href="?controller=AnnualStatement&action=home">Berichte</a></li>
   <li class="icon">
     <a href="javascript:void(0);" style="font-size:15px;" onclick="myFunction()">☰</a>
   </li>
     <ri>  
-        <a href="?controller=User&action=show"><span class="glyphicon glyphicon-user"></span><?php echo !empty($_SESSION['login_user']) ? 'error' : ''; ?></a>
+        <a href="?controller=User&action=show"><span class="glyphicon glyphicon-user"></span></a>
     </ri>
   <ri>
       <a href="?controller=User&action=logout"><span class="glyphicon glyphicon-log-in"></span></a></ri>

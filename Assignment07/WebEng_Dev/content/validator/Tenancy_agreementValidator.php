@@ -57,17 +57,17 @@ class Tenancy_agreementValidator
                 }
             }
                 
-                if(empty($this->tenancy_agreement->getNetrent()) ||  !is_nan($this->tenancy_agreement->getNetrent())){
+                if(empty($this->tenancy_agreement->getNetrent()) || is_nan($this->tenancy_agreement->getNetrent())){
                 $this->netrentError = 'Bitte keine Buchstaben eingeben.';
                 $this->valid = false;
                 }
                 
-                if(empty($this->tenancy_agreement->getId_apartment())||  !is_nan($this->tenancy_agreement->getId_apartment())){
+                if(empty($this->tenancy_agreement->getId_apartment())||  is_nan($this->tenancy_agreement->getId_apartment())){
                    $this->id_apartmentError ='Bitte keine Buchstaben eingeben.';
                    $this->valid = false;
                 }
                 
-                if(empty($this->tenancy_agreement->getId_tenant()) || !is_nan($this->tenancy_agreement->getId_tenant())){
+                if(empty($this->tenancy_agreement->getId_tenant()) || is_nan($this->tenancy_agreement->getId_tenant())){
                     $this->id_tenantError = 'Bitte keine Buchstaben eingeben.';
                     $this->valid = false;
                 }

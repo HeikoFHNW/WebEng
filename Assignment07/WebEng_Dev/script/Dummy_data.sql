@@ -57,10 +57,22 @@ INSERT INTO tenancy_agreement (id_tenant, id_apartment, start_of_tenancy, end_of
 
 
 INSERT INTO invoice (amount, invoice_date, id_tenancy_agreement, invoice_type, invoicenr, `comment`, payed)
-    VALUES ('8000', '01.12.16', '1', 'Miete', '16120101', 'Monatsmiete Dezember', '1'),
-            ('10000', '01.12.16', '2', 'Miete', '16120102', 'Monatsmiete Dezember', '1'),
-            ('8000', '01.12.16', '3','Miete', '16120103', 'Monatsmiete Dezember', '1'),
-            ('2250', '01.12.16', '4', 'Miete', '16120104', 'Monatsmiete Dezember', '1'),
-            ('2350', '01.12.16', '5', 'Miete', '16120105', 'Monatsmiete Dezember', '1'),
-            ('2800', '01.12.16', '5', 'Miete', '16120401', 'Monatsmiete Dezember', '0'),
-            ('8000', '01.12.16', '3', 'Reparatur', '16120501', 'Monatsmiete Dezember', '0');
+    VALUES ('8000', '2016-11-30', '1', 'Miete', '16113001', 'Monatsmiete Dezember', '1'),
+            ('10000', '2016-11-30', '2', 'Miete', '16113002', 'Monatsmiete Dezember', '1'),
+            ('8000', '2016-11-30', '3','Miete', '16113003', 'Monatsmiete Dezember', '1'),
+            ('2250', '2016-11-30', '4', 'Miete', '16113004', 'Monatsmiete Dezember', '1'),
+            ('2350', '2016-11-30', '5', 'Miete', '16113005', 'Monatsmiete Dezember', '1'),
+            ('8000', '2016-12-01', '3', 'Reparatur', '16120101', 'Fenster auswechseln', '0'),
+            ('8000', '2016-10-30', '1', 'Miete', '16103001', 'Monatsmiete November', '1'),
+            ('10000', '2016-10-30', '2', 'Miete', '16103002', 'Monatsmiete November', '1'),
+            ('8000', '2016-10-30', '3','Miete', '16103003', 'Monatsmiete November', '1'),
+            ('2250', '2016-10-30', '4', 'Miete', '16103004', 'Monatsmiete November', '1'),
+            ('2350', '2016-10-30', '5', 'Miete', '16103005', 'Monatsmiete November', '1'),
+            ('8000', '2016-09-30', '1', 'Miete', '16093001', 'Monatsmiete Oktober', '1'),
+            ('10000', '2016-09-30', '2', 'Miete', '16093002', 'Monatsmiete Oktober', '1'),
+            ('8000', '2016-09-30', '3','Miete', '16093003', 'Monatsmiete Oktober', '1'),
+            ('2250', '2016-09-30', '4', 'Miete', '16093004', 'Monatsmiete Oktober', '1'),
+            ('2350', '2016-09-30', '5', 'Miete', '16093005', 'Monatsmiete Oktober', '1');
+
+
+invoice.invoice_date BETWEEN CAST('2000-01-01' AS DATE) AND CAST('2016-12-12' AS DATE)

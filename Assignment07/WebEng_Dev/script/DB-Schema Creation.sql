@@ -43,7 +43,7 @@ PRIMARY KEY (id_tenant));
 
 CREATE TABLE tenancy_agreement 
 (id_tenancy_agreement int(10) NOT NULL AUTO_INCREMENT, 
-start_of_tenancy date, 
+start_of_tenancy date NOT NULL, 
 end_of_tenancy date, 
 netrent decimal(10, 2), 
 cancellationterms varchar(255), 

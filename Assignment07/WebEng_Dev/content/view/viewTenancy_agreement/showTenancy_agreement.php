@@ -11,11 +11,15 @@
             <thead>
             <tr>
                 <th>ID</th>
+                <th>Vorname</th>
+                <th>Nachname</th>
                 <th>Beginn</th>
                 <th>Ende</th>
                 <th>Netto Miete</th>
-                <th>Mietobjekt ID</th>
-                <th>Mieter ID</th>
+                <th>MO Strasse</th>
+                <th>MO Nr.</th>
+                <th>MO PLZ</th>
+                <th>MO Ort</th>
                 <th>Action</th>
             </tr>
             </thead>
@@ -24,11 +28,16 @@
             foreach ($tenancy_agreements as $tenancy_agreement) {
                 echo '<tr>';
                 echo '<td>' . $tenancy_agreement->getId_tenancy_agreement() . '</td>';
+                echo '<td>' . $tenancy_agreement->getFirstname() . '</td>';
+                echo '<td>' . $tenancy_agreement->getLastname() . '</td>';
                 echo '<td>' . $tenancy_agreement->getStart_of_tenancy() . '</td>';
                 echo '<td>' . $tenancy_agreement->getEnd_of_tenancy() . '</td>';
                 echo '<td>' . $tenancy_agreement->getNetrent() . '</td>';
-                echo '<td>' . $tenancy_agreement->getId_apartment() . '</td>';
-                echo '<td>' . $tenancy_agreement->getId_tenant() . '</td>';
+                echo '<td>' . $tenancy_agreement->getStreet() . '</td>';
+                echo '<td>' . $tenancy_agreement->getStreetnumber() . '</td>';
+                echo '<td>' . $tenancy_agreement->getPostcode() . '</td>';
+                echo '<td>' . $tenancy_agreement->getCity() . '</td>';
+
                 echo '<td width=250>';
                 echo '<a class="btn" href="?controller=Tenancy_agreement&action=read&id_tenancy_agreement=' . $tenancy_agreement->getId_tenancy_agreement() . '"><span class="glyphicon glyphicon-zoom-in" aria-hidden="true"></span></a>';
                 echo '&nbsp;';
