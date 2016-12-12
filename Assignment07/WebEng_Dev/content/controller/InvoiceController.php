@@ -23,7 +23,7 @@ class InvoiceController
 
         if (!empty($_POST)) {
             
-            $invoice = new Invoice(null,$_POST['amount'],$_POST['invoice_date'],$_POST['id_tenancy_agreement'],$_POST['invoice_type'],$_POST['invoicenr'],$_POST['comment']);
+            $invoice = new Invoice(null,$_POST['amount'],$_POST['invoice_date'],$_POST['id_tenancy_agreement'],$_POST['invoice_type'],$_POST['invoicenr'],$_POST['comment'],$_POST['payed']);
             $invoiceValidator = new InvoiceValidator($invoice);
 
             if ($invoiceValidator->isValid()) {

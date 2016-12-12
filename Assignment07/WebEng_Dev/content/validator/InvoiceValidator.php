@@ -39,19 +39,18 @@ class InvoiceValidator
     public function validate(){
 
          if(!is_null($this->invoice)) {
-            if(!($this->invoice->getAmount()=="")){
-                if(!(is_numeric($this->invoice->getAmount()))){
-                    $this->amountError = 'Bitte keine Buchstaben';
-                    $this->valid = false;
+             
+             if(empty($this->invoice->getAmount()) || is_nan($this->invoice->getAmount())){
+                $this->amountError = 'Bitte keine Buchstaben eingeben.';
+                $this->valid = false;
                 }
-            }
             
-            if (!empty($this->invoice->getInvoice_date())){
-                if(!$this->validateDate($this->invoice->getInvoice_date())){
-                    $this->invoice_dateError = 'Falsches Datumsformat (yyyy-mm-dd)';
-                    $this->valid = false;
-                }
+            if((!$this->validateDate($this->invoice->getInvoice_date())) || empty($this->invoice->getInvoice_date())){
+                $this->invoice_dateError = 'Falsches Datumsformat (yyyy-mm-dd)';
+                $this->valid = false;
             }
+                
+            
             
             if(!($this->invoice->getId_tenancy_agreement()=="")){
                 if(!(is_numeric($this->invoice->getAmount()))){
@@ -60,16 +59,9 @@ class InvoiceValidator
                 }
             }
             
-            if(is_numeric($this->invoice->getInvoice_type())){
-                $this->invoice_typeError = 'Bitte keine Zahlen';
+            if(empty($this->invoice->getInvoicenr()) || is_nan($this->invoice->getInvoicenr())){
+                $this->invoicenrError = 'Bitte keine Buchstaben eingeben.';
                 $this->valid = false;
-            }
-            
-            if(!($this->invoice->getInvoicenr()=="")){
-                if(!(is_numeric($this->invoice->getInvoicenr()))){
-                    $this->invoicenrError = 'Bitte keine Buchstaben';
-                    $this->valid = false;
-                }
             }
          }
     }

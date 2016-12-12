@@ -17,7 +17,7 @@ class InvoiceDAOImpl extends AbstractDAO implements InvoiceDAOInterface
         
         $stmt = $this->pdoInstance->prepare('
 
-            INSERT INTO invoice (amount, invoice_date, id_tenancy_agreement, invoice_type, invoicenr, comment)
+            INSERT INTO invoice (amount, invoice_date, id_tenancy_agreement, invoice_type, invoicenr, comment, payed)
             VALUES (:amount, :invoice_date, 
             (SELECT id_tenancy_agreement FROM tenancy_agreement WHERE id_tenancy_agreement = :id_tenancy_agreement),
             :invoice_type, :invoicenr, :comment, :payed);');
