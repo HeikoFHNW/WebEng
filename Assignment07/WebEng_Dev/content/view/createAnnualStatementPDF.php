@@ -103,7 +103,7 @@ $pdf->Ln();
 $fill = false;
 $row = 0;
 
-foreach ( $invoiceNegTypes as $invoiceNegType ) {
+foreach ( $invoiceTypes as $invoiceType ) {
 
     
     if( $pdf->GetY() >= 190){
@@ -140,7 +140,7 @@ foreach ( $invoiceNegTypes as $invoiceNegType ) {
     $pdf->Cell(25, 10, (""), 'T', 0, 'C', $fill);
     $pdf->Cell(25, 10, (""), 'RT', 0, 'C', $fill);
     $pdf->Ln();
-    foreach ($invoiceNegType->getReportPropertys() as $reportProperty) {
+    foreach ($invoiceType->getReportPropertys() as $reportProperty) {
         $pdf->Cell(28, 10, (""), 'L', 0, 'C', $fill);
         $pdf->Cell(36, 10, ($reportProperty->getStreet()), 0, 0, 'C', $fill);
         $pdf->Cell(16, 10, ($reportProperty->getStreetnumber()), 0, 0, 'C', $fill);
@@ -156,7 +156,7 @@ foreach ( $invoiceNegTypes as $invoiceNegType ) {
     $pdf->Cell(20, 10, (""), 'B', 0, 'C', $fill);
     $pdf->Cell(36, 10, (""), 'B', 0, 'C', $fill);
     $pdf->Cell(25, 10, (""), 'B', 0, 'C', $fill);
-    $pdf->Cell(25, 10, ($invoiceNegType->getTotal()), 'RB', 0, 'R', $fill);
+    $pdf->Cell(25, 10, ($invoiceType->getTotal()), 'RB', 0, 'R', $fill);
     $pdf->Ln();
 
   $fill = !$fill;
@@ -200,7 +200,7 @@ $fill = false;
 $row = 0;
 
 
-foreach ( $invoiceTypes as $invoiceType ) {
+foreach ( $invoiceNegTypes as $invoiceNegType ) {
 
     
     if( $pdf->GetY() >= 190){
@@ -230,7 +230,7 @@ foreach ( $invoiceTypes as $invoiceType ) {
     $pdf->SetFillColor( $tableRowFillColour[0], $tableRowFillColour[1], $tableRowFillColour[2] );
     $pdf->SetFont( 'Arial', '', 10 );
 
-    $pdf->Cell(28, 10, ($invoiceType->getInvoice_type()), 'LT', 0, 'C', $fill);
+    $pdf->Cell(28, 10, ($invoiceNegType->getInvoice_type()), 'LT', 0, 'C', $fill);
     $pdf->Cell(36, 10, (""), 'T', 0, 'C', $fill);
     $pdf->Cell(16, 10, (""), 'T', 0, 'C', $fill);
     $pdf->Cell(20, 10, (""), 'T', 0, 'C', $fill);
@@ -238,13 +238,13 @@ foreach ( $invoiceTypes as $invoiceType ) {
     $pdf->Cell(25, 10, (""), 'T', 0, 'C', $fill);
     $pdf->Cell(25, 10, (""), 'RT', 0, 'C', $fill);
     $pdf->Ln();
-    foreach ($invoiceType->getReportPropertys() as $reportProperty) {
+    foreach ($invoiceNegType->getReportPropertys() as $reportNegProperty) {
         $pdf->Cell(28, 10, (""), 'L', 0, 'C', $fill);
-        $pdf->Cell(36, 10, ($reportProperty->getStreet()), 0, 0, 'C', $fill);
-        $pdf->Cell(16, 10, ($reportProperty->getStreetnumber()), 0, 0, 'C', $fill);
-        $pdf->Cell(20, 10, ($reportProperty->getPostcode()), 0, 0, 'C', $fill);
-        $pdf->Cell(36, 10, ($reportProperty->getCity()), 0, 0, 'C', $fill);
-        $pdf->Cell(25, 10, ($reportProperty->getTotal()), 0, 0, 'R', $fill);
+        $pdf->Cell(36, 10, ($reportNegProperty->getStreet()), 0, 0, 'C', $fill);
+        $pdf->Cell(16, 10, ($reportNegProperty->getStreetnumber()), 0, 0, 'C', $fill);
+        $pdf->Cell(20, 10, ($reportNegProperty->getPostcode()), 0, 0, 'C', $fill);
+        $pdf->Cell(36, 10, ($reportNegProperty->getCity()), 0, 0, 'C', $fill);
+        $pdf->Cell(25, 10, ($reportNegProperty->getTotal()), 0, 0, 'R', $fill);
         $pdf->Cell(25, 10, (""), 'R', 0, 'C', $fill);
         $pdf->Ln();
     }
@@ -254,7 +254,7 @@ foreach ( $invoiceTypes as $invoiceType ) {
     $pdf->Cell(20, 10, (""), 'B', 0, 'C', $fill);
     $pdf->Cell(36, 10, (""), 'B', 0, 'C', $fill);
     $pdf->Cell(25, 10, (""), 'B', 0, 'C', $fill);
-    $pdf->Cell(25, 10, ($invoiceType->getTotal()), 'RB', 0, 'R', $fill);
+    $pdf->Cell(25, 10, ($invoiceNegType->getTotal()), 'RB', 0, 'R', $fill);
     $pdf->Ln();
 
   $fill = !$fill;
