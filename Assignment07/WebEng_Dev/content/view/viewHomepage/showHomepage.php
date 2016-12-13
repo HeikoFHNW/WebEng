@@ -6,6 +6,17 @@ if(!isset($_SESSION['login_user']))
     exit;
 }
 ?>
+
+<header></header>
+<style>
+header {
+  background-image:url(../../img/street-1431207_1280.jpg);
+  background-size:cover ;
+  height: 400px;
+}
+
+</style>
+
 <div class="container">
     <div class="row">
         <h3>Home</h3>
