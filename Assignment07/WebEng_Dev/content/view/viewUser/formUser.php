@@ -65,18 +65,3 @@
             
     </div>
 </div>
-  <div class="form-check">
-    <label class="form-check-label">
-      <input type="hidden" name="locked" value="0">
-      <input name="locked" value="1" type="checkbox" class="form-check-input">
-      Gesperrt
-    </label>
-  </div>
-  <div class="form-check">
-    <label class="form-check-label">
-      <input type="hidden" name="admin" value="0">  
-      <input name="admin" value="1" type="checkbox" class="form-check-input">
-      Admin-Rechte
-    </label>
-  </div>
-
