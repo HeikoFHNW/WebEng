@@ -9,7 +9,7 @@ if(!isset($_SESSION['login_user']))
 
 <div class="container">
     <div class="row">
-        <h3>Tenant Overview</h3>
+        <h3>Mieterübersicht</h3>
     </div>
     <div class="row">
         <p>

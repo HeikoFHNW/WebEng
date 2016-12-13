@@ -37,7 +37,7 @@ if(!isset($_SESSION['login_user']))
 
     <div class="span10 offset1">
         <div class="row">
-            <h3>Create a Tenant</h3>
+            <h3>Mieter erstellen</h3>
         </div>
 
         <form class="form-horizontal" action="?controller=Tenant&action=create"  onsubmit="return validateMieterForm()" onkeyup="return validateMieterForm()" method="post">

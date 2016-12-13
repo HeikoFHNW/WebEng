@@ -32,7 +32,7 @@ if(!isset($_SESSION['login_user']))
 
     <div class="span10 offset1">
         <div class="row">
-            <h3>Update a Invoice</h3>
+            <h3>Rechnung ändern</h3>
         </div>
 
         <form class="form-horizontal" action="?controller=Invoice&action=update&id_invoice=<?php echo $invoice->getId_invoice() ?>" onsubmit="return validateInvoiceForm()" onkeyup="return validateInvoiceForm()" method="post">
@@ -50,6 +50,8 @@ if(!isset($_SESSION['login_user']))
         function validateInvoiceForm(){
   
                 var a = (notEmpty(fI_amount) && isNumber(fI_amount));
+                
+                var b = notEmpty(datepicker);
                 
                 var c = (notEmpty(fI_id_tenancy_agreement)&& isNumber(fI_id_tenancy_agreement));
                 
@@ -76,7 +78,7 @@ if(!isset($_SESSION['login_user']))
             
             
             
-            if (a&&c&&e){
+            if (a&&b&&c&&e){
                 return true;
             }else{
                 return false;

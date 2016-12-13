@@ -49,7 +49,7 @@ if(!isset($_SESSION['login_user']))
 
     <div class="span10 offset1">
         <div class="row">
-            <h3>Update a Tenancy_agreement</h3>
+            <h3>Mietvertrag ändern</h3>
         </div>
 
         <form class="form-horizontal" action="?controller=Tenancy_agreement&action=update&id_tenancy_agreement=<?php echo $tenancy_agreement->getId_tenancy_agreement() ?>" onsubmit="return validateVertragForm()" onkeyup="return validateVertragForm()" method="post">

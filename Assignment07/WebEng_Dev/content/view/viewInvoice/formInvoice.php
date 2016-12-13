@@ -1,5 +1,5 @@
 <div class="control-group <?php echo !empty($invoiceValidator->getAmountError()) ? 'error' : ''; ?>">
-    <label class="control-label">Betrag:</label>
+    <label class="control-label">Betrag*</label>
     <div class="controls">
         <input name="amount" type="text" id="fI_amount" placeholder="CHF" 
                value="<?php echo !empty($invoice->getAmount()) ? $invoice->getAmount() : ''; ?>">
@@ -10,7 +10,7 @@
     </div>
 </div>
 <div class="control-group <?php echo !empty($invoiceValidator->getInvoice_dateError()) ? 'error' : ''; ?>">
-    <label class="control-label">Rechnungsdatum</label>
+    <label class="control-label">Rechnungsdatum*</label>
     <div class="controls">
         <input name="invoice_date" type="text" id="datepicker" placeholder="DD/MM/YYYY" 
                value="<?php echo !empty($invoice->getInvoice_date()) ? $invoice->getInvoice_date() : ''; ?>">
@@ -21,7 +21,7 @@
     </div>
 </div>
 <div class="control-group <?php echo !empty($invoiceValidator->getId_tenancy_agreementError()) ? 'error' : ''; ?>">
-    <label class="control-label">Vertragsid:</label>
+    <label class="control-label">Vertragsid*</label>
     <div class="controls">
         <input name="id_tenancy_agreement" type="text" id="fI_id_tenancy_agreement" placeholder="Nr." 
                value="<?php echo !empty($invoice->getId_tenancy_agreement()) ? $invoice->getId_tenancy_agreement() : ''; ?>">
@@ -32,7 +32,7 @@
     </div>
 </div>
 <div class="control-group <?php echo !empty($invoiceValidator->getInvoice_typeError()) ? 'error' : ''; ?>">
-    <label class="control-label">Rechnungstyp:</label>
+    <label class="control-label">Rechnungstyp</label>
     <div class="controls">
         <select name="invoice_type" type="text" id="fI_invoice_type" placeholder="Miete/Reparatur/Nebenkosten"
                value="<?php echo !empty($invoice->getInvoice_type()) ? $invoice->getInvoice_type() : ''; ?>">
@@ -51,7 +51,7 @@
     </div>    
 </div>
 <div class="control-group <?php echo !empty($invoiceValidator->getInvoicenrError()) ? 'error' : ''; ?>">
-    <label class="control-label">Rechnungsnr:</label>
+    <label class="control-label">Rechnungsnr*</label>
     <div class="controls">
         <input name="invoicenr" type="text" id="fI_Invoicenr" placeholder="Nr." 
                value="<?php echo !empty($invoice->getInvoicenr()) ? $invoice->getInvoicenr() : ''; ?>">
@@ -62,7 +62,7 @@
     </div>
 </div>
 <div class="control-group">
-    <label class="control-label">Kommentar:</label>
+    <label class="control-label">Kommentar</label>
     <div class="controls">
         <textarea rows = "5" name="comment" type="text" placeholder="Fliesstext">
             <?php echo !empty($invoice->getComment()) ? $invoice->getComment() : ''; ?>

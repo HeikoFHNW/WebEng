@@ -54,7 +54,7 @@ if(!isset($_SESSION['login_user']))
 
     <div class="span10 offset1">
         <div class="row">
-            <h3>Create a Tenancy_agreement</h3>
+            <h3>Mietvertrag anlegen</h3>
         </div>
 
         <form class="form-horizontal" action="?controller=Tenancy_agreement&action=create"  onsubmit="return validateVertragForm()" onkeyup="return validateVertragForm()" method="post">
