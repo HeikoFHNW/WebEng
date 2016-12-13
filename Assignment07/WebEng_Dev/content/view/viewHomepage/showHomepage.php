@@ -11,7 +11,9 @@ if(!isset($_SESSION['login_user']))
 <style>
 header {
   background-image:url(../../img/street-1431207_1280.jpg);
-  background-size:cover ;
+  background-repeat:no-repeat;
+  background-size:contain;
+  background-position:center;
   height: 400px;
 }
 
