@@ -49,7 +49,7 @@ if(!isset($_SESSION['login_user']))
          <form class="form-horizontal" action="?controller=AnnualStatement&action=show"  onsubmit="return validateAuxiliaryCostForm()" onkeyup="return validateAuxiliaryForm()" method="post">
             <?php include_once("formAnnualStatement.php"); ?>
             <div class="form-actions">
-                <button type="submit" class="btn btn-success">Nebenkostenabrechnung</button>
+                <button type="submit" class="btn btn-success">Jahresabrechnung</button>
                 <a class="btn" href="?controller=Homepage&action=show">Zurück</a>
             </div>
         </form>   
