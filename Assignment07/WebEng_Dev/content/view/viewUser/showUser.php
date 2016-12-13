@@ -24,8 +24,6 @@ if(!isset($_SESSION['login_user']))
                 <th>Benutzername</th>
                 <!--<th>Passwort</th>-->
                 <th>Email</th>
-                <th>lock</th>
-                <th>Admin</th>
                 <th>Action</th>
             </tr>
             </thead>
@@ -39,8 +37,6 @@ if(!isset($_SESSION['login_user']))
                 echo '<td>' . $user->getUsername() . '</td>';
                // echo '<td>' . $user->getPassword() . '</td>';
                 echo '<td>' . $user->getEmail() . '</td>';
-                echo '<td>' . $user->getLocked() . '</td>';
-                echo '<td>' . $user->getAdmin() . '</td>';
                 echo '<td width=250>';
                 echo '<a class="btn" href="?controller=User&action=read&id_user=' . $user->getId_user() . '"><span class="glyphicon glyphicon-zoom-in" aria-hidden="true"></span></a>';
                 echo '&nbsp;';
