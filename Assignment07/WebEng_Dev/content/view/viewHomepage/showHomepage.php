@@ -58,6 +58,9 @@ if(!isset($_SESSION['login_user']))
             ?>
             </tbody>
         </table>
+            <div class="form-actions" >
+                <h4>© Alexander Noever, Heiko Meyer und Simon Zahnd Fachhochschule Nordwestschweiz Studiengang für Wirtschaftsinformatiker</h4>
+            </div>
     </div>
 </div>
 
