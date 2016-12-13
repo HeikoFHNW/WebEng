@@ -42,10 +42,10 @@ class InvoiceValidator
             
            
                 
-                if(!is_numeric($this->invoice->getAmount()) || empty($this->invoice->getAmount())){
-                    $this->amountError = 'Bitte keine Buchstaben';
-                    $this->valid = false;
-                }
+            if(!is_numeric($this->invoice->getAmount()) || empty($this->invoice->getAmount())){
+                $this->amountError = 'Bitte keine Buchstaben';
+                $this->valid = false;
+            }
             
             
             
@@ -65,14 +65,16 @@ class InvoiceValidator
             if (!is_numeric($this->invoice->getInvoicenr())|| empty($this->invoice->getInvoicenr())){
                     $this->invoicenrError = 'Bitte keine Buchstaben';
                     $this->valid = false;
+            }
                 
-            }else {
+        }else {
                     $this->valid = false;
             }
-        }
+            
         return $this->valid;
-             
+        
     }
+             
     function getInvoice() {
         return $this->invoice;
     }

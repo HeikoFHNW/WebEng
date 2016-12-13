@@ -1,3 +1,11 @@
+<?PHP
+
+if(!isset($_SESSION['login_user']))
+{
+    Route::call('User', 'loginShow');
+    exit;
+}
+?>
 <link rel='stylesheet' href='//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css'> 
 <link rel='stylesheet' href='/resources/demos/style.css'>
 

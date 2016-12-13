@@ -1,5 +1,32 @@
+<?PHP
+
+if(!isset($_SESSION['login_user']))
+{
+    Route::call('User', 'loginShow');
+    exit;
+}
+?>
 <link rel='stylesheet' href='//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css'> 
 <link rel='stylesheet' href='/resources/demos/style.css'>
+
+<script>
+    
+    $( function() {
+    $( "#datepicker" ).datepicker({ 
+    dateFormat: 'yy-mm-dd',
+    maxDate: '0',
+    changeMonth: true,
+    changeYear: true,
+    onClose: function(){ this.focus()}
+       }).val();
+    });
+    </script>
+    
+<script>  
+ window.onload = function setReady() {
+ document.getElementById("datepicker").readOnly = true;
+} 
+</script>
 
 <div class="container">
 
@@ -8,7 +35,7 @@
             <h3>Update a Invoice</h3>
         </div>
 
-        <form class="form-horizontal" action="?controller=Invoice&action=update&id_invoice=<?php echo $invoice->getId_invoice() ?>" onkeyup="return validateInvoiceForm()" method="post">
+        <form class="form-horizontal" action="?controller=Invoice&action=update&id_invoice=<?php echo $invoice->getId_invoice() ?>" onsubmit="return validateInvoiceForm()" onkeyup="return validateInvoiceForm()" method="post">
             <?php include_once("formInvoice.php"); ?>
             <div class="form-actions">
                 <button type="submit" class="btn btn-success">Update</button>
@@ -22,33 +49,34 @@
 <script>
         function validateInvoiceForm(){
   
+                var a = (notEmpty(fI_amount) && isNumber(fI_amount));
                 
-                var a = (notEmpty(fP_strasse)&&isText(fP_strasse));
-                var b = (notEmpty(fP_ort)&&isText(fP_ort));
-                var c = (notEmpty(fP_plz)&&isNumber(fP_plz));
-                var d = notEmpty(fP_strassennummer);
+                var c = (notEmpty(fI_id_tenancy_agreement)&& isNumber(fI_id_tenancy_agreement));
+                
+                var e = (notEmpty(fI_Invoicenr)&&isNumber(fI_Invoicenr));
+                
                
-            
-            
-           if (a){
-                isNotTextMessageStreet.innerHTML = "";
+            if (a){
+                amountMessage.innerHTML = "";
             }else{
-                isNotTextMessageStreet.innerHTML = "Bitte keine Zahlen verwenden.";
+                amountMessage.innerHTML = "Bitte keine Buchstaben verwenden.";
             }
-            
-            if (b){
-                isNotTextMessageOrt.innerHTML = "";
-            }else{
-                isNotTextMessageOrt.innerHTML = "Bitte keine Zahlen verwenden.";
-            }
-            
+
             if (c){
-                plzMessage.innerHTML = "";
+                id_tenancy_agreementMessage.innerHTML = "";
             }else{
-                plzMessage.innerHTML = "Bitte keine Buchstaben.";
+                id_tenancy_agreementMessage.innerHTML = "Bitte keine Buchstaben verwenden.";
             }
-           
-            if (a&&b&&c&&d){
+         
+            if (e){
+                invoicenrMessage.innerHTML = "";
+            }else{
+                invoicenrMessage.innerHTML = "Bitte keine Buchstaben verwenden.";
+            }
+            
+            
+            
+            if (a&&c&&e){
                 return true;
             }else{
                 return false;

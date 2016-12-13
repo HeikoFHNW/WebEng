@@ -1,6 +1,6 @@
 <?php
 
-include "../dao/AbstractDAO.php";
+include_once "../dao/AbstractDAO.php";
 include "../dao/userDAO/UserDAOInterface.php";
 /**
  * Created by PhpStorm.

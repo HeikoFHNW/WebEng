@@ -9,6 +9,5 @@ require_once('routes.php');
 Route::call($controller, $action);
 ?>
 
-
 </body>
 </html>

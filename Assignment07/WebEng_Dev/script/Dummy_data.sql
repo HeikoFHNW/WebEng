@@ -17,43 +17,42 @@ INSERT IGNORE INTO adress (street, streetnumber, postcode)
             ('Neumattstrasse', '4', '5004'),
             ('Pilatusstrasse', '16', '6000'),
             ('Obermattstrasse', '2', '6045'),
-            ('Von Rollstrasse', '10', '4600')
+            ('Von Rollstrasse', '10', '4600');
 
             
 INSERT INTO tenant (title, firstname, lastname, birthday, marital_status, phone, mobile, email, id_adress)
-    VALUES ('Herr', 'Clint', 'Eastwood', '1930-05-31', 'ledig', '058 854 96 21', '078 854 96 21', 'clint@gmail.com', (SELECT id_adress FROM adress WHERE street = 'Chaltenbodenstrasse' AND streetnumber = '6' AND postcode = '8834')),
-            ('Herr', 'Thomas', 'Hanne', '1964-07-12', 'verheiratet', '058 246 75 95', '079 246 75 95', 'thomas@gmail.com', (SELECT id_adress FROM adress WHERE street = 'Neumattstrasse' AND streetnumber = '4' AND postcode = '5004')),
-            ('Herr', 'Janosch', 'Nietlispach', '1988-02-28', 'ledig', '058 465 55 86', '079 465 55 86', 'janosch@gmail.com', (SELECT id_adress FROM adress WHERE street = 'Pilatusstrasse' AND streetnumber = '16' AND postcode = '6000')),
-            ('Herr', 'Rainer', 'Telesko', '1968-09-23', 'verheiratet', '058 788 98 56', '078 788 98 56', 'rainer@gmail.com', (SELECT id_adress FROM adress WHERE street = 'Von Rollstrasse' AND streetnumber = '10' AND postcode = '4600')),
-            ('Herr', 'Hakan', 'Yakin', '1977-02-22', 'verheiratet', '062 122 35 66', '079 122 35 66', 'hakan@gmail.com', (SELECT id_adress FROM adress WHERE street = 'Obermattstrasse' AND streetnumber = '2' AND postcode = '6045'));
+    VALUES ('Herr', 'Clint', 'Eastwood', '1930-05-31', 'ledig', '058 854 96 21', '078 854 96 21', 'clint@gmail.com', '1'),
+            ('Herr', 'Thomas', 'Hanne', '1964-07-12', 'verheiratet', '058 246 75 95', '079 246 75 95', 'thomas@gmail.com', '2'),
+            ('Herr', 'Janosch', 'Nietlispach', '1988-02-28', 'ledig', '058 465 55 86', '079 465 55 86', 'janosch@gmail.com', '3'),
+            ('Herr', 'Rainer', 'Telesko', '1968-09-23', 'verheiratet', '058 788 98 56', '078 788 98 56', 'rainer@gmail.com', '4'),
+            ('Herr', 'Hakan', 'Yakin', '1977-02-22', 'verheiratet', '062 122 35 66', '079 122 35 66', 'hakan@gmail.com', '5');
 
 INSERT INTO property (id_adress)
-    VALUES ((SELECT id_adress FROM adress WHERE street = 'Chaltenbodenstrasse' AND streetnumber = '6' AND postcode = '8834')),
-            ((SELECT id_adress FROM adress WHERE street = 'Pilatusstrasse' AND streetnumber = '16' AND postcode = '6000'));
+    VALUES ('1'),
+            ('2');
 
 INSERT INTO apartment (id_property, apartment_type, rooms, squaremeter)
-    VALUES ((SELECT id_property FROM property WHERE id_property = 1), 'Attika', '6.5', '320'),
-            ((SELECT id_property FROM property WHERE id_property = 1), 'Loft', '3.5', '600'),
-            ((SELECT id_property FROM property WHERE id_property = 2), '3.OG', '4.5', '200'),
-            ((SELECT id_property FROM property WHERE id_property = 2), '4.OG', '4.5', '200'),
-            ((SELECT id_property FROM property WHERE id_property = 2), '5.OG', '5.5', '220');
+    VALUES ('1', 'Attika', '6.5', '320'),
+            ('1', 'Loft', '3.5', '600'),
+            ('2', '3.OG Ost', '4.5', '200'),
+            ('2', '4.OG West', '4.5', '235'),
+            ('2', '5.OG Ost', '5.5', '220'),
+            ('2', '1.OG Nord', '4.5', '140'),
+            ('2', '1.OG West', '4.5', '120'),
+            ('2', '2.OG Nord', '4.5', '140'),
+            ('2', '2.OG West', '4.5', '120'),
+            ('2', '2.OG Ost', '4.5', '120'),
+            ('2', '3.OG West', '5.5', '200'),
+            ('2', '4.OG Ost', '5.5', '220'),
+            ('2', '5.OG West', '5.5', '235'),
+            ('2', '1.OG Ost', '4.5', '120');
 
 INSERT INTO tenancy_agreement (id_tenant, id_apartment, start_of_tenancy, end_of_tenancy, netrent, cancellationterms)
-            VALUES ((SELECT id_tenant FROM tenant WHERE id_tenant = '1'), 
-                    (SELECT id_apartment FROM apartment WHERE id_apartment = '1'),
-                    '2005-09-01', '2018-09-30', '8000', '3 Monate'),
-                    ((SELECT id_tenant FROM tenant WHERE id_tenant = '2'), 
-                    (SELECT id_apartment FROM apartment WHERE id_apartment = '2'),
-                    '2010-05-01', '2099-12-31', '10000', '3 Monate'),
-                    ((SELECT id_tenant FROM tenant WHERE id_tenant = '3'), 
-                    (SELECT id_apartment FROM apartment WHERE id_apartment = '3'),
-                    '2008-03-01', '2099-12-31', '2250', '3 Monate'),
-                    ((SELECT id_tenant FROM tenant WHERE id_tenant = '4'), 
-                    (SELECT id_apartment FROM apartment WHERE id_apartment = '4'),
-                    '2006-09-01', '2018-01-31', '2350', '3 Monate'),
-                    ((SELECT id_tenant FROM tenant WHERE id_tenant = '5'), 
-                    (SELECT id_apartment FROM apartment WHERE id_apartment = '5'),
-                    '2000-09-01', '2020-06-30', '2800', '3 Monate');
+            VALUES ('1', '1','2005-09-01', '2018-09-30', '8000', '3 Monate'),
+                    ('2', '2','2010-05-01', '', '10000', '3 Monate'),
+                    ('3', '3','2008-03-01', '', '2250', '3 Monate'),
+                    ('4', '4','2006-09-01', '2018-01-31', '2350', '3 Monate'),
+                    ('5', '5','2000-09-01', '2020-06-30', '2800', '3 Monate');
 
 
 INSERT INTO invoice (amount, invoice_date, id_tenancy_agreement, invoice_type, invoicenr, `comment`, payed)
@@ -72,7 +71,20 @@ INSERT INTO invoice (amount, invoice_date, id_tenancy_agreement, invoice_type, i
             ('10000', '2016-09-30', '2', 'Miete', '16093002', 'Monatsmiete Oktober', '1'),
             ('8000', '2016-09-30', '3','Miete', '16093003', 'Monatsmiete Oktober', '1'),
             ('2250', '2016-09-30', '4', 'Miete', '16093004', 'Monatsmiete Oktober', '1'),
-            ('2350', '2016-09-30', '5', 'Miete', '16093005', 'Monatsmiete Oktober', '1');
-
-
-invoice.invoice_date BETWEEN CAST('2000-01-01' AS DATE) AND CAST('2016-12-12' AS DATE)
+            ('2350', '2016-09-30', '5', 'Miete', '16093005', 'Monatsmiete Oktober', '1'),
+            ('1950', '2016-09-30', '1', 'Wasser', '16093006', 'Jahresrechnung Wasser 2016', '1'),
+            ('2000', '2016-09-30', '2', 'Wasser', '16093006', 'Jahresrechnung Wasser 2016', '1'),
+            ('1000', '2016-09-30', '3','Wasser', '16093006', 'Jahresrechnung Wasser 2016', '1'),
+            ('1150', '2016-09-30', '4', 'Wasser', '16093006', 'Jahresrechnung Wasser 2016', '0'),
+            ('1200', '2016-09-30', '5', 'Wasser', '16093006', 'Jahresrechnung Wasser 2016', '0'),
+            ('2400', '2016-12-01', '1', 'Strom', '16120101', 'Jahresrechnung Strom 2016', '0'),
+            ('3600', '2016-12-01', '2', 'Strom', '16120101', 'Jahresrechnung Strom 2016', '0'),
+            ('2000', '2016-12-01', '3', 'Strom', '16120101', 'Jahresrechnung Strom 2016', '0'),
+            ('2120', '2016-12-01', '4', 'Strom', '16120101', 'Jahresrechnung Strom 2016', '0'),
+            ('2250', '2016-12-01', '5', 'Strom', '16120101', 'Jahresrechnung Strom 2016', '0'),
+            ('3950', '2016-12-01', '1', 'Oel', '16120102', 'Jahresrechnung Oel 2016', '0'),
+            ('4200', '2016-12-01', '2', 'Oel', '16120102', 'Jahresrechnung Oel 2016', '0'),
+            ('1950', '2016-12-01', '3', 'Oel', '16120102', 'Jahresrechnung Oel 2016', '0'),
+            ('2150', '2016-12-01', '4', 'Oel', '16120102', 'Jahresrechnung Oel 2016', '0'),
+            ('2400', '2016-12-01', '5', 'Oel', '16120102', 'Jahresrechnung Oel 2016', '0');
+            

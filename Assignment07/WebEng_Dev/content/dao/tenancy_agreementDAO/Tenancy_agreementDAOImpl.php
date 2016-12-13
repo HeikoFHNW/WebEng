@@ -111,7 +111,7 @@ class Tenancy_agreementDAOImpl extends AbstractDAO implements Tenancy_agreementD
     public function findAll()
     {
         $stmt = $this->pdoInstance->prepare('
-            SELECT tenancy_agreement.id_tenancy_agreement, tenancy_agreement.start_of_tenancy, tenancy_agreement.end_of_tenancy, tenancy_agreement.netrent, tenancy_agreement.cancellationterms, tenancy_agreement.id_apartment, tenancy_agreement.id_tenant, adress.street, adress.streetnumber, city.postcode, city.city
+            SELECT tenancy_agreement.id_tenancy_agreement, tenant.firstname, tenant.lastname, tenancy_agreement.start_of_tenancy, tenancy_agreement.end_of_tenancy, tenancy_agreement.netrent, tenancy_agreement.cancellationterms, tenancy_agreement.id_apartment, tenancy_agreement.id_tenant, adress.street, adress.streetnumber, city.postcode, city.city
                 FROM tenancy_agreement
                 JOIN apartment
                     ON tenancy_agreement.id_apartment=apartment.id_apartment

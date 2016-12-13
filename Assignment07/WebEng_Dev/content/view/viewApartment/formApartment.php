@@ -1,3 +1,11 @@
+<?PHP
+
+if(!isset($_SESSION['login_user']))
+{
+    Route::call('User', 'loginShow');
+    exit;
+}
+?>
 <div class="control-group <?php echo !empty($apartmentValidator->getApartment_typeError()) ? 'error' : ''; ?>">
     <label class="control-label">Apartment Typ:</label>
     <div class="controls">

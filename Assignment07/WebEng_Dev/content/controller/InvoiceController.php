@@ -10,7 +10,6 @@ class InvoiceController
 
     public function show()
     {
-        if(!isset($_SESSION)) 
         $invoices = (new InvoiceDAOImpl(Database::connect()))->findAll();
         require_once('../view/viewInvoice/showInvoice.php');
     }

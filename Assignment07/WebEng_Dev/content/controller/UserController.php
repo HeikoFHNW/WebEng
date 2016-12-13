@@ -1,6 +1,6 @@
 <?php
 
-include '../dao/Database.php';
+include_once '../dao/Database.php';
 include '../dao/userDAO/UserDAOImpl.php';
 include '../validator/UserValidator.php';
 
@@ -131,7 +131,7 @@ class UserController
     }
     
     public function logout(){
-        session_start();
+        if(!isset($_SESSION)){ session_start(); }
         if(session_destroy()){
             return Route::call('User', 'loginShow');
         }

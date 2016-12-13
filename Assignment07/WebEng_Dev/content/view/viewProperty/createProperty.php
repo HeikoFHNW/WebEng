@@ -1,3 +1,11 @@
+<?PHP
+
+if(!isset($_SESSION['login_user']))
+{
+    Route::call('User', 'loginShow');
+    exit;
+}
+?>
 <?php include ("../../content/includes/head.inc.php");?>
 
 <div class="container">

@@ -1,3 +1,12 @@
+<?PHP
+
+if(!isset($_SESSION['login_user']))
+{
+    Route::call('User', 'loginShow');
+    exit;
+}
+?>
+
 <div class="container">
     <div class="row">
         <h3>Tenant Overview</h3>

@@ -1,3 +1,11 @@
+<?PHP
+
+if(!isset($_SESSION['login_user']))
+{
+    Route::call('User', 'loginShow');
+    exit;
+}
+?>
 <div class="container">
 
     <div class="span10 offset1">
@@ -43,12 +51,11 @@
                 <div class="controls">
                     <label class="checkbox">
                         <?php echo $property->getCity(); ?>
-            <div class="form-actions">
-                <a class="btn" href="?controller=Property&action=show">Back</a>
+                    <div class="form-actions">
+                        <a class="btn" href="?controller=Property&action=show">Back</a>
+                    </div>
+                </div>
             </div>
-
-
         </div>
     </div>
-
 </div>

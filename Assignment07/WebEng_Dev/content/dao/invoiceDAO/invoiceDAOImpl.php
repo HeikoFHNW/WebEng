@@ -149,5 +149,34 @@ class InvoiceDAOImpl extends AbstractDAO implements InvoiceDAOInterface
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_CLASS, 'Invoice');
     }
+    
+    public function findAllOpenOld($days)
+    {
+        $stmt = $this->pdoInstance->prepare('
+        SELECT invoice.id_invoice, invoice.amount, invoice.invoice_date, invoice.id_tenancy_agreement, invoice.invoice_type, invoice.invoicenr, invoice.comment, invoice.payed,
+            apartment.id_apartment, 
+            property.id_property, 
+            adress.street, adress.streetnumber, adress.postcode, 
+            city.city, 
+            tenant.firstname, tenant.lastname 
+        FROM invoice 
+        JOIN tenancy_agreement 
+            ON invoice.id_tenancy_agreement=tenancy_agreement.id_tenancy_agreement 
+        JOIN apartment 
+            ON tenancy_agreement.id_apartment=apartment.id_apartment 
+        JOIN property 
+            ON apartment.id_property=property.id_property 
+        JOIN adress 
+            ON property.id_adress=adress.id_adress 
+        JOIN city 
+            ON adress.postcode=city.postcode 
+        JOIN tenant 
+            ON tenancy_agreement.id_tenant=tenant.id_tenant
+        WHERE DATEDIFF(NOW(),invoice.invoice_date)>=:days AND invoice.payed="0"
+        ');
+        $stmt->bindValue(':days', $days);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_CLASS, 'Invoice');
+    }
 
 }
