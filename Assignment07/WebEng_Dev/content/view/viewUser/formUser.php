@@ -33,6 +33,7 @@
     <div class="controls">
         <input name="password" type="password" id="password" placeholder="Passwort"
                value="<?php echo !empty($user->getPassword()) ? $user->getPassword() : ''; ?>">
+        <div id="complexity" class="default">Passwortstärke</div>
         <?php if (!empty($userValidator->getPasswordError())): ?>
             <span class="help-inline"><?php echo $userValidator->getPasswordError(); ?></span>
         <?php endif; ?>

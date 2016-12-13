@@ -17,8 +17,8 @@ if(!isset($_SESSION)){ session_start(); }
 </noscript>
 
 <script type='text/javascript' src='../validator_js/form_val_inc.js'> </script>
-<script type="text/javascript" src="../js/jquery.js"></script>
-<script type="text/javascript" src="../js/mocha.js"></script>
+<script type="text/javascript" src="../validator_js/jquery.js"></script>
+<script type="text/javascript" src="../validator_js/mocha.js"></script>
 <script type="text/javascript" src="../datatables/jQuery-2.2.3.js/jquery-2.2.3.js"></script>
 <script type="text/javascript" src="../datatables/js/jquery.dataTables.min.js"></script>
 
