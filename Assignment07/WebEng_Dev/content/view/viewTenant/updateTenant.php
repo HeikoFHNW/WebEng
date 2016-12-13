@@ -39,8 +39,8 @@ if(!isset($_SESSION['login_user']))
         <form class="form-horizontal" action="?controller=Tenant&action=update&id_tenant=<?php echo $tenant->getId_tenant() ?>" onsubmit="return validateMieterForm()"onkeyup="return validateMieterForm()" method="post">
             <?php include_once("formTenant.php"); ?>
             <div class="form-actions">
-                <button type="submit" class="btn btn-success">Update</button>
-                <a class="btn" href="?controller=Tenant&action=show">Back</a>
+                <button type="submit" class="btn btn-success">Ändern</button>
+                <a class="btn" href="?controller=Tenant&action=show">Zurück</a>
             </div>
         </form>
     </div>

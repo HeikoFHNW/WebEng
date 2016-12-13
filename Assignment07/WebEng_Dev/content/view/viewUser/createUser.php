@@ -18,8 +18,8 @@ if(!isset($_SESSION['login_user']))
         <form class="form-horizontal" action="?controller=User&action=create" onsubmit="return validateBenutzerForm()" onkeyup="return validateBenutzerForm()"  method="post">
             <?php include_once("formUser.php"); ?>
             <div class="form-actions">
-                <button type="submit"  class="btn btn-success">Create</button>
-                <a class="btn" href="?controller=User&action=show">Back</a>
+                <button type="submit"  class="btn btn-success">Erstellen</button>
+                <a class="btn" href="?controller=User&action=show">Zurück</a>
             </div>
         </form>
     </div>

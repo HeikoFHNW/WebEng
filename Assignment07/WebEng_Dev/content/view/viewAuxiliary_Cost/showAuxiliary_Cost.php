@@ -12,8 +12,8 @@ if(!isset($_SESSION['login_user']))
     </div>
     <div class="row">
         <p>
-            <a class="btn btn-success" href="../view/createAuxiliary_CostPDF.php" class="btn btn-success">Create PDF</a>
-            <a class="btn btn" href="?controller=AnnualStatement&action=home" class="btn btn">Back</a>
+            <a class="btn btn-success" href="../view/createAuxiliary_CostPDF.php" class="btn btn-success">PDF erstellen</a>
+            <a class="btn btn" href="?controller=AnnualStatement&action=home" class="btn btn">Zurück</a>
         </p>
         <table class="table table-bordered">
             <thead>

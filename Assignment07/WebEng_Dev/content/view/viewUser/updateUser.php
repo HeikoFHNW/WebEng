@@ -19,8 +19,8 @@ if(!isset($_SESSION['login_user']))
         <form class="form-horizontal" action="?controller=User&action=update&id_user=<?php echo $user->getId_user() ?>" onsubmit="return ValidateBenutzerForm()" onkeyup="return validateBenutzerForm()" method="post">
             <?php include_once("formUser.php"); ?>
             <div class="form-actions">
-                <button type="submit" class="btn btn-success">Update</button>
-                <a class="btn" href="?controller=User&action=show">Back</a>
+                <button type="submit" class="btn btn-success">Ändern</button>
+                <a class="btn" href="?controller=User&action=show">Zurück</a>
             </div>
         </form>
     </div>

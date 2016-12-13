@@ -18,8 +18,8 @@ if(!isset($_SESSION['login_user']))
         <form class="form-horizontal" action="?controller=Property&action=create" onsubmit="return validatePropertyForm()" onkeyup="return validatePropertyForm()" method="post">
             <?php include_once("formProperty.php"); ?>
             <div class="form-actions">
-                <button type="submit" class="btn btn-success">Create</button>
-                <a class="btn" href="?controller=Property&action=show">Back</a>
+                <button type="submit" class="btn btn-success">Erstellen</button>
+                <a class="btn" href="?controller=Property&action=show">Zurück</a>
             </div>
         </form>
     </div>

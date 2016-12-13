@@ -12,7 +12,7 @@ if(!isset($_SESSION['login_user']))
     </div>
     <div class="row">
         <p>
-            <a href="?controller=Invoice&action=create" class="btn btn-success">Create</a>
+            <a href="?controller=Invoice&action=create" class="btn btn-success">Erstellen</a>
         </p>
         <table data-toggle="table" data-sort-name="payed" data-sort-order="asc">
             <thead>

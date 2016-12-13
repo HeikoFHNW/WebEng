@@ -17,8 +17,8 @@ if(!isset($_SESSION['login_user']))
         <form class="form-horizontal" action="?controller=Property&action=update&id_property=<?php echo $property->getId_property() ?>" onsubmit="return validatePropertyForm()" onkeyup="return validatePropertyForm()" method="post">
             <?php include_once("formProperty.php"); ?>
             <div class="form-actions">
-                <button type="submit" class="btn btn-success">Update</button>
-                <a class="btn" href="?controller=Property&action=show">Back</a>
+                <button type="submit" class="btn btn-success">Ändern</button>
+                <a class="btn" href="?controller=Property&action=show">Zurück</a>
             </div>
         </form>
     </div>

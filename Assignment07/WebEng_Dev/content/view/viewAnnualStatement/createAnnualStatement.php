@@ -50,7 +50,7 @@ if(!isset($_SESSION['login_user']))
             <?php include_once("formAnnualStatement.php"); ?>
             <div class="form-actions">
                 <button type="submit" class="btn btn-success">Nebenkostenabrechnung</button>
-                <a class="btn" href="?controller=Homepage&action=show">Back</a>
+                <a class="btn" href="?controller=Homepage&action=show">Zurück</a>
             </div>
         </form>   
 </div>

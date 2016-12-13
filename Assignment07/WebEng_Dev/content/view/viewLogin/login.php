@@ -8,7 +8,7 @@
             <?php include_once("formLogin.php"); ?>            
             <div class="form-actions">
                 <button type="submit" class="btn btn-success">Login</button>
-                <a class="btn" href="?controller=User&action=loginShow">Back</a>
+                <a class="btn" href="?controller=User&action=loginShow">Zurück</a>
             </div>
         </form>
     </div>

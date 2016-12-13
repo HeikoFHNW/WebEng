@@ -17,8 +17,8 @@ if(!isset($_SESSION['login_user']))
             <input type="hidden" name="id_apartment" value="<?php echo $apartment->getId_apartment(); ?>"/>
             <p class="alert alert-error">Wollen Sie den Eintrag löschen ?</p>
             <div class="form-actions">
-                <button type="submit" class="btn btn-danger">Yes</button>
-                <a class="btn" href="?controller=Apartment&action=show">No</a>
+                <button type="submit" class="btn btn-danger">Ja</button>
+                <a class="btn" href="?controller=Apartment&action=show">Nein</a>
             </div>
         </form>
     </div>

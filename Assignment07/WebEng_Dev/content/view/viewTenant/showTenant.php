@@ -13,7 +13,7 @@ if(!isset($_SESSION['login_user']))
     </div>
     <div class="row">
         <p>
-            <a href="?controller=Tenant&action=create" class="btn btn-success">Create</a>
+            <a href="?controller=Tenant&action=create" class="btn btn-success">Erstellen</a>
         </p>
 
         <table class="table table-striped table-bordered">

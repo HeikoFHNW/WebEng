@@ -38,8 +38,8 @@ if(!isset($_SESSION['login_user']))
         <form class="form-horizontal" action="?controller=Invoice&action=update&id_invoice=<?php echo $invoice->getId_invoice() ?>" onsubmit="return validateInvoiceForm()" onkeyup="return validateInvoiceForm()" method="post">
             <?php include_once("formInvoice.php"); ?>
             <div class="form-actions">
-                <button type="submit" class="btn btn-success">Update</button>
-                <a class="btn" href="?controller=Invoice&action=show">Back</a>
+                <button type="submit" class="btn btn-success">Ändern</button>
+                <a class="btn" href="?controller=Invoice&action=show">Zurück</a>
             </div>
         </form>
     </div>
