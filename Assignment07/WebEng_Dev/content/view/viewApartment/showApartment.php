@@ -13,7 +13,7 @@ if(!isset($_SESSION['login_user']))
     <div class="row">
         <p>
             <a class="btn btn-success" href="?controller=Apartment&action=create&id_property=' <?php  echo $_GET['id_property'] ?> '" class="btn btn-success">Create</a>
-            <a class="btn btn" href="?controller=Property&action=show" class="btn btn">Back</a>
+            <a class="btn btn" href="?controller=Property&action=show" class="btn btn">Zurück</a>
         </p>
 
         <table class="table table-striped table-bordered">

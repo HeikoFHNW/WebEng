@@ -55,8 +55,8 @@ if(!isset($_SESSION['login_user']))
         <form class="form-horizontal" action="?controller=Tenancy_agreement&action=update&id_tenancy_agreement=<?php echo $tenancy_agreement->getId_tenancy_agreement() ?>" onsubmit="return validateVertragForm()" onkeyup="return validateVertragForm()" method="post">
             <?php include_once("formTenancy_agreement.php"); ?>
             <div class="form-actions">
-                <button type="submit" class="btn btn-success">Update</button>
-                <a class="btn" href="?controller=Tenancy_agreement&action=show">Back</a>
+                <button type="submit" class="btn btn-success">Ändern</button>
+                <a class="btn" href="?controller=Tenancy_agreement&action=show">Zurück</a>
             </div>
         </form>
     </div>

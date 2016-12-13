@@ -20,8 +20,8 @@ if(!isset($_SESSION['login_user']))
         <form class="form-horizontal" action="?controller=Apartment&action=create" onsubmit="return validateApartmentForm()" onkeyup="return validateApartmentForm()" method="post">
             <?php include_once("formApartment.php"); ?>
             <div class="form-actions">
-                <button type="submit" class="btn btn-success">Create</button>
-                <a class="btn" href="?controller=Apartment&action=show">Back</a>
+                <button type="submit" class="btn btn-success">Erstellen</button>
+                <a class="btn" href="?controller=Apartment&action=show">Zurück</a>
             </div>
         </form>
     </div>

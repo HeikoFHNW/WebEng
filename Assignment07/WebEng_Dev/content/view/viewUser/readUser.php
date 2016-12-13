@@ -79,7 +79,7 @@ if(!isset($_SESSION['login_user']))
                 </div>
             </div>
             <div class="form-actions">
-                <a class="btn" href="?controller=User&action=show">Back</a>
+                <a class="btn" href="?controller=User&action=show">Zurück</a>
             </div>
 
 

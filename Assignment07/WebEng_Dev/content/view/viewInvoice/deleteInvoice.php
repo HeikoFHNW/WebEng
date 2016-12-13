@@ -17,8 +17,8 @@ if(!isset($_SESSION['login_user']))
             <input type="hidden" name="id_invoice" value="<?php echo $invoice->getId_invoice(); ?>"/>
             <p class="alert alert-error">Are you sure to delete ?</p>
             <div class="form-actions">
-                <button type="submit" class="btn btn-danger">Yes</button>
-                <a class="btn" href="?controller=Invoice&action=show">No</a>
+                <button type="submit" class="btn btn-danger">Ja</button>
+                <a class="btn" href="?controller=Invoice&action=show">Nein</a>
             </div>
         </form>
     </div>

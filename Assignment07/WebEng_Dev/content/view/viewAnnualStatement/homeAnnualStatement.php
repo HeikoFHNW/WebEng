@@ -16,6 +16,6 @@ if(!isset($_SESSION['login_user']))
             <div class="form-actions">
                 <a class="btn btn-success" href="?controller=AnnualStatement&action=create">Jahresabrechnung</a>
                 <a class="btn btn-success" href="?controller=AuxiliaryCost&action=create">Nebenkostenabrechnung</a>
-                <a class="btn" href="?controller=Homepage&action=show">Back</a>
+                <a class="btn" href="?controller=Homepage&action=show">Zurück</a>
             </div>    
 </div>

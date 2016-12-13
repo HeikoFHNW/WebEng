@@ -111,7 +111,7 @@ if(!isset($_SESSION['login_user']))
                 </div>
             </div>
             <div class="form-actions">
-                <a class="btn" href="?controller=Tenant&action=show">Back</a>
+                <a class="btn" href="?controller=Tenant&action=show">Zurück</a>
             </div>
 
 

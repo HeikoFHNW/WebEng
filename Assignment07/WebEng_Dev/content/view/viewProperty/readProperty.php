@@ -52,7 +52,7 @@ if(!isset($_SESSION['login_user']))
                     <label class="checkbox">
                         <?php echo $property->getCity(); ?>
                     <div class="form-actions">
-                        <a class="btn" href="?controller=Property&action=show">Back</a>
+                        <a class="btn" href="?controller=Property&action=show">Zurück</a>
                     </div>
                 </div>
             </div>
