@@ -19,8 +19,6 @@ lastname varchar(55),
 username varchar(55), 
 password varchar(55), 
 email varchar(55), 
-locked boolean, 
-admin boolean,
 PRIMARY KEY (id_user));
 
 CREATE TABLE property 
