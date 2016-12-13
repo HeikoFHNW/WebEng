@@ -10,7 +10,7 @@ if(!isset($_SESSION['login_user']))
 
     <div class="span10 offset1">
         <div class="row">
-            <h3>Read a Invoice</h3>
+            <h3>Rechnung anzeigen</h3>
         </div>
 
         <div class="form-horizontal">

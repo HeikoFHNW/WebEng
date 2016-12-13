@@ -1,5 +1,5 @@
 <div class="control-group <?php echo !empty($userValidator->getFirstnameError()) ? 'error' : ''; ?>">
-    <label class="control-label">Vorname</label>
+    <label class="control-label">Vorname*</label>
     <div class="controls">
         <input name="firstname" type="text" placeholder="Vorname" id="firstname"
                value="<?php echo !empty($user->getFirstname()) ? $user->getFirstname() : ''; ?>">
@@ -9,7 +9,7 @@
     </div>
 </div>
 <div class="control-group <?php echo !empty($userValidator->getLastnameError()) ? 'error' : ''; ?>">
-    <label class="control-label">Nachname</label>
+    <label class="control-label">Nachname*</label>
     <div class="controls">
         <input name="lastname" type="text" id="lastname" placeholder="Nachname"
                value="<?php echo !empty($user->getLastname()) ? $user->getLastname() : ''; ?>">
@@ -19,7 +19,7 @@
     </div>
 </div>
 <div class="control-group <?php echo !empty($userValidator->getUsernameError()) ? 'error' : ''; ?>">
-    <label class="control-label">Benutzername</label>
+    <label class="control-label">Benutzername*</label>
     <div class="controls">
         <input name="username" type="text" id="username" placeholder="Benutzername"
                value="<?php echo !empty($user->getUsername()) ? $user->getUsername() : ''; ?>">
@@ -29,7 +29,7 @@
     </div>
 </div>
 <div class="control-group <?php echo !empty($userValidator->getPasswordError()) ? 'error' : ''; ?>">
-    <label class="control-label">Passwort</label>
+    <label class="control-label">Passwort*</label>
     <div class="controls">
         <input name="password" type="password" id="password" placeholder="Passwort"
                value="<?php echo !empty($user->getPassword()) ? $user->getPassword() : ''; ?>">
@@ -40,7 +40,7 @@
 </div>
 
 <div class="control-group <?php echo !empty($userValidator->getPasswordError2()) ? 'error' : ''; ?>">
-    <label class="control-label">Passwort wiederholen</label>
+    <label class="control-label">Passwort wiederholen*</label>
     <div class="controls">
         <input name="password2" type="password" id="password2" placeholder="Passwort"
                value="<?php echo !empty($user->getPassword2()) ? $user->getPassword2() : ''; ?>">
@@ -52,7 +52,7 @@
     </div>
 </div>
 <div class="control-group <?php echo !empty($userValidator->getEmailError()) ? 'error' : ''; ?>">
-    <label class="control-label">Email Addresse</label>
+    <label class="control-label">Email Addresse*</label>
     <div class="controls">
         <input name="email" type="text" id="email" placeholder="Email Addresse" 
                value="<?php echo !empty($user->getEmail()) ? $user->getEmail() : ''; ?>">

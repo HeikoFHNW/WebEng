@@ -13,7 +13,7 @@ if(!isset($_SESSION['login_user']))
 
     <div class="span10 offset1">
         <div class="row">
-            <h3>Update a User</h3>
+            <h3>Benutzer ändern</h3>
         </div>
 
         <form class="form-horizontal" action="?controller=User&action=update&id_user=<?php echo $user->getId_user() ?>" onsubmit="return ValidateBenutzerForm()" onkeyup="return validateBenutzerForm()" method="post">

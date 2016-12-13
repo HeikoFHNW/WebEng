@@ -1,5 +1,5 @@
 <div class="control-group <?php echo !empty($propertyValidator->getStreetError()) ? 'error' : ''; ?>">
-    <label class="control-label">Strasse:</label>
+    <label class="control-label">Strasse*</label>
     <div class="controls">
         <input name="street" type="text" id="fP_strasse" placeholder="Strasse" 
                value="<?php echo !empty($property->getStreet()) ? $property->getStreet() : ''; ?>">
@@ -10,7 +10,7 @@
     </div>
 </div>
 <div class="control-group <?php echo !empty($propertyValidator->getStreetNumberError()) ? 'error' : ''; ?>">
-    <label class="control-label">Hausnummer:</label>
+    <label class="control-label">Hausnummer*</label>
     <div class="controls">
         <input name="streetnumber" type="text" id="fP_strassennummer" placeholder="Hausnr." 
                value="<?php echo !empty($property->getStreetnumber()) ? $property->getStreetnumber() : ''; ?>">
@@ -20,7 +20,7 @@
     </div>
 </div>
 <div class="control-group <?php echo !empty($propertyValidator->getPostcodeError()) ? 'error' : ''; ?>">
-    <label class="control-label">PLZ:</label>
+    <label class="control-label">PLZ*</label>
     <div class="controls">
         <input name="postcode" type="text" id="fP_plz" placeholder="PLZ" 
                value="<?php echo !empty($property->getPostcode()) ? $property->getPostcode() : ''; ?>">
@@ -31,7 +31,7 @@
     </div>
 </div>
 <div class="control-group <?php echo !empty($propertyValidator->getCityError()) ? 'error' : ''; ?>">
-    <label class="control-label">Ort:</label>
+    <label class="control-label">Ort*</label>
     <div class="controls">
         <input name="city" type="text" id="fP_ort" placeholder="Wohnort"
                value="<?php echo !empty($property->getCity()) ? $property->getCity() : ''; ?>">

@@ -11,7 +11,7 @@ if(!isset($_SESSION['login_user']))
 
     <div class="span10 offset1">
         <div class="row">
-            <h3>Update a Property</h3>
+            <h3>Liegenschaft ändern</h3>
         </div>
 
         <form class="form-horizontal" action="?controller=Property&action=update&id_property=<?php echo $property->getId_property() ?>" onsubmit="return validatePropertyForm()" onkeyup="return validatePropertyForm()" method="post">

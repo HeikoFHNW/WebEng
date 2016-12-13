@@ -8,7 +8,7 @@ if(!isset($_SESSION['login_user']))
 ?>
 <div class="container">
     <div class="row">
-        <h3>Invoice Overview</h3>
+        <h3>Rechnungsübersicht</h3>
     </div>
     <div class="row">
         <p>

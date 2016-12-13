@@ -8,7 +8,7 @@ if(!isset($_SESSION['login_user']))
 ?>
 <div class="container">
     <div class="row">
-        <h3>User Overview</h3>
+        <h3>Benutzerübersicht</h3>
     </div>
     <div class="row">
         <p>

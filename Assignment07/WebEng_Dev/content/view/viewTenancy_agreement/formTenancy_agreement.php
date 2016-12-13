@@ -1,6 +1,6 @@
 
 <div class="control-group <?php echo !empty($tenancy_agreementValidator->getStart_of_tenancyError()) ? 'error' : ''; ?>">
-    <label class="control-label">Beginn:</label>
+    <label class="control-label">Beginn*</label>
     <div class="controls">
         <input name="start_of_tenancy" type="text" id="datepicker" placeholder="yyyy-mm-dd" 
                value="<?php echo !empty($tenancy_agreement->getStart_of_tenancy()) ? $tenancy_agreement->getStart_of_tenancy() : ''; ?>">
@@ -11,7 +11,7 @@
     </div>
 </div>
 <div class="control-group <?php echo !empty($tenancy_agreementValidator->getEnd_of_tenancyError()) ? 'error' : ''; ?>">
-    <label class="control-label">Ende:</label>
+    <label class="control-label">Ende</label>
     <div class="controls">
         <input name="end_of_tenancy" type="text" id="datepicker2" placeholder="yyyy-mm-dd" 
                value="<?php echo !empty($tenancy_agreement->getEnd_of_tenancy()) ? $tenancy_agreement->getEnd_of_tenancy() : ''; ?>">
@@ -22,7 +22,7 @@
     </div>
 </div>
 <div class="control-group <?php echo !empty($tenancy_agreementValidator->getNetrentError()) ? 'error' : ''; ?>">
-    <label class="control-label">Nettomiete:</label>
+    <label class="control-label">Nettomiete*</label>
     <div class="controls">
         <input name="netrent" type="number" id="fTA_netrent" placeholder="CHF" 
                value="<?php echo !empty($tenancy_agreement->getNetrent()) ? $tenancy_agreement->getNetrent() : ''; ?>">
@@ -33,14 +33,14 @@
     </div>
 </div>
 <div class="control-group">
-    <label class="control-label">Kündigungsbestimmungen:</label>
+    <label class="control-label">Kündigungsbestimmungen</label>
     <div class="controls">
         <textarea rows = "5" name="cancellationterms" type="text" id="fTA_cancellationterms" placeholder="Fliesstext" 
                   value="<?php echo !empty($tenancy_agreement->getCancellationterms()) ? $tenancy_agreement->getCancellationterms() : ''; ?>"></textarea>
     </div>
 </div>
 <div class="control-group <?php echo !empty($tenancy_agreementValidator->getId_ApartmentError()) ? 'error' : ''; ?>">
-    <label class="control-label">Apartment:</label>
+    <label class="control-label">Apartment*</label>
     <div class="controls">
         <input name="id_apartment" type="number" id="fTA_id_apartment" placeholder="Wohnungsnummer" 
                value="<?php echo !empty($tenancy_agreement->getId_apartment()) ? $tenancy_agreement->getId_apartment() : ''; ?>">
@@ -51,7 +51,7 @@
     </div>
 </div>
 <div class="control-group <?php echo !empty($tenancy_agreementValidator->getId_TenantError()) ? 'error' : ''; ?>">
-    <label class="control-label">Mieter:</label>
+    <label class="control-label">Mieter*</label>
     <div class="controls">
         <input name="id_tenant" type="number" id="fTA_id_tenant" placeholder="Mieternummer" 
                value="<?php echo !empty($tenancy_agreement->getId_tenant()) ? $tenancy_agreement->getId_tenant() : ''; ?>">

@@ -12,7 +12,7 @@ if(!isset($_SESSION['login_user']))
 
     <div class="span10 offset1">
         <div class="row">
-            <h3>Create a User</h3>
+            <h3>Benutzer erstellen</h3>
         </div>
 
         <form class="form-horizontal" action="?controller=User&action=create" onsubmit="return validateBenutzerForm()" onkeyup="return validateBenutzerForm()"  method="post">

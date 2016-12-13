@@ -11,7 +11,8 @@ if(!isset($_SESSION['login_user']))
         <h3>Home</h3>
     </div>
     <div class="row">
-        <h4>Willkommen</h4>
+        
+        <h4>Rechnungen welche länger als 30 Tage unbezahlt sind</h4> 
     </div>
     <div class="row">
         <p>

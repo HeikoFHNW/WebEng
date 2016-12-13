@@ -1,5 +1,5 @@
 <div class="control-group">
-  <label class="control-label" for="sel1">Anrede:</label>
+  <label class="control-label" for="sel1">Anrede</label>
   <div class="controls">
     <select name="title" 
             value="<?php echo !empty($tenant->getTitle()) ? $tenant->getTitle() : ''; ?>">
@@ -12,7 +12,7 @@
   </div>
 </div>
 <div class="control-group <?php echo !empty($tenantValidator->getFirstnameError()) ? 'error' : ''; ?>">
-    <label class="control-label">Vorname</label>
+    <label class="control-label">Vorname*</label>
     <div class="controls">
         <input name="firstname" type="text" id="fM_vorname" placeholder="Vorname" 
                value="<?php echo !empty($tenant->getFirstname()) ? $tenant->getFirstname() : ''; ?>">
@@ -23,7 +23,7 @@
     </div>
 </div>
 <div class="control-group <?php echo !empty($tenantValidator->getLastnameError()) ? 'error' : ''; ?>">
-    <label class="control-label">Nachname</label>
+    <label class="control-label">Nachname*</label>
     <div class="controls">
         <input name="lastname" type="text" id="fM_nachname" placeholder="Nachname" 
                value="<?php echo !empty($tenant->getLastname()) ? $tenant->getLastname() : ''; ?>">
@@ -45,7 +45,7 @@
     </div>
 </div>
 <div class="control-group">
-  <label class="control-label" for="sel1">Zivilstand:</label>
+  <label class="control-label" for="sel1">Zivilstand</label>
   <div class="controls">
     <select name="marital_status">
       <option>ledig</option>
@@ -55,7 +55,7 @@
   </div>
 </div>
     <div class="control-group <?php echo !empty($tenantValidator->getPhoneError()) ? 'error' : ''; ?>" >
-    <label class="control-label">Telefon:</label>
+    <label class="control-label">Telefon</label>
     <div class="controls">
         <input name="phone" type="text" id="fM_telefon" placeholder="+41 12 345 67 89" id="fM_telefon"
                value="<?php echo !empty($tenant->getPhone()) ? $tenant->getPhone() : ''; ?>">
@@ -66,7 +66,7 @@
     </div>
 </div>
 <div class="control-group <?php echo !empty($tenantValidator->getMobileError()) ? 'error' : ''; ?>">
-    <label class="control-label">Mobil:</label>
+    <label class="control-label">Mobil</label>
     <div class="controls">
         <input name="mobile" type="text" id="fM_mobile" placeholder="+41 12 345 67 89" 
                value="<?php echo !empty($tenant->getMobile()) ? $tenant->getMobile() : ''; ?>">
@@ -77,7 +77,7 @@
     </div>
 </div>
 <div class="control-group <?php echo !empty($tenantValidator->getEmailError()) ? 'error' : ''; ?>">
-    <label class="control-label">Email Addresse</label>
+    <label class="control-label">Email Addresse*</label>
     <div class="controls">
         <input name="email" id="fM_email" type="text" placeholder="Email Addresse"
                value="<?php echo !empty($tenant->getEmail()) ? $tenant->getEmail() : ''; ?>">
@@ -88,7 +88,7 @@
     </div>
 </div>
 <div class="control-group <?php echo !empty($tenantValidator->getStreetError()) ? 'error' : ''; ?>">
-    <label class="control-label">Strasse:</label>
+    <label class="control-label">Strasse</label>
     <div class="controls">
         <input name="street" type="text" id="fM_strasse" placeholder="Strasse" 
                value="<?php echo !empty($tenant->getStreet()) ? $tenant->getStreet() : ''; ?>">
@@ -99,14 +99,14 @@
     </div>
 </div>
 <div class="control-group">
-    <label class="control-label">Hausnummer:</label>
+    <label class="control-label">Hausnummer</label>
     <div class="controls">
         <input name="streetnumber" type="text" placeholder="Hausnr." 
                value="<?php echo !empty($tenant->getStreetnumber()) ? $tenant->getStreetnumber() : ''; ?>">
     </div>
 </div>
 <div class="control-group <?php echo !empty($tenantValidator->getPostcodeError()) ? 'error' : ''; ?>">
-    <label class="control-label">PLZ:</label>
+    <label class="control-label">PLZ</label>
     <div class="controls">
         <input name="postcode" type="text" id="fM_plz" placeholder="PLZ" 
                value="<?php echo !empty($tenant->getPostcode()) ? $tenant->getPostcode() : ''; ?>">
@@ -117,7 +117,7 @@
     </div>
 </div>
  <div class="control-group <?php echo !empty($tenantValidator->getCityError()) ? 'error' : ''; ?>">
-    <label class="control-label">Ort:</label>
+    <label class="control-label">Ort</label>
     <div class="controls">
         <input name="city" type="text" id="fM_ort" placeholder="Wohnort"
                value="<?php echo !empty($tenant->getCity()) ? $tenant->getCity() : ''; ?>">

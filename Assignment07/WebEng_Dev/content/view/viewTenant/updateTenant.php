@@ -33,7 +33,7 @@ if(!isset($_SESSION['login_user']))
 
     <div class="span10 offset1">
         <div class="row">
-            <h3>Update a Tenant</h3>
+            <h3>Mieter ändern</h3>
         </div>
 
         <form class="form-horizontal" action="?controller=Tenant&action=update&id_tenant=<?php echo $tenant->getId_tenant() ?>" onsubmit="return validateMieterForm()"onkeyup="return validateMieterForm()" method="post">

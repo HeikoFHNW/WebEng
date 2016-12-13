@@ -12,7 +12,7 @@ if(!isset($_SESSION['login_user']))
 
     <div class="span10 offset1">
         <div class="row">
-            <h3>Create a Property</h3>
+            <h3>Liegenschaft erstellen</h3>
         </div>
 
         <form class="form-horizontal" action="?controller=Property&action=create" onsubmit="return validatePropertyForm()" onkeyup="return validatePropertyForm()" method="post">

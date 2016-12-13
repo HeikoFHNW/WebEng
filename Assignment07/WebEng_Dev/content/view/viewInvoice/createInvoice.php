@@ -32,7 +32,7 @@ if(!isset($_SESSION['login_user']))
 
     <div class="span10 offset1">
         <div class="row">
-            <h3>Create a Invoice</h3>
+            <h3>Rechnung erstellen</h3>
         </div>
 
         <form class="form-horizontal" action="?controller=Invoice&action=create" onsubmit="return validateInvoiceForm()" onkeyup="return validateInvoiceForm()" method="post">
@@ -51,6 +51,8 @@ if(!isset($_SESSION['login_user']))
   
                 var a = (notEmpty(fI_amount) && isNumber(fI_amount));
                 
+                var b = notEmpty(datepicker);
+                
                 var c = (notEmpty(fI_id_tenancy_agreement)&& isNumber(fI_id_tenancy_agreement));
                 
                 var e = (notEmpty(fI_Invoicenr)&&isNumber(fI_Invoicenr));
@@ -61,6 +63,7 @@ if(!isset($_SESSION['login_user']))
             }else{
                 amountMessage.innerHTML = "Bitte keine Buchstaben verwenden.";
             }
+            
 
             if (c){
                 id_tenancy_agreementMessage.innerHTML = "";
@@ -76,7 +79,7 @@ if(!isset($_SESSION['login_user']))
             
             
             
-            if (a&&c&&e){
+            if (a&&b&&c&&e){
                 return true;
             }else{
                 return false;
