@@ -10,6 +10,9 @@ if(!isset($_SESSION['login_user']))
     <div class="row">
         <h3>Nebenkostenabrechnung</h3>
     </div>
+    <div>
+        <?php echo '<h4>Von: ' . $date_begin_fm->format('d.m.Y') . ' Bis: ' . $date_end_fm->format('d.m.Y') . '</h4>'?>
+    </div>
     <div class="row">
         <p>
             <a class="btn btn-success" href="../view/createAuxiliary_CostPDF.php" class="btn btn-success">PDF erstellen</a>
@@ -17,7 +20,7 @@ if(!isset($_SESSION['login_user']))
         </p>
         <table class="table table-bordered">
             <thead>
-            <tr>
+            <tr class="active">
                 <th>MieterID</th>
                 <th>Vorname</th>
                 <th>Nachname</th>
@@ -30,10 +33,14 @@ if(!isset($_SESSION['login_user']))
             <tbody>
             <?php
             foreach ($auxTenants as $auxTenant) {
-                echo '<tr>';
+                echo '<tr class="info">';
                 echo '<td><strong>' . $auxTenant->getId_tenant() . '</strong></td>';
                 echo '<td><strong>' . $auxTenant->getFirstname() . '</strong></td>';
                 echo '<td><strong>' . $auxTenant->getLastname() . '</strong></td>';
+                echo '<td></td>';
+                echo '<td></td>';
+                echo '<td></td>';
+                echo '<td></td>';
                 echo '</tr>';
                 foreach ($auxTenant->getAuxInvoiceTypes() as $auxInvoiceType) {
                     echo '<tr>';

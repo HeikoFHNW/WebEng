@@ -1,28 +1,43 @@
 <?php
 
+/*
+ * Diese Klasse organisiert die Darstellung der 
+ * Jahresabrechnung im Web
+ */
+
 include_once '../dao/Database.php';
 include_once '../dao/annualStatementDAO/AnnualStatementDAOImpl.php';
 
 
 class AnnualStatementController
 {
-            public function create()
+    // ruft die Jahresbercht erstellen Seite auf.
+    public function create()
     {
         require_once('../view/viewAnnualStatement/createAnnualStatement.php');
     }
     
+    //ruft die Auswahl Seite auf.
     public function home()
     {
         
         require_once('../view/viewAnnualStatement/homeAnnualStatement.php');
     }
     
+    /**
+     * ruft die anzeigen Seite auf und organisiert die benötigten
+     * Variablen zur Darstellung der Informationen über das DAO.
+     */
     public function show()
     {
         
         if (!empty($_POST)) {
             $date_begin = $_POST['date_begin'];
             $date_end = $_POST['date_end'];
+            $_SESSION['date_begin'] = $date_begin;
+            $_SESSION['date_end'] = $date_end;
+            $date_begin_fm = (DateTime::createFromFormat('Y-m-d', $date_begin));
+            $date_end_fm = (DateTime::createFromFormat('Y-m-d', $date_end));
         
         
             $payed='1';
@@ -30,7 +45,6 @@ class AnnualStatementController
 
             $totalAmountPayed = (new AnnualStatementDAOImpl(Database::connect()))->findTotal($payed, $date_begin, $date_end);
             $totalAmountPayedNeg = (new AnnualStatementDAOImpl(Database::connect()))->findTotal($payedNeg, $date_begin, $date_end);
-            $totalSuccess = $totalAmountPayed->getTotalAmount() - $totalAmountPayedNeg->getTotalAmount();
 
             $invoiceTypes = (new AnnualStatementDAOImpl(Database::connect()))->findAll($payed, $date_begin, $date_end);
             foreach ($invoiceTypes as $invoiceType) {

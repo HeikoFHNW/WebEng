@@ -18,6 +18,7 @@ if(!isset($_SESSION['login_user']))
     dateFormat: 'yy-mm-dd',
     changeMonth: true,
     changeYear: true,
+    yearRange: "2000:2099",
     onSelect: function (selected){
         $("#datepicker2").datepicker("option", "minDate", selected);
     }
@@ -30,6 +31,7 @@ if(!isset($_SESSION['login_user']))
     dateFormat: 'yy-mm-dd',
     changeMonth: true,
     changeYear: true,
+    yearRange: "2000:2099",
     onSelect: function (selected){
         $("#datepicker").datepicker("option", "maxDate", selected);
     }
@@ -74,9 +76,8 @@ if(!isset($_SESSION['login_user']))
         function validateVertragForm(){
             
                 var a = notEmpty(datepicker);
+                var b = notEmpty(datepicker2);
                 var c = (notEmpty(fTA_netrent) && isNumber(fTA_netrent));
-                var d = (notEmpty(fTA_id_apartment) && isNumber(fTA_id_apartment));
-                var e = (notEmpty(fTA_id_tenant) && isNumber(fTA_id_tenant));
                 
             
             if (c){
@@ -85,21 +86,9 @@ if(!isset($_SESSION['login_user']))
                 netrentMessage.innerHTML = "Bitte keine Buchstaben verwenden.";
             }
             
-           if (d){
-                id_apartmentMessage.innerHTML = "";
-            }else{
-                id_apartmentMessage.innerHTML = "Bitte keine Buchstaben verwenden.";
-            }
-            
-            if (e){
-                id_tenantMessage.innerHTML = "";
-            }else{
-                id_tenantMessage.innerHTML = "Bitte keine Buchstaben verwenden.";
-            }
-            
    
             
-            if (a&&c&&d&&e){ //
+            if (a&&b&&c){
                 return true;
             }else{
                 return false;

@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <?php
 if(!isset($_SESSION)){ session_start(); }
 ?>
@@ -32,11 +31,16 @@ if(!isset($_SESSION)){ session_start(); }
 <script src='https://code.jquery.com/ui/1.12.1/jquery-ui.js'></script>
 
 <!-- sortable tables -->
-<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
-<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.11.0/bootstrap-table.min.css" rel="stylesheet"/>
+<script language="JavaScript" src="https://code.jquery.com/jquery-1.11.1.min.js" type="text/javascript"></script>
+<script language="JavaScript" src="https://cdn.datatables.net/1.10.4/js/jquery.dataTables.min.js" type="text/javascript"></script>
+<script language="JavaScript" src="https://cdn.datatables.net/plug-ins/3cfcc339e89/integration/bootstrap/3/dataTables.bootstrap.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.11.0/bootstrap-table.min.js"></script>
+<link rel="stylesheet" type="text/css" href="http://cdn.datatables.net/plug-ins/3cfcc339e89/integration/bootstrap/3/dataTables.bootstrap.css">
+<!-- Date configuration -->
+<script language="JavaScript" src="//cdn.datatables.net/plug-ins/1.10.13/dataRender/datetime.js" type="text/javascript"></script>
+<script language="JavaScript" src="http://momentjs.com/downloads/moment.js" type="text/javascript"></script>
+
 </head>
 
 

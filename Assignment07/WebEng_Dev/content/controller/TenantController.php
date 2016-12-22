@@ -13,6 +13,12 @@ class TenantController
         $tenants = (new TenantDAOImpl(Database::connect()))->findAll();
         require_once('../view/viewTenant/showTenant.php');
     }
+    
+    public function showInactive()
+    {
+        $tenants = (new TenantDAOImpl(Database::connect()))->findAllInactive();
+        require_once('../view/viewTenant/showInactiveTenant.php');
+    }
 
     public function create()
     {
@@ -23,7 +29,7 @@ class TenantController
 
         if (!empty($_POST)) {
             
-            $tenant = new Tenant(null,$_POST['title'],$_POST['firstname'],$_POST['lastname'],$_POST['birthday'],$_POST['marital_status'], $_POST['phone'], $_POST['mobile'],$_POST['email'],$_POST['postcode'],$_POST['city'],null,$_POST['street'],$_POST['streetnumber']);
+            $tenant = new Tenant(null,$_POST['title'],$_POST['firstname'],$_POST['lastname'],$_POST['birthday'],$_POST['marital_status'], $_POST['phone'], $_POST['mobile'],$_POST['email'],$_POST['postcode'],$_POST['city'],null,$_POST['street'],$_POST['streetnumber'],$_POST['inactive']);
             $tenantValidator = new TenantValidator($tenant);
 
             if ($tenantValidator->isValid()) {
@@ -63,7 +69,7 @@ class TenantController
         }
 
         if (!empty($_POST)) {
-            $tenant = new Tenant($id_tenant,$_POST['title'],$_POST['firstname'],$_POST['lastname'],$_POST['birthday'],$_POST['marital_status'], $_POST['phone'], $_POST['mobile'],$_POST['email'],$_POST['postcode'],$_POST['city'],null,$_POST['street'],$_POST['streetnumber']);
+            $tenant = new Tenant($id_tenant,$_POST['title'],$_POST['firstname'],$_POST['lastname'],$_POST['birthday'],$_POST['marital_status'], $_POST['phone'], $_POST['mobile'],$_POST['email'],$_POST['postcode'],$_POST['city'],null,$_POST['street'],$_POST['streetnumber'],$_POST['inactive']);
             $tenantValidator = new TenantValidator($tenant);
 
             if ($tenantValidator->isValid()) {

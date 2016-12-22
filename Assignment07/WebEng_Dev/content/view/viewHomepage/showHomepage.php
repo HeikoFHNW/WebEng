@@ -7,6 +7,26 @@ if(!isset($_SESSION['login_user']))
 }
 ?>
 
+<script>
+    $(document).ready(function() {
+        $('#datatable').dataTable({
+            order: [[2, 'desc']],
+                "columnDefs": [ 
+                    { "targets": 9, "orderable": false },
+                    { "targets": 1 , render: $.fn.dataTable.render.number( "'", '.', 2, 'CHF ' ) },
+                    { "targets": 1, "width": "15%" },
+                    { "targets": 2, render: $.fn.dataTable.render.moment( 'DD.MM.YY' ) },
+                    { "targets": 2, "width": "5%" }
+                ],
+                language: {
+                "url": "//cdn.datatables.net/plug-ins/1.10.13/i18n/German.json"
+                }
+        });
+        $("[data-toggle=tooltip]").tooltip();
+    }
+        );
+</script>
+
 <header></header>
 <style>
 header {
@@ -28,22 +48,19 @@ header {
         <h4>Rechnungen welche länger als 30 Tage unbezahlt sind</h4> 
     </div>
     <div class="row">
-        <p>
-            <a href="?controller=Invoice&action=create" class="btn btn-success">Rechnung erstellen</a>
-        </p>
-        <table data-toggle="table" data-sort-name="payed" data-sort-order="asc">
+        <table id="datatable" class="table table-striped table-bordered" cellspacing="0" width="100%">
             <thead>
             <tr>
-                <th data-field="id_invoice" data-sortable="true">ID</th>
-                <th data-field="amount" data-sortable="true">Betrag</th>
-                <th data-field="invoice_date" data-sortable="true">Datum</th>
-                <th data-field="firstname" data-sortable="true">Mieter Vorname</th>
-                <th data-field="lastname" data-sortable="true">Mieter Nachname</th>
-                <th data-field="city" data-sortable="true">Mietobjekt Ort</th>
-                <th data-field="invoice_type" data-sortable="true">Rechungsart</th>
-                <th data-field="invoicenr" data-sortable="true">Rechnungsnr.</th>
-                <th data-field="payed" data-sortable="true">Bezahlt</th>
-                <th data-field="action" data-sortable="false">Action</th>
+                <th>ID</th>
+                <th>Betrag</th>
+                <th>Datum</th>
+                <th>Vorname</th>
+                <th>Nachname</th>
+                <th>Ort</th>
+                <th>Rechungsart</th>
+                <th>Rechnungsnr.</th>
+                <th>Bezahlt</th>
+                <th>Action</th>
             </tr>
             </thead>
             <tbody>
@@ -58,7 +75,7 @@ header {
                 echo '<td>' . $invoice->getCity() . '</td>';
                 echo '<td>' . $invoice->getInvoice_type() . '</td>';
                 echo '<td>' . $invoice->getInvoicenr() . '</td>';
-                echo '<td>' . $invoice->getPayed() . '</td>';
+                echo '<td>' . $invoice->getPayedPic() . '</td>';
                 echo '<td width=250>';
                 echo '<a class="btn" href="?controller=Invoice&action=read&id_invoice=' . $invoice->getId_invoice() . '"><span class="glyphicon glyphicon-zoom-in" aria-hidden="true"></span></a>';
                 echo '&nbsp;';

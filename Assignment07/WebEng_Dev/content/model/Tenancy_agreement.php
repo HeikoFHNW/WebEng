@@ -11,6 +11,7 @@ class Tenancy_Agreement
     private $netrent;
     private $cancellationterms;
     private $id_apartment;
+    private $squaremeter;
     private $id_tenant;
     private $firstname;
     private $lastname;
@@ -21,7 +22,7 @@ class Tenancy_Agreement
 
 
 
-    public function __construct($id_tenancy_agreement=null, $start_of_tenancy=null, $end_of_tenancy=null, $netrent=null, $cancellationterms=null, $id_apartment=null, $id_tenant=null,$firstname=null,$lastname=null,$street=null,$streetnumber=null,$postcode=null,$city=null)
+    public function __construct($id_tenancy_agreement=null, $start_of_tenancy=null, $end_of_tenancy=null, $netrent=null, $cancellationterms=null, $id_apartment=null, $squaremeter=null, $id_tenant=null,$firstname=null,$lastname=null,$street=null,$streetnumber=null,$postcode=null,$city=null)
     {
         if (isset($id_tenancy_agreement)) {
             $this->id_tenancy_agreement = $id_tenancy_agreement;
@@ -40,6 +41,9 @@ class Tenancy_Agreement
         }
         if (isset($id_apartment)){
             $this->id_apartment = $id_apartment;
+        }
+        if (isset($squaremeter)){
+            $this->squaremeter = $squaremeter;
         }
         if (isset($id_tenant)){
             $this->id_tenant = $id_tenant;
@@ -113,7 +117,9 @@ class Tenancy_Agreement
     function getCity() {
         return $this->city;
     }
-
+    function getSquaremeter() {
+        return $this->squaremeter;
+    }
 }
 
 

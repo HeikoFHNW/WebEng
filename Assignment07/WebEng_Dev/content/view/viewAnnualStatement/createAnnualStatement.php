@@ -40,7 +40,7 @@ if(!isset($_SESSION['login_user']))
 
 <div class="container">
     <div class="row">
-        <h3>Jahresabrechnung</h3>
+        <h3>Periodenabrechnung</h3>
     </div>
     <div class="row">
         <h5>Wählen Sie den Zeitraum für den gewünschten Bericht aus und drücken sie den entsprechenden Knopf.</h5>
@@ -49,7 +49,7 @@ if(!isset($_SESSION['login_user']))
          <form class="form-horizontal" action="?controller=AnnualStatement&action=show"  onsubmit="return validateAuxiliaryCostForm()" onkeyup="return validateAuxiliaryForm()" method="post">
             <?php include_once("formAnnualStatement.php"); ?>
             <div class="form-actions">
-                <button type="submit" class="btn btn-success">Jahresabrechnung</button>
+                <button type="submit" class="btn btn-success">Periodenabrechnung</button>
                 <a class="btn" href="?controller=Homepage&action=show">Zurück</a>
             </div>
         </form>   

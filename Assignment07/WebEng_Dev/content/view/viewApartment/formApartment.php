@@ -38,17 +38,25 @@ if(!isset($_SESSION['login_user']))
             <span id="squarmeterMessage"></span>
     </div>
 </div>
- <div class="control-group <?php echo !empty($apartmentValidator->getId_PropertyError()) ? 'error' : ''; ?>">
-    <label class="control-label">Liegenschafts ID*</label>
+<div class="control-group <?php echo !empty($apartmentValidator->getId_PropertyError()) ? 'error' : ''; ?>">
+    <label class="control-label">Liegenschaft</label>
     <div class="controls">
-        <input name="id_property" type="text" id="fA_id_property" placeholder="Liegenschaft" 
-               value="<?php echo !empty($apartment->getId_property()) ? $apartment->getId_property() : ''; ?>">
+        <select name="id_property" type="text" id="fA_id_property" placeholder="Liegenschaft">
+            <?php 
+            foreach ($propertys as $property) {
+                if ($property->getId_property()==$apartment->getId_property()) {
+                    echo '<option selected="' . $property->getId_property() . '</option>';
+                }
+                echo '<option value="' . $property->getId_property() . '">' . $property->getId_property() . ' , ' . $property->getStreet() . ' ' . $property->getStreetnumber() . ', ' . $property->getCity() . '</option>';               
+            }
+            ?>
                <?php if (!empty($apartmentValidator->getId_PropertyError())): ?>
                <span class="help-inline"><?php echo $apartmentValidator->getId_PropertyError(); ?></span>
                <?php endif; ?>
                <span id="id_propertyMessage"></span>
-               <p id="requiredMessage"></p>
-    </div>
+        </select>
+        <p id="requiredMessage"></p>
+    </div>    
 </div>
  
 

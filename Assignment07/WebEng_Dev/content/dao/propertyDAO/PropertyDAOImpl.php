@@ -54,7 +54,7 @@ class PropertyDAOImpl extends AbstractDAO implements PropertyDAOInterface
             INSERT IGNORE INTO adress (street, streetnumber, postcode)
             VALUES (:street, :streetnumber, :postcode);
 
-            UPDATE propertymanagement.property
+            UPDATE tenancymanager_t.property
             SET
             id_adress = (SELECT id_adress FROM adress WHERE street = :street AND streetnumber = :streetnumber AND postcode = :postcode)
             WHERE id_property = :id_property;
@@ -93,13 +93,17 @@ class PropertyDAOImpl extends AbstractDAO implements PropertyDAOInterface
      */
     public function deleteProperty(Property $property)
     {
-        $stmt = $this->pdoInstance->prepare('
-            DELETE FROM property
-            WHERE id_property = :id
-        ');
-        $stmt->bindValue(':id', $property->getId_property());
-        $stmt->execute();
-        $property = null;
+        try {
+            $stmt = $this->pdoInstance->prepare('
+                DELETE FROM property
+                WHERE id_property = :id
+            ');
+            $stmt->bindValue(':id', $property->getId_property());
+            $stmt->execute();
+            $property = null;
+        } catch (PDOException $ex){
+            Route::call('Error', 'errorDelete');
+        }
     }
 
 

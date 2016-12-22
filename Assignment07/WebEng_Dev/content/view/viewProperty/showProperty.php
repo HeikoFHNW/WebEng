@@ -6,6 +6,23 @@ if(!isset($_SESSION['login_user']))
     exit;
 }
 ?>
+
+<script>
+    $(document).ready(function() {
+        $('#datatable').dataTable({
+            order: [[0, 'asc']],
+                "columnDefs": [ 
+                    { "targets": 6, "orderable": false } 
+                ],
+                language: {
+                "url": "//cdn.datatables.net/plug-ins/1.10.13/i18n/German.json"
+                }
+        });
+        $("[data-toggle=tooltip]").tooltip();
+    }
+        );
+</script>
+
 <div class="container">
     <div class="row">
         <h3>Liegenschaftsübersicht</h3>
@@ -15,7 +32,7 @@ if(!isset($_SESSION['login_user']))
             <a href="?controller=Property&action=create" class="btn btn-success">Erstellen</a>
         </p>
 
-        <table class="table table-striped table-bordered">
+        <table id="datatable" class="table table-striped table-bordered" cellspacing="0" width="100%">
             <thead>
             <tr>
                 <th>ID</th>

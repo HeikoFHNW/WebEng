@@ -1,4 +1,7 @@
 <?php
+
+if(!isset($_SESSION)){ session_start(); }
+
 include("../../fpdf/fpdf.php");
 include_once '../dao/Database.php';
 include_once '../dao/annualStatementDAO/AnnualStatementDAOImpl.php';
@@ -6,34 +9,22 @@ include_once '../dao/annualStatementDAO/AnnualStatementDAOImpl.php';
 // Begin configuration
 
 $textColour = array( 0, 0, 0 );
-$headerColour = array( 100, 100, 100 );
+$headerColour = array( 0, 0, 0 );
 $tableHeaderTopTextColour = array( 255, 255, 255 );
-$tableHeaderTopFillColour = array( 125, 152, 179 );
-$tableHeaderTopProductTextColour = array( 0, 0, 0 );
-$tableHeaderTopProductFillColour = array( 143, 173, 204 );
-$tableHeaderLeftTextColour = array( 99, 42, 57 );
-$tableHeaderLeftFillColour = array( 184, 207, 229 );
-$tableBorderColour = array( 50, 50, 50 );
-$tableRowFillColour = array( 213, 170, 170 );
-$reportName = ("Jahresabrechnung");
+$tableHeaderTopFillColour = array( 0, 50, 140 );
+$tableBorderColour = array( 0, 50, 140 );
+$tableRowFillColour = array( 127, 184, 255 );
+$reportName = ("Periodenabrechnung");
 $columnLabels = array( "Bereich", "Strasse", "Nr.", "PLZ", "Ort", "Betrag" , "Summe" );
-
-
-$chartColours = array(
-                  array( 255, 100, 100 ),
-                  array( 100, 255, 100 ),
-                  array( 100, 100, 255 ),
-                  array( 255, 255, 100 ),
-                );
-
 
 // End configuration
 
 // Data receive
 
-            $date_begin = "2016-01-01";
-            $date_end = "2016-12-31";
-        
+            $date_begin = $_SESSION['date_begin'];
+            $date_end = $_SESSION['date_end'];
+            $date_begin_fm = (DateTime::createFromFormat('Y-m-d', $date_begin));
+            $date_end_fm = (DateTime::createFromFormat('Y-m-d', $date_end));
         
             $payed='1';
             $payedNeg='0';
@@ -68,6 +59,9 @@ $pdf->AddPage();
 $pdf->SetTextColor( $headerColour[0], $headerColour[1], $headerColour[2] );
 $pdf->SetFont( 'Arial', '', 17 );
 $pdf->Cell( 0, 15, $reportName, 0, 0, 'C' );
+$pdf->Ln(8);
+$pdf->SetFont( 'Arial', '', 14 );
+$pdf->Cell( 0, 15, 'Von: ' . $date_begin_fm->format('d.m.Y') . '   Bis: ' . $date_end_fm->format('d.m.Y') , 0, 0, 'C' );
 $pdf->Ln(15);
 $pdf->SetTextColor( $headerColour[0], $headerColour[1], $headerColour[2] );
 $pdf->SetFont( 'Arial', '', 14 );
@@ -88,11 +82,11 @@ $pdf->SetFont( 'Arial', 'B', 14 );
 $pdf->SetTextColor( $tableHeaderTopTextColour[0], $tableHeaderTopTextColour[1], $tableHeaderTopTextColour[2] );
 $pdf->SetFillColor( $tableHeaderTopFillColour[0], $tableHeaderTopFillColour[1], $tableHeaderTopFillColour[2] );
 
-  $pdf->Cell( 28, 10, $columnLabels[0], 1, 0, 'C', true );
-  $pdf->Cell( 36, 10, $columnLabels[1], 1, 0, 'C', true );
+  $pdf->Cell( 28, 10, $columnLabels[0], 1, 0, 'L', true );
+  $pdf->Cell( 36, 10, $columnLabels[1], 1, 0, 'L', true );
   $pdf->Cell( 16, 10, $columnLabels[2], 1, 0, 'C', true );
   $pdf->Cell( 20, 10, $columnLabels[3], 1, 0, 'C', true );
-  $pdf->Cell( 36, 10, $columnLabels[4], 1, 0, 'C', true );
+  $pdf->Cell( 36, 10, $columnLabels[4], 1, 0, 'L', true );
   $pdf->Cell( 25, 10, $columnLabels[5], 1, 0, 'C', true );
   $pdf->Cell( 25, 10, $columnLabels[6], 1, 0, 'C', true );
 
@@ -117,11 +111,11 @@ foreach ( $invoiceTypes as $invoiceType ) {
         $pdf->SetTextColor( $tableHeaderTopTextColour[0], $tableHeaderTopTextColour[1], $tableHeaderTopTextColour[2] );
         $pdf->SetFillColor( $tableHeaderTopFillColour[0], $tableHeaderTopFillColour[1], $tableHeaderTopFillColour[2] );
 
-          $pdf->Cell( 28, 10, $columnLabels[0], 1, 0, 'C', true );
-          $pdf->Cell( 36, 10, $columnLabels[1], 1, 0, 'C', true );
+          $pdf->Cell( 28, 10, $columnLabels[0], 1, 0, 'L', true );
+          $pdf->Cell( 36, 10, $columnLabels[1], 1, 0, 'L', true );
           $pdf->Cell( 16, 10, $columnLabels[2], 1, 0, 'C', true );
           $pdf->Cell( 20, 10, $columnLabels[3], 1, 0, 'C', true );
-          $pdf->Cell( 36, 10, $columnLabels[4], 1, 0, 'C', true );
+          $pdf->Cell( 36, 10, $columnLabels[4], 1, 0, 'L', true );
           $pdf->Cell( 25, 10, $columnLabels[5], 1, 0, 'C', true );
           $pdf->Cell( 25, 10, $columnLabels[6], 1, 0, 'C', true );
 
@@ -132,7 +126,7 @@ foreach ( $invoiceTypes as $invoiceType ) {
     $pdf->SetFillColor( $tableRowFillColour[0], $tableRowFillColour[1], $tableRowFillColour[2] );
     $pdf->SetFont( 'Arial', '', 10 );
 
-    $pdf->Cell(28, 10, ($invoiceType->getInvoice_type()), 'LT', 0, 'C', $fill);
+    $pdf->Cell(28, 10, ($invoiceType->getInvoice_type()), 'LT', 0, 'L', $fill);
     $pdf->Cell(36, 10, (""), 'T', 0, 'C', $fill);
     $pdf->Cell(16, 10, (""), 'T', 0, 'C', $fill);
     $pdf->Cell(20, 10, (""), 'T', 0, 'C', $fill);
@@ -142,10 +136,10 @@ foreach ( $invoiceTypes as $invoiceType ) {
     $pdf->Ln();
     foreach ($invoiceType->getReportPropertys() as $reportProperty) {
         $pdf->Cell(28, 10, (""), 'L', 0, 'C', $fill);
-        $pdf->Cell(36, 10, ($reportProperty->getStreet()), 0, 0, 'C', $fill);
+        $pdf->Cell(36, 10, ($reportProperty->getStreet()), 0, 0, 'L', $fill);
         $pdf->Cell(16, 10, ($reportProperty->getStreetnumber()), 0, 0, 'C', $fill);
         $pdf->Cell(20, 10, ($reportProperty->getPostcode()), 0, 0, 'C', $fill);
-        $pdf->Cell(36, 10, ($reportProperty->getCity()), 0, 0, 'C', $fill);
+        $pdf->Cell(36, 10, ($reportProperty->getCity()), 0, 0, 'L', $fill);
         $pdf->Cell(25, 10, ($reportProperty->getTotal()), 0, 0, 'R', $fill);
         $pdf->Cell(25, 10, (""), 'R', 0, 'C', $fill);
         $pdf->Ln();
@@ -156,7 +150,8 @@ foreach ( $invoiceTypes as $invoiceType ) {
     $pdf->Cell(20, 10, (""), 'B', 0, 'C', $fill);
     $pdf->Cell(36, 10, (""), 'B', 0, 'C', $fill);
     $pdf->Cell(25, 10, (""), 'B', 0, 'C', $fill);
-    $pdf->Cell(25, 10, ($invoiceType->getTotal()), 'RB', 0, 'R', $fill);
+    $pdf->SetFont( 'Arial', 'B', 10 );
+    $pdf->Cell(25, 10, ('CHF '.$invoiceType->getTotal()), 'RB', 0, 'R', $fill);
     $pdf->Ln();
 
   $fill = !$fill;
@@ -184,11 +179,11 @@ $pdf->SetFont( 'Arial', 'B', 14 );
 $pdf->SetTextColor( $tableHeaderTopTextColour[0], $tableHeaderTopTextColour[1], $tableHeaderTopTextColour[2] );
 $pdf->SetFillColor( $tableHeaderTopFillColour[0], $tableHeaderTopFillColour[1], $tableHeaderTopFillColour[2] );
 
-  $pdf->Cell( 28, 10, $columnLabels[0], 1, 0, 'C', true );
-  $pdf->Cell( 36, 10, $columnLabels[1], 1, 0, 'C', true );
+  $pdf->Cell( 28, 10, $columnLabels[0], 1, 0, 'L', true );
+  $pdf->Cell( 36, 10, $columnLabels[1], 1, 0, 'L', true );
   $pdf->Cell( 16, 10, $columnLabels[2], 1, 0, 'C', true );
   $pdf->Cell( 20, 10, $columnLabels[3], 1, 0, 'C', true );
-  $pdf->Cell( 36, 10, $columnLabels[4], 1, 0, 'C', true );
+  $pdf->Cell( 36, 10, $columnLabels[4], 1, 0, 'L', true );
   $pdf->Cell( 25, 10, $columnLabels[5], 1, 0, 'C', true );
   $pdf->Cell( 25, 10, $columnLabels[6], 1, 0, 'C', true );
 
@@ -214,11 +209,11 @@ foreach ( $invoiceNegTypes as $invoiceNegType ) {
         $pdf->SetTextColor( $tableHeaderTopTextColour[0], $tableHeaderTopTextColour[1], $tableHeaderTopTextColour[2] );
         $pdf->SetFillColor( $tableHeaderTopFillColour[0], $tableHeaderTopFillColour[1], $tableHeaderTopFillColour[2] );
 
-          $pdf->Cell( 28, 10, $columnLabels[0], 1, 0, 'C', true );
-          $pdf->Cell( 36, 10, $columnLabels[1], 1, 0, 'C', true );
+          $pdf->Cell( 28, 10, $columnLabels[0], 1, 0, 'L', true );
+          $pdf->Cell( 36, 10, $columnLabels[1], 1, 0, 'L', true );
           $pdf->Cell( 16, 10, $columnLabels[2], 1, 0, 'C', true );
           $pdf->Cell( 20, 10, $columnLabels[3], 1, 0, 'C', true );
-          $pdf->Cell( 36, 10, $columnLabels[4], 1, 0, 'C', true );
+          $pdf->Cell( 36, 10, $columnLabels[4], 1, 0, 'L', true );
           $pdf->Cell( 25, 10, $columnLabels[5], 1, 0, 'C', true );
           $pdf->Cell( 25, 10, $columnLabels[6], 1, 0, 'C', true );
 
@@ -230,7 +225,7 @@ foreach ( $invoiceNegTypes as $invoiceNegType ) {
     $pdf->SetFillColor( $tableRowFillColour[0], $tableRowFillColour[1], $tableRowFillColour[2] );
     $pdf->SetFont( 'Arial', '', 10 );
 
-    $pdf->Cell(28, 10, ($invoiceNegType->getInvoice_type()), 'LT', 0, 'C', $fill);
+    $pdf->Cell(28, 10, ($invoiceNegType->getInvoice_type()), 'LT', 0, 'L', $fill);
     $pdf->Cell(36, 10, (""), 'T', 0, 'C', $fill);
     $pdf->Cell(16, 10, (""), 'T', 0, 'C', $fill);
     $pdf->Cell(20, 10, (""), 'T', 0, 'C', $fill);
@@ -240,10 +235,10 @@ foreach ( $invoiceNegTypes as $invoiceNegType ) {
     $pdf->Ln();
     foreach ($invoiceNegType->getReportPropertys() as $reportNegProperty) {
         $pdf->Cell(28, 10, (""), 'L', 0, 'C', $fill);
-        $pdf->Cell(36, 10, ($reportNegProperty->getStreet()), 0, 0, 'C', $fill);
+        $pdf->Cell(36, 10, ($reportNegProperty->getStreet()), 0, 0, 'L', $fill);
         $pdf->Cell(16, 10, ($reportNegProperty->getStreetnumber()), 0, 0, 'C', $fill);
         $pdf->Cell(20, 10, ($reportNegProperty->getPostcode()), 0, 0, 'C', $fill);
-        $pdf->Cell(36, 10, ($reportNegProperty->getCity()), 0, 0, 'C', $fill);
+        $pdf->Cell(36, 10, ($reportNegProperty->getCity()), 0, 0, 'L', $fill);
         $pdf->Cell(25, 10, ($reportNegProperty->getTotal()), 0, 0, 'R', $fill);
         $pdf->Cell(25, 10, (""), 'R', 0, 'C', $fill);
         $pdf->Ln();
@@ -254,7 +249,8 @@ foreach ( $invoiceNegTypes as $invoiceNegType ) {
     $pdf->Cell(20, 10, (""), 'B', 0, 'C', $fill);
     $pdf->Cell(36, 10, (""), 'B', 0, 'C', $fill);
     $pdf->Cell(25, 10, (""), 'B', 0, 'C', $fill);
-    $pdf->Cell(25, 10, ($invoiceNegType->getTotal()), 'RB', 0, 'R', $fill);
+    $pdf->SetFont( 'Arial', 'B', 10 );
+    $pdf->Cell(25, 10, ('CHF '.$invoiceNegType->getTotal()), 'RB', 0, 'R', $fill);
     $pdf->Ln();
 
   $fill = !$fill;

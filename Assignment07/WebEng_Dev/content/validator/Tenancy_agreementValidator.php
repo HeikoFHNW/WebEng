@@ -40,39 +40,25 @@ class Tenancy_agreementValidator
 
          if(!is_null($this->tenancy_agreement)) {
             
-              if((!$this->validateDate($this->tenancy_agreement->getStart_of_tenancy())) || empty($this->tenancy_agreement->getStart_of_tenancy())){
+            if((!$this->validateDate($this->tenancy_agreement->getStart_of_tenancy())) || empty($this->tenancy_agreement->getStart_of_tenancy())){
                 $this->start_of_tenancyError = 'Falsches Datumsformat (yyyy-mm-dd)';
                 $this->valid = false;
             }
             
-            if(!empty($this->tenancy_agreement->getEnd_of_tenancy())){
-              
-                if(!$this->validateDate($this->tenancy_agreement->getEnd_of_tenancy())){
+            if((!$this->validateDate($this->tenancy_agreement->getEnd_of_tenancy())) || empty($this->tenancy_agreement->getEnd_of_tenancy())){
                 $this->end_of_tenancyError = 'Falsches Datumsformat (yyyy-mm-dd)';
                 $this->valid = false;
-              }
-              if($this->tenancy_agreement->getStart_of_tenancy()>$this->tenancy_agreement->getEnd_of_tenancy()){
+            }
+              
+            if($this->tenancy_agreement->getStart_of_tenancy()>$this->tenancy_agreement->getEnd_of_tenancy()){
                 $this->end_of_tenancyError = 'Das Enddatum darf nicht vor dem Startdatum liegen.';
                 $this->valid = false;
-                }
             }
                 
                 if(empty($this->tenancy_agreement->getNetrent()) || is_nan($this->tenancy_agreement->getNetrent())){
                 $this->netrentError = 'Bitte keine Buchstaben eingeben.';
                 $this->valid = false;
-                }
-                
-                if(empty($this->tenancy_agreement->getId_apartment())||  is_nan($this->tenancy_agreement->getId_apartment())){
-                   $this->id_apartmentError ='Bitte keine Buchstaben eingeben.';
-                   $this->valid = false;
-                }
-                
-                if(empty($this->tenancy_agreement->getId_tenant()) || is_nan($this->tenancy_agreement->getId_tenant())){
-                    $this->id_tenantError = 'Bitte keine Buchstaben eingeben.';
-                    $this->valid = false;
-                }
-
-            
+                }           
             
          }
         

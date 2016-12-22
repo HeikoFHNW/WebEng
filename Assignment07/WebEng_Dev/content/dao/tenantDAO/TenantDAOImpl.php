@@ -22,8 +22,8 @@ class TenantDAOImpl extends AbstractDAO implements TenantDAOInterface
             INSERT IGNORE INTO adress (street, streetnumber, postcode)
             VALUES (:street, :streetnumber, :postcode);
             
-            INSERT INTO tenant (title, firstname, lastname, birthday, marital_status, phone, mobile, email, id_adress)
-            VALUES (:title, :firstname, :lastname, :birthday, :marital_status, :phone, :mobile, :email, (SELECT id_adress FROM adress WHERE street = :street AND streetnumber = :streetnumber AND postcode = :postcode));');
+            INSERT INTO tenant (title, firstname, lastname, birthday, marital_status, phone, mobile, email, id_adress, inactive)
+            VALUES (:title, :firstname, :lastname, :birthday, :marital_status, :phone, :mobile, :email, (SELECT id_adress FROM adress WHERE street = :street AND streetnumber = :streetnumber AND postcode = :postcode), :inactive);');
         
         $stmt->bindValue(':title', $tenant->getTitle());
         $stmt->bindValue(':firstname', $tenant->getFirstname());
@@ -37,6 +37,7 @@ class TenantDAOImpl extends AbstractDAO implements TenantDAOInterface
         $stmt->bindValue(':city', $tenant->getCity());
         $stmt->bindValue(':street', $tenant->getStreet());
         $stmt->bindValue(':streetnumber', $tenant->getStreetnumber());
+        $stmt->bindValue(':inactive', $tenant->getInactive());
         $stmt->execute();
         unset($stmt);
         $tenant = $this->readTenant($this->pdoInstance->lastInsertId());
@@ -61,7 +62,7 @@ class TenantDAOImpl extends AbstractDAO implements TenantDAOInterface
             INSERT IGNORE INTO adress (street, streetnumber, postcode)
             VALUES (:street, :streetnumber, :postcode);            
 
-            UPDATE propertymanagement.tenant
+            UPDATE tenancymanager_t.tenant
             SET
             id_tenant = :id_tenant,
             title = :title,
@@ -72,7 +73,8 @@ class TenantDAOImpl extends AbstractDAO implements TenantDAOInterface
             phone = :phone,
             mobile = :mobile,
             email = :email,
-            id_adress = (SELECT id_adress FROM adress WHERE street = :street AND streetnumber = :streetnumber AND postcode = :postcode)
+            id_adress = (SELECT id_adress FROM adress WHERE street = :street AND streetnumber = :streetnumber AND postcode = :postcode),
+            inactive = :inactive
             WHERE id_tenant = :id_tenant;
         ');
         $stmt->bindValue(':id_tenant', $tenant->getId_tenant());
@@ -88,6 +90,7 @@ class TenantDAOImpl extends AbstractDAO implements TenantDAOInterface
         $stmt->bindValue(':city', $tenant->getCity());
         $stmt->bindValue(':street', $tenant->getStreet());
         $stmt->bindValue(':streetnumber', $tenant->getStreetnumber());
+        $stmt->bindValue(':inactive', $tenant->getInactive());
         $stmt->execute();
         unset($stmt);
         return $tenant;
@@ -101,11 +104,11 @@ class TenantDAOImpl extends AbstractDAO implements TenantDAOInterface
     public function readTenant($id_tenant)
     {
         $stmt = $this->pdoInstance->prepare('
-            SELECT C.id_tenant, C.title, C.firstname, C.lastname, C.birthday, C.marital_status, C.phone, C.mobile, C.email, B.postcode, B.city, A.id_adress, A.street, A.streetnumber 
-                FROM adress = A, city = B, tenant = C
-                WHERE A.postcode = B.postcode 
-                AND A.id_adress = C.id_adress
-                AND C.id_tenant = :id_tenant;
+            SELECT tenant.id_tenant, tenant.title, tenant.firstname, tenant.lastname, tenant.birthday, tenant.marital_status, tenant.phone, tenant.mobile, tenant.email, city.postcode, city.city, adress.id_adress, adress.street, adress.streetnumber, tenant.inactive 
+            FROM adress, city, tenant 
+            WHERE city.postcode = adress.postcode 
+                AND tenant.id_adress = adress.id_adress
+                AND tenant.id_tenant = :id_tenant;
         ');
         $stmt->bindValue(':id_tenant', $id_tenant);
         $stmt->execute();
@@ -117,13 +120,17 @@ class TenantDAOImpl extends AbstractDAO implements TenantDAOInterface
      */
     public function deleteTenant(Tenant $tenant)
     {
-        $stmt = $this->pdoInstance->prepare('
-            DELETE FROM tenant
-            WHERE id_tenant = :id
-        ');
-        $stmt->bindValue(':id', $tenant->getId_tenant());
-        $stmt->execute();
-        $tenant = null;
+        try {
+            $stmt = $this->pdoInstance->prepare('
+                DELETE FROM tenant
+                WHERE id_tenant = :id
+            ');
+            $stmt->bindValue(':id', $tenant->getId_tenant());
+            $stmt->execute();
+            $tenant = null;
+        } catch (PDOException $ex){
+            Route::call('Error', 'errorDelete');
+        }            
     }
 
 
@@ -133,10 +140,24 @@ class TenantDAOImpl extends AbstractDAO implements TenantDAOInterface
     public function findAll()
     {
         $stmt = $this->pdoInstance->prepare('
-            SELECT C.id_tenant, C.title, C.firstname, C.lastname, C.birthday, C.marital_status, C.phone, C.mobile, C.email, B.postcode, B.city, A.id_adress, A.street, A.streetnumber 
-                FROM adress = A, city = B, tenant = C
-                WHERE A.postcode = B.postcode 
-                AND A.id_adress = C.id_adress
+            SELECT tenant.id_tenant, tenant.title, tenant.firstname, tenant.lastname, tenant.birthday, tenant.marital_status, tenant.phone, tenant.mobile, tenant.email, city.postcode, city.city, adress.id_adress, adress.street, adress.streetnumber, tenant.inactive 
+                FROM adress, city, tenant
+                WHERE city.postcode = adress.postcode 
+                AND tenant.id_adress = adress.id_adress
+                AND tenant.inactive="0"
+        ');
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_CLASS, 'Tenant');
+    }
+    
+    public function findAllInactive()
+    {
+        $stmt = $this->pdoInstance->prepare('
+            SELECT tenant.id_tenant, tenant.title, tenant.firstname, tenant.lastname, tenant.birthday, tenant.marital_status, tenant.phone, tenant.mobile, tenant.email, city.postcode, city.city, adress.id_adress, adress.street, adress.streetnumber, tenant.inactive 
+                FROM adress, city, tenant
+                WHERE city.postcode = adress.postcode 
+                AND tenant.id_adress = adress.id_adress
+                AND tenant.inactive="1"
         ');
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_CLASS, 'Tenant');

@@ -6,6 +6,27 @@ if(!isset($_SESSION['login_user']))
     exit;
 }
 ?>
+
+<script>
+    $(document).ready(function() {
+        $('#datatable').dataTable({
+            order: [[4, 'asc']],
+                "columnDefs": [ 
+                    { "targets": 10, "orderable": false },
+                    { "targets": [ 3, 4 ], render: $.fn.dataTable.render.moment( 'DD.MM.YY' ) },
+                    { "targets": [ 3, 4 ], "width": "5%" },
+                    { "targets": 5, "width": "15%" },
+                    { "targets": 5 , render: $.fn.dataTable.render.number( "'", '.', 2, 'CHF ' ) } 
+                ],
+                language: {
+                "url": "//cdn.datatables.net/plug-ins/1.10.13/i18n/German.json"
+                }
+        });
+        $("[data-toggle=tooltip]").tooltip();
+    }
+        );
+</script>
+
 <div class="container">
     <div class="row">
         <h3>Mietvertragsübersicht</h3>
@@ -13,9 +34,10 @@ if(!isset($_SESSION['login_user']))
     <div class="row">
         <p>
             <a href="?controller=Tenancy_agreement&action=create" class="btn btn-success">Erstellen</a>
+            <a href="?controller=Tenancy_agreement&action=showEnded" class="btn btn-info">Archiv</a>
         </p>
 
-        <table class="table table-striped table-bordered">
+        <table id="datatable" class="table table-striped table-bordered" cellspacing="0" width="100%">
             <thead>
             <tr>
                 <th>ID</th>
@@ -23,7 +45,7 @@ if(!isset($_SESSION['login_user']))
                 <th>Nachname</th>
                 <th>Beginn</th>
                 <th>Ende</th>
-                <th>Netto Miete</th>
+                <th>Nettomiete</th>
                 <th>MO Strasse</th>
                 <th>MO Nr.</th>
                 <th>MO PLZ</th>

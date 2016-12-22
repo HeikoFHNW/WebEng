@@ -22,9 +22,7 @@ class Tenancy_agreementDAOImpl extends AbstractDAO implements Tenancy_agreementD
         $stmt = $this->pdoInstance->prepare('
             
             INSERT INTO tenancy_agreement (id_tenant, id_apartment, start_of_tenancy, end_of_tenancy, netrent, cancellationterms)
-            VALUES ((SELECT id_tenant FROM tenant WHERE id_tenant = :id_tenant), 
-                    (SELECT id_apartment FROM apartment WHERE id_apartment = :id_apartment),
-                    :start_of_tenancy, :end_of_tenancy, :netrent, :cancellationterms);');
+            VALUES (:id_tenant, :id_apartment, :start_of_tenancy, :end_of_tenancy, :netrent, :cancellationterms);');
         
         $stmt->bindValue(':id_tenant', $tenancy_agreement->getId_tenant());
         $stmt->bindValue(':id_apartment', $tenancy_agreement->getId_apartment());
@@ -47,10 +45,10 @@ class Tenancy_agreementDAOImpl extends AbstractDAO implements Tenancy_agreementD
         }
         $stmt = $this->pdoInstance->prepare('
 
-            UPDATE propertymanagement.tenancy_agreement
+            UPDATE tenancymanager_t.tenancy_agreement
             SET
-            id_tenant = (SELECT id_tenant FROM tenant WHERE id_tenant = :id_tenant), 
-            id_apartment = (SELECT id_apartment FROM apartment WHERE id_apartment = :id_apartment),
+            id_tenant = :id_tenant, 
+            id_apartment = :id_apartment,
             start_of_tenancy = :start_of_tenancy, 
             end_of_tenancy = :end_of_tenancy, 
             netrent = :netrent, 
@@ -73,7 +71,7 @@ class Tenancy_agreementDAOImpl extends AbstractDAO implements Tenancy_agreementD
     public function readTenancy_agreement($id_tenancy_agreement)
     {
         $stmt = $this->pdoInstance->prepare('
-            SELECT tenancy_agreement.id_tenancy_agreement, tenancy_agreement.start_of_tenancy, tenancy_agreement.end_of_tenancy, tenancy_agreement.netrent, tenancy_agreement.cancellationterms, tenancy_agreement.id_apartment, tenancy_agreement.id_tenant, adress.street, adress.streetnumber, city.postcode, city.city
+            SELECT tenancy_agreement.id_tenancy_agreement, tenancy_agreement.start_of_tenancy, tenancy_agreement.end_of_tenancy, tenancy_agreement.netrent, tenancy_agreement.cancellationterms, tenancy_agreement.id_apartment, apartment.squaremeter, tenancy_agreement.id_tenant, adress.street, adress.streetnumber, city.postcode, city.city
                 FROM tenancy_agreement
                 JOIN apartment
                     ON tenancy_agreement.id_apartment=apartment.id_apartment
@@ -111,7 +109,7 @@ class Tenancy_agreementDAOImpl extends AbstractDAO implements Tenancy_agreementD
     public function findAll()
     {
         $stmt = $this->pdoInstance->prepare('
-            SELECT tenancy_agreement.id_tenancy_agreement, tenant.firstname, tenant.lastname, tenancy_agreement.start_of_tenancy, tenancy_agreement.end_of_tenancy, tenancy_agreement.netrent, tenancy_agreement.cancellationterms, tenancy_agreement.id_apartment, tenancy_agreement.id_tenant, adress.street, adress.streetnumber, city.postcode, city.city
+            SELECT tenancy_agreement.id_tenancy_agreement, tenant.firstname, tenant.lastname, tenancy_agreement.start_of_tenancy, tenancy_agreement.end_of_tenancy, tenancy_agreement.netrent, tenancy_agreement.cancellationterms, tenancy_agreement.id_apartment, apartment.squaremeter, tenancy_agreement.id_tenant, adress.street, adress.streetnumber, city.postcode, city.city
                 FROM tenancy_agreement
                 JOIN apartment
                     ON tenancy_agreement.id_apartment=apartment.id_apartment
@@ -122,8 +120,53 @@ class Tenancy_agreementDAOImpl extends AbstractDAO implements Tenancy_agreementD
                 JOIN city
                     ON adress.postcode=city.postcode
                 JOIN tenant 
-                    ON tenancy_agreement.id_tenant=tenant.id_tenant;
+                    ON tenancy_agreement.id_tenant=tenant.id_tenant
+            WHERE CAST(tenancy_agreement.end_of_tenancy AS DATE)>=CURDATE();
         ');
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_CLASS, 'Tenancy_agreement');
+    }
+    
+    public function findAllEnded()
+    {
+        $stmt = $this->pdoInstance->prepare('
+            SELECT tenancy_agreement.id_tenancy_agreement, tenant.firstname, tenant.lastname, tenancy_agreement.start_of_tenancy, tenancy_agreement.end_of_tenancy, tenancy_agreement.netrent, tenancy_agreement.cancellationterms, tenancy_agreement.id_apartment, apartment.squaremeter, tenancy_agreement.id_tenant, adress.street, adress.streetnumber, city.postcode, city.city
+                FROM tenancy_agreement
+                JOIN apartment
+                    ON tenancy_agreement.id_apartment=apartment.id_apartment
+                JOIN property
+                    ON apartment.id_property=property.id_property
+                JOIN adress
+                    ON property.id_adress=adress.id_adress
+                JOIN city
+                    ON adress.postcode=city.postcode
+                JOIN tenant 
+                    ON tenancy_agreement.id_tenant=tenant.id_tenant
+            WHERE CAST(tenancy_agreement.end_of_tenancy AS DATE)<=CURDATE();
+        ');
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_CLASS, 'Tenancy_agreement');
+    }
+    
+    public function findAllByProperty($id_property)
+    {
+        $stmt = $this->pdoInstance->prepare('
+            SELECT tenancy_agreement.id_tenancy_agreement, tenant.firstname, tenant.lastname, tenancy_agreement.start_of_tenancy, tenancy_agreement.end_of_tenancy, tenancy_agreement.netrent, tenancy_agreement.cancellationterms, tenancy_agreement.id_apartment, apartment.squaremeter, tenancy_agreement.id_tenant, adress.street, adress.streetnumber, city.postcode, city.city
+                FROM tenancy_agreement
+                JOIN apartment
+                    ON tenancy_agreement.id_apartment=apartment.id_apartment
+                JOIN property
+                    ON apartment.id_property=property.id_property
+                JOIN adress
+                    ON property.id_adress=adress.id_adress
+                JOIN city
+                    ON adress.postcode=city.postcode
+                JOIN tenant 
+                    ON tenancy_agreement.id_tenant=tenant.id_tenant
+            WHERE property.id_property=:id_property;
+            AND CAST(tenancy_agreement.end_of_tenancy AS DATE)>=CURDATE();
+        ');
+        $stmt->bindValue(':id_property', $id_property);
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_CLASS, 'Tenancy_agreement');
     }

@@ -1,7 +1,8 @@
 <?php
 
 include_once "../dao/AbstractDAO.php";
-include "../dao/invoiceDAO/InvoiceDAOInterface.php";
+include "../dao/invoiceDAO/invoiceDAOInterface.php";
+include_once '../model/TotalSquaremeter.php';
 
 class InvoiceDAOImpl extends AbstractDAO implements InvoiceDAOInterface
 {
@@ -47,7 +48,7 @@ class InvoiceDAOImpl extends AbstractDAO implements InvoiceDAOInterface
             );
         }
         $stmt = $this->pdoInstance->prepare('
-            UPDATE propertymanagement.invoice
+            UPDATE tenancymanager_t.invoice
             SET
             amount = :amount, 
             invoice_date = :invoice_date, 
@@ -179,4 +180,17 @@ class InvoiceDAOImpl extends AbstractDAO implements InvoiceDAOInterface
         return $stmt->fetchAll(PDO::FETCH_CLASS, 'Invoice');
     }
 
+        public function readTotalSquaremeter($id_property)
+    {
+        $stmt = $this->pdoInstance->prepare('
+            SELECT SUM(apartment.squaremeter) AS totalSquaremeter 
+            FROM property 
+            JOIN apartment 
+                ON property.id_property=apartment.id_property 
+            WHERE property.id_property=:id_property
+        ');
+        $stmt->bindValue(':id_property', $id_property);
+        $stmt->execute();
+        return $stmt->fetchObject("TotalSquaremeter");
+    }
 }

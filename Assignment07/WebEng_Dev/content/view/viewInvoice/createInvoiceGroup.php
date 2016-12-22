@@ -32,13 +32,13 @@ if(!isset($_SESSION['login_user']))
 
     <div class="span10 offset1">
         <div class="row">
-            <h3>Rechnung ändern</h3>
+            <h3>Rechnungsgruppe erstellen</h3>
         </div>
 
-        <form class="form-horizontal" action="?controller=Invoice&action=update&id_invoice=<?php echo $invoice->getId_invoice() ?>" onsubmit="return validateInvoiceForm()" onkeyup="return validateInvoiceForm()" method="post">
-            <?php include_once("formInvoice.php"); ?>
+        <form class="form-horizontal" action="?controller=Invoice&action=createInvoiceGroup" onsubmit="return validateInvoiceForm()" onkeyup="return validateInvoiceForm()" method="post">
+            <?php include_once("formInvoiceGroup.php"); ?>
             <div class="form-actions">
-                <button type="submit" class="btn btn-success">Ändern</button>
+                <button type="submit" class="btn btn-success">Erstellen</button>
                 <a class="btn" href="?controller=Invoice&action=show">Zurück</a>
             </div>
         </form>
@@ -52,7 +52,7 @@ if(!isset($_SESSION['login_user']))
                 var a = (notEmpty(fI_amount) && isNumber(fI_amount));
                 
                 var b = notEmpty(datepicker);
-                                
+                
                 var c = (notEmpty(fI_Invoicenr)&&isNumber(fI_Invoicenr));
                 
                
@@ -61,7 +61,7 @@ if(!isset($_SESSION['login_user']))
             }else{
                 amountMessage.innerHTML = "Bitte keine Buchstaben verwenden.";
             }
-         
+            
             if (c){
                 invoicenrMessage.innerHTML = "";
             }else{

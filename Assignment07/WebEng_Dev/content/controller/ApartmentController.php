@@ -1,23 +1,26 @@
 <?php
 
-
-/** CREATION 05.12.16 14:30 Alex Noever**/
-
+/*
+ * Diese Klasse ruft die Daten über die DAOs ab und stellt sie der 
+ * View zur Verfügung für die Wohnungen im Web.
+ */
 
 include_once '../dao/Database.php';
 include_once '../dao/apartmentDAO/ApartmentDAOImpl.php';
 include_once '../validator/ApartmentValidator.php';
+include_once '../dao/propertyDAO/PropertyDAOImpl.php';
 
 
 class ApartmentController
 {
-
+    // ruft die Wohnungsübersicht auf.
     public function show()
     {
         $apartments = (new ApartmentDAOImpl(Database::connect()))->findAll();
         require_once('../view/viewApartment/showApartment.php');
     }
     
+    // ruft die Wohnungsübersicht für ein Gebäude auf.
         public function showForProperty()
     {
                 if (!empty($_GET['id_property'])) {
@@ -31,16 +34,18 @@ class ApartmentController
         $apartments = (new ApartmentDAOImpl(Database::connect()))->findForProperty($id_property);
         require_once('../view/viewApartment/showApartment.php');
     }
-
+    
+    // ruft die Wohnung-erstellen Seite auf und organisiert die Datenübergabe.
     public function create()
     {
 
         $apartment = new Apartment();
         $apartmentValidator = new ApartmentValidator();
+        $propertys = (new PropertyDAOImpl(Database::connect()))->findAll();
 
         if (!empty($_POST)) {
             
-            $apartment = new Apartment(null,$_POST['apartment_type'],$_POST['rooms'],$_POST['squaremeter'],$_POST['id_property']);
+            $apartment = new Apartment(null,$_POST['apartment_type'],$_POST['rooms'],$_POST['squaremeter'],$_POST['id_property'],null);
             $apartmentValidator = new ApartmentValidator($apartment);
 
             if ($apartmentValidator->isValid()) {
@@ -50,7 +55,8 @@ class ApartmentController
         }
         require_once('../view/viewApartment/createApartment.php');
     }
-
+    
+    //ruft die Wohnung ansehen Seite auf.
     public function read()
     {
  
@@ -65,13 +71,15 @@ class ApartmentController
         $apartment = (new ApartmentDAOImpl(Database::connect()))->readApartment($id_apartment);
         require_once('../view/viewApartment/readApartment.php');
     }
-
+    
+    // ruft die Update Seite auf und organisiert die Daten über das DAO
     public function update()
     {
-
+        
         $apartment = new apartment();
         $apartmentValidator = new ApartmentValidator();
-
+        $propertys = (new PropertyDAOImpl(Database::connect()))->findAll();
+        
         $id_apartment = null;
         if (!empty($_GET['id_apartment'])) {
             $id_apartment = $_REQUEST['id_apartment'];
@@ -82,7 +90,7 @@ class ApartmentController
         }
 
         if (!empty($_POST)) {
-            $apartment = new Apartment($id_apartment,$_POST['apartment_type'],$_POST['rooms'],$_POST['squaremeter'],$_POST['id_property']);
+            $apartment = new Apartment($id_apartment,$_POST['apartment_type'],$_POST['rooms'],$_POST['squaremeter'],$_POST['id_property'],null);
             $apartmentValidator = new ApartmentValidator($apartment);
 
             if ($apartmentValidator->isValid()) {
@@ -94,7 +102,8 @@ class ApartmentController
         }
         require_once('../view/viewApartment/updateApartment.php');
     }
-
+    
+    // ruft die Löschnachfrage auf.
     public function deleteAsk()
     {
 
@@ -109,7 +118,8 @@ class ApartmentController
         $apartment = (new ApartmentDAOImpl(Database::connect()))->readApartment($id_apartment);
         require_once('../view/viewApartment/deleteApartment.php');
     }
-
+    
+    // ruft die Löschen Seite auf und führt zur Übersicht.
     public function delete()
     {
         if (!empty($_POST)) {

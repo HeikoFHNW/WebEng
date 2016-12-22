@@ -125,9 +125,19 @@
                <span class="help-inline"><?php echo $tenantValidator->getCityError(); ?></span>
                <?php endif; ?>
          <span id="isNotTextMessageOrt"></span>
-         <p id="requiredMessage"></p>
+    </div>   
+</div>
+<div class="control-group">
+    <label class="control-label">Inaktiv</label>
+    <div class="controls">
+        <div class="form-check">
+          <label class="form-check-label">
+            <input type="hidden" name="inactive" value="0"<?php echo ($tenant->getInactive()==0 ? 'unchecked' : '');?>>
+            <input type="checkbox" class="form-check-input" name="inactive" value="1"<?php echo ($tenant->getInactive()==1 ? 'checked' : '');?>>
+          </label>
+        </div>
     </div>
-    
+    <p id="requiredMessage"</p> 
 </div>
  
 

@@ -7,6 +7,22 @@ if(!isset($_SESSION['login_user']))
 }
 ?>
 
+<script>
+    $(document).ready(function() {
+        $('#datatable').dataTable({
+            order: [[3, 'asc']],
+                "columnDefs": [ 
+                    { "targets": 9, "orderable": false } 
+                ],
+                language: {
+                "url": "//cdn.datatables.net/plug-ins/1.10.13/i18n/German.json"
+                }
+        });
+        $("[data-toggle=tooltip]").tooltip();
+    }
+        );
+</script>
+
 <div class="container">
     <div class="row">
         <h3>Mieterübersicht</h3>
@@ -14,9 +30,10 @@ if(!isset($_SESSION['login_user']))
     <div class="row">
         <p>
             <a href="?controller=Tenant&action=create" class="btn btn-success">Erstellen</a>
+            <a href="?controller=Tenant&action=showInactive" class="btn btn-info">Archiv</a>
         </p>
 
-        <table class="table table-striped table-bordered">
+        <table id="datatable" class="table table-striped table-bordered" cellspacing="0" width="100%">
             <thead>
             <tr>
                 <th>ID</th>

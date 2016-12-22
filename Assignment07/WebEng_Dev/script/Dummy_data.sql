@@ -1,9 +1,9 @@
-USE propertymanagement;
+USE tenancymanager_t;
 
-INSERT INTO `user`(`firstname`, `lastname`, `username`, `password`, `email`) 
-    VALUES ('Alexander', 'Noever', 'Alex', '12345678', 'alex@gmail.com'),
-            ('Simon', 'Zahnd', 'Simon', '12345678', 'simon@gmail.com'),
-            ('Heiko', 'Meier', 'Heiko', '12345678', 'heiko@gmail.com');
+INSERT INTO `user`(`firstname`, `lastname`, `username`, `hash`, `email`) 
+    VALUES ('Alexander', 'Noever', 'Alex', '$2a$10$sPnyVH0hhawfd1YWBCpqxeuo0cvFTd1gVHTLcx53KN6xs.cZdeqB2', 'alex@gmail.com'),
+            ('Simon', 'Zahnd', 'Simon', '$2a$10$cjqnb/CvaemnrCa/HnOVDewDOhnd6Sqb6bAwIV1VKgCLhNJcFOcXK', 'simon@gmail.com'),
+            ('Heiko', 'Meier', 'Heiko', '$2a$10$Klo9dU7cfz1KPgGylpghBebqKlK1HrKVlJzpVdLG4DaxtLOx0apd.', 'heiko@gmail.com');
 
 INSERT INTO `city`(`postcode`, `city`) 
     VALUES ('8834','Schindellegi'),
@@ -26,7 +26,7 @@ INSERT INTO tenant (title, firstname, lastname, birthday, marital_status, phone,
             ('Herr', 'Rainer', 'Telesko', '1968-09-23', 'verheiratet', '058 788 98 56', '078 788 98 56', 'rainer@gmail.com', '4'),
             ('Herr', 'Hakan', 'Yakin', '1977-02-22', 'verheiratet', '062 122 35 66', '079 122 35 66', 'hakan@gmail.com', '5'),
             ('Frau', 'Irene', 'Wunder', '1957-12-02', 'ledig', '062 533 65 89', '079 458 76 94', 'irene@gmail.com', '2'),
-            ('Herr', 'Hakan', 'Yakin', '1977-02-22', 'verheiratet', '062 122 35 66', '079 122 35 66', 'hakan@gmail.com', '5'),
+            ('Herr', 'Reto', 'Bühlmann', '1977-02-22', 'verheiratet', '062 122 35 66', '079 122 35 66', 'reto@gmail.com', '5'),
             ('Frau', 'Rebecca', 'Gianelli', '1989-12-01', 'ledig', '062 533 65 89', '079 458 76 94', 'rebecca@gmail.com', '2'),
             ('Herr', 'Kevin', 'Spacy', '1972-05-15', 'ledig', '062 223 15 74', '079 96 56', 'kevin@gmail.com', '2'),
             ('Frau', 'Petra', 'Klauser', '1982-07-09', 'ledig', '062 987 25 96', '079 987 25 96', 'petra@gmail.com', '2'),
@@ -59,19 +59,19 @@ INSERT INTO apartment (id_property, apartment_type, rooms, squaremeter)
 
 INSERT INTO tenancy_agreement (id_tenant, id_apartment, start_of_tenancy, end_of_tenancy, netrent, cancellationterms)
             VALUES ('1', '1','2005-09-01', '2018-09-30', '8000', '3 Monate'),
-                    ('2', '2','2010-05-01', '', '10000', '3 Monate'),
-                    ('3', '3','2008-03-01', '', '2250', '3 Monate'),
+                    ('2', '2','2010-05-01', '2017-12-31', '10000', '3 Monate'),
+                    ('3', '3','2008-03-01', '2099-12-31', '2250', '3 Monate'),
                     ('4', '4','2006-09-01', '2018-01-31', '2350', '3 Monate'),
                     ('5', '5','2010-09-01', '2020-06-30', '2800', '3 Monate'),
-                    ('6', '6','2010-02-01', '', '1650', '3 Monate'),
-                    ('7', '7','2012-05-01', '', '1450', '3 Monate'),
-                    ('8', '8','2012-05-01', '', '1650', '3 Monate'),
-                    ('9', '9','2015-03-01', '', '1450', '3 Monate'),
-                    ('10', '10','2012-10-01', '', '1650', '3 Monate'),
-                    ('11', '11','2014-11-01', '', '2250', '3 Monate'),
-                    ('12', '12','2013-08-01', '', '2350', '3 Monate'),
-                    ('13', '13','2013-09-01', '', '2800', '3 Monate'),
-                    ('14', '14','2010-06-01', '', '1450', '3 Monate');
+                    ('6', '6','2010-02-01', '2099-12-31', '1650', '3 Monate'),
+                    ('7', '7','2012-05-01', '2017-12-31', '1450', '3 Monate'),
+                    ('8', '8','2012-05-01', '2099-12-31', '1650', '3 Monate'),
+                    ('9', '9','2015-03-01', '2099-12-31', '1450', '3 Monate'),
+                    ('10', '10','2012-10-01', '2099-12-31', '1650', '3 Monate'),
+                    ('11', '11','2014-11-01', '2099-12-31', '2250', '3 Monate'),
+                    ('12', '12','2013-08-01', '2099-12-31', '2350', '3 Monate'),
+                    ('13', '13','2013-09-01', '2099-12-31', '2800', '3 Monate'),
+                    ('14', '14','2010-06-01', '2099-12-31', '1450', '3 Monate');
 
 INSERT INTO invoice (amount, invoice_date, id_tenancy_agreement, invoice_type, invoicenr, `comment`, payed)
     VALUES ('8000', '2016-11-30', '1', 'Miete', '16113001', 'Monatsmiete Dezember', '1'),

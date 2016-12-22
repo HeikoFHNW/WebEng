@@ -55,12 +55,6 @@ class ApartmentValidator
                 $this->valid = false;
             }
             
-            if(!(is_numeric($this->apartment->getId_property())) || empty($this->apartment->getId_property())){
-                $this->id_propertyError = 'Bitte keine Buchstaben.';
-                $this->valid = false;
-            }
-            
-
         }
         else {
             $this->valid = false;

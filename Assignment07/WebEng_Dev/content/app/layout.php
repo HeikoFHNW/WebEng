@@ -1,5 +1,4 @@
 <?php require('../includes/head.inc.php');?>
-
 <body>
 
 <?php require('../includes/navBar.php');?>

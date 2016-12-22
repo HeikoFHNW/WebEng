@@ -1,10 +1,7 @@
 <?php
 
 /**
- * Created by PhpStorm.
- * User: andreas.martin
- * Date: 15.11.2016
- * Time: 10:02
+ * die Klasse nimmt den aufgerufenen Link und erstellt den gewünschten Controller und ruft die benötigte funktion auf.
  */
 class Route
 {

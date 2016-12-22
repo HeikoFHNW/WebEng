@@ -9,12 +9,11 @@ class User
     private $username;
     private $password;
     private $password2;
+    private $hash;
     private $email;
-    private $locked;
-    private $admin;
 
 
-    public function __construct($id_user=null, $firstname=null, $lastname=null, $username=null, $password=null, $password2=null, $email=null, $locked =null, $admin=null)
+    public function __construct($id_user=null, $firstname=null, $lastname=null, $username=null, $password=null, $password2=null,$hash=null, $email=null)
     {
         if (isset($id_user)) {
             $this->id_user = $id_user;
@@ -34,15 +33,13 @@ class User
         if (isset($password2)){
             $this->password2 =$password2;
         }
+        if (isset($hash)){
+            $this->hash =$hash;
+        }
         if (isset($email)) {
             $this->email = $email;
         }
-        if (isset($locked)) {
-            $this->locked = $locked;
-        }
-        if (isset($admin)) {
-            $this->admin = $admin;
-        }
+
     }
 
     function getId_user() {
@@ -72,45 +69,12 @@ class User
     function getEmail() {
         return $this->email;
     }
-
-    function getLocked() {
-        return $this->locked;
+    
+    function getHash() {
+        return $this->hash;
     }
-
-    function getAdmin() {
-        return $this->admin;
+    
+    function setHash($hash) {
+        $this->hash = $hash;
     }
-
-    function setId_user($id_user) {
-        $this->id_user = $id_user;
-    }
-
-    function setFirstname($firstname) {
-        $this->firstname = $firstname;
-    }
-
-    function setLastname($lastname) {
-        $this->lastname = $lastname;
-    }
-
-    function setUsername($username) {
-        $this->username = $username;
-    }
-
-    function setPassword($password) {
-        $this->password = $password;
-    }
-
-    function setEmail($email) {
-        $this->email = $email;
-    }
-
-    function setLocked($locked) {
-        $this->locked = $locked;
-    }
-
-    function setAdmin($admin) {
-        $this->admin = $admin;
-    }
-
 }

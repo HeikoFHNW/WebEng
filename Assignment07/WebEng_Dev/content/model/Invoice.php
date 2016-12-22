@@ -166,6 +166,12 @@ class Invoice
     function getPayed() {
         return $this->payed;
     }
+    function getPayedPic() {
+        if ($this->payed=='0'){
+            return '<div align="center"><span class="glyphicon glyphicon-remove" style="color:red" align="center" aria-hidden="true"></span></div>';
+        }
+        return '<div align="center"><span class="glyphicon glyphicon-ok" style="color:green" aria-hidden="true"></span></div>';
+    }
     
 }
 

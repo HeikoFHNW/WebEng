@@ -53,9 +53,7 @@ if(!isset($_SESSION['login_user']))
                 
                 var b = notEmpty(datepicker);
                 
-                var c = (notEmpty(fI_id_tenancy_agreement)&& isNumber(fI_id_tenancy_agreement));
-                
-                var e = (notEmpty(fI_Invoicenr)&&isNumber(fI_Invoicenr));
+                var c = (notEmpty(fI_Invoicenr)&&isNumber(fI_Invoicenr));
                 
                
             if (a){
@@ -63,15 +61,8 @@ if(!isset($_SESSION['login_user']))
             }else{
                 amountMessage.innerHTML = "Bitte keine Buchstaben verwenden.";
             }
-            
-
-            if (c){
-                id_tenancy_agreementMessage.innerHTML = "";
-            }else{
-                id_tenancy_agreementMessage.innerHTML = "Bitte keine Buchstaben verwenden.";
-            }
          
-            if (e){
+            if (c){
                 invoicenrMessage.innerHTML = "";
             }else{
                 invoicenrMessage.innerHTML = "Bitte keine Buchstaben verwenden.";
@@ -79,7 +70,7 @@ if(!isset($_SESSION['login_user']))
             
             
             
-            if (a&&b&&c&&e){
+            if (a&&b&&c){
                 return true;
             }else{
                 return false;

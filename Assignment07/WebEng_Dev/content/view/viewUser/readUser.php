@@ -47,34 +47,10 @@ if(!isset($_SESSION['login_user']))
                 </div>
             </div>
             <div class="control-group">
-                <label class="control-label">Password</label>
-                <div class="controls">
-                    <label class="checkbox">
-                        <?php echo $user->getPassword(); ?>
-                    </label>
-                </div>
-            </div>
-            <div class="control-group">
                 <label class="control-label">Email Address</label>
                 <div class="controls">
                     <label class="checkbox">
                         <?php echo $user->getEmail(); ?>
-                    </label>
-                </div>
-            </div>
-            <div class="control-group">
-                <label class="control-label">Locked</label>
-                <div class="controls">
-                    <label class="checkbox">
-                        <?php echo $user->getLocked(); ?>
-                    </label>
-                </div>
-            </div>
-            <div class="control-group">
-                <label class="control-label">Locked</label>
-                <div class="controls">
-                    <label class="checkbox">
-                        <?php echo $user->getAdmin(); ?>
                     </label>
                 </div>
             </div>

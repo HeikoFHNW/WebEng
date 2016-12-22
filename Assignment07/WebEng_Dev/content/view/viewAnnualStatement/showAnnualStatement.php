@@ -8,7 +8,10 @@ if(!isset($_SESSION['login_user']))
 ?>
 <div class="container">
     <div class="row">
-        <h3>Jahresabrechnung</h3>
+        <h3>Periodenabrechnung</h3>
+    </div>
+    <div>
+        <?php echo '<h4>Von: ' . $date_begin_fm->format('d.m.Y') . ' Bis: ' . $date_end_fm->format('d.m.Y') . '</h4>'?>
     </div>
     <div class="row">
         <p>
@@ -20,7 +23,7 @@ if(!isset($_SESSION['login_user']))
         </div>
         <table class="table table-bordered">
             <thead>
-            <tr>
+            <tr class="active">
                 <th>Bereich</th>
                 <th>Strasse</th>
                 <th>Nr.</th>
@@ -33,8 +36,14 @@ if(!isset($_SESSION['login_user']))
             <tbody>
             <?php
             foreach ($invoiceTypes as $invoiceType) {
-                echo '<tr>';
+                echo '<tr class="info">';
                 echo '<td><strong>' . $invoiceType->getInvoice_type() . '</strong></td>';
+                echo '<td></td>';
+                echo '<td></td>';
+                echo '<td></td>';
+                echo '<td></td>';
+                echo '<td></td>';
+                echo '<td></td>';
                 echo '</tr>';
                 foreach ($invoiceType->getReportPropertys() as $reportProperty) {
                     echo '<tr>';
@@ -64,9 +73,6 @@ if(!isset($_SESSION['login_user']))
                 <?php
                 echo '<tr>';
                 echo '<td></td>';
-                echo '</tr>';
-                echo '<tr>';
-                echo '<td></td>';
                 echo '<td></td>';
                 echo '<td></td>';
                 echo '<td></td>';
@@ -82,7 +88,7 @@ if(!isset($_SESSION['login_user']))
         </div>
                 <table class="table table-bordered">
             <thead>
-            <tr>
+            <tr class="active">
                 <th>Bereich</th>
                 <th>Strasse</th>
                 <th>Nr.</th>
@@ -95,8 +101,14 @@ if(!isset($_SESSION['login_user']))
             <tbody>
             <?php
             foreach ($invoiceNegTypes as $invoiceNegType) {
-                echo '<tr>';
+                echo '<tr class="info">';
                 echo '<td><strong>' . $invoiceNegType->getInvoice_type() . '</strong></td>';
+                echo '<td></td>';
+                echo '<td></td>';
+                echo '<td></td>';
+                echo '<td></td>';
+                echo '<td></td>';
+                echo '<td></td>';
                 echo '</tr>';
                 foreach ($invoiceNegType->getReportPropertys() as $reportNegProperty) {
                     echo '<tr>';
@@ -126,27 +138,12 @@ if(!isset($_SESSION['login_user']))
                 <?php
                 echo '<tr>';
                 echo '<td></td>';
-                echo '</tr>';
-                echo '<tr>';
-                echo '<td></td>';
                 echo '<td></td>';
                 echo '<td></td>';
                 echo '<td></td>';
                 echo '<td></td>';
                 echo '<td><strong>Total</strong></td>';
                 echo '<td><strong>' . $totalAmountPayedNeg->getTotalAmount() . '</strong></td>';
-                echo '</tr>';
-                echo '<tr>';
-                echo '<td></td>';
-                echo '</tr>';
-                echo '<tr>';
-                echo '<td><strong>Erfolg</strong></td>';
-                echo '<td></td>';
-                echo '<td></td>';
-                echo '<td></td>';
-                echo '<td></td>';
-                echo '<td></td>';
-                echo '<td><strong>' . $totalSuccess . '</strong></td>';
                 echo '</tr>';
                 ?>
             </tfoot>

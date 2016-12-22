@@ -1,7 +1,7 @@
 <?php
 
 include_once '../dao/Database.php';
-include_once '../dao/AnnualStatementDAO/AuxiliaryCostDAOImpl.php';
+include_once '../dao/annualStatementDAO/AuxiliaryCostDAOImpl.php';
 
 
 class AuxiliaryCostController
@@ -17,6 +17,10 @@ class AuxiliaryCostController
         if (!empty($_POST)) {
             $date_begin = $_POST['date_begin'];
             $date_end = $_POST['date_end'];
+            $_SESSION['date_begin'] = $date_begin;
+            $_SESSION['date_end'] = $date_end;
+            $date_begin_fm = (DateTime::createFromFormat('Y-m-d', $date_begin));
+            $date_end_fm = (DateTime::createFromFormat('Y-m-d', $date_end));
             
             $invoiceTypes = array("Miete", "Reparatur", "Oel" , "Wasser", "Strom", "Hauswart", "Diverses");
 

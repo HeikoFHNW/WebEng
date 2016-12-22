@@ -17,9 +17,11 @@ class Tenant
     private $id_adress;
     private $street;
     private $streetnumber;
-    
+    private $inactive;
 
-    public function __construct($id_tenant=null, $title=null, $firstname=null, $lastname=null, $birthday=null, $marital_status=null,$phone=null, $mobile=null, $email=null,$postcode=null, $city=null, $id_adress=null, $street=null, $streetnumber=null)
+
+
+    public function __construct($id_tenant=null, $title=null, $firstname=null, $lastname=null, $birthday=null, $marital_status=null,$phone=null, $mobile=null, $email=null,$postcode=null, $city=null, $id_adress=null, $street=null, $streetnumber=null, $inactive=null)
     {
         if (isset($id_tenant)){
             $this->id_tenant = $id_tenant;
@@ -62,6 +64,9 @@ class Tenant
         }
         if (isset($streetnumber)){
             $this->streetnumber = $streetnumber;
+        }
+        if (isset($inactive)){
+            $this->inactive = $inactive;
         }
 
                 
@@ -161,6 +166,10 @@ class Tenant
 
     function getStreetnumber() {
         return $this->streetnumber;
+    }
+    
+    function getInactive() {
+        return $this->inactive;
     }
 
     function setPostcode($postcode) {

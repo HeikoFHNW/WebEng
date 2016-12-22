@@ -54,14 +54,6 @@ class InvoiceValidator
                 $this->valid = false;
             }
             
-            
-            
-            if(!is_numeric($this->invoice->getId_tenancy_agreement()) ||empty($this->invoice->getId_tenancy_agreement())){
-                    $this->id_tenancy_agreementError = 'Bitte keine Buchstaben';
-                    $this->valid = false;
-                
-            }
-            
             if (!is_numeric($this->invoice->getInvoicenr())|| empty($this->invoice->getInvoicenr())){
                     $this->invoicenrError = 'Bitte keine Buchstaben';
                     $this->valid = false;

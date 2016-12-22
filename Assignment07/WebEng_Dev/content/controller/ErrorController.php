@@ -9,6 +9,10 @@
 class ErrorController
 {
     public function error() {
-        require_once('../view/error.php');
+        require_once('../view/error/error.php');
+    }
+    
+    public function errorDelete() {
+        require_once('../view/error/errorDelete.php');
     }
 }

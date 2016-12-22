@@ -1,7 +1,7 @@
 /*erstellen der Datenbank*/
 
-CREATE DATABASE IF NOT EXISTS propertymanagement;
-USE propertymanagement;
+CREATE DATABASE IF NOT EXISTS tenancymanager_t;
+USE tenancymanager_t;
 
 /*erstelllen der Tabellen*/
 
@@ -17,7 +17,7 @@ CREATE TABLE `user`
 firstname varchar(55), 
 lastname varchar(55), 
 username varchar(55), 
-password varchar(55), 
+hash varchar(65), 
 email varchar(55), 
 PRIMARY KEY (id_user));
 
@@ -37,6 +37,7 @@ phone varchar(25),
 mobile varchar(25), 
 email varchar(50), 
 id_adress int(10) NOT NULL, 
+inactive TINYINT(1) DEFAULT '0',
 PRIMARY KEY (id_tenant));
 
 CREATE TABLE tenancy_agreement 
@@ -71,6 +72,7 @@ apartment_type varchar(50),
 rooms double(3,1), 
 squaremeter int(10), 
 id_property int(10) NOT NULL, 
+tenancy_status tinyint(1) DEFAULT NULL,
 PRIMARY KEY (id_apartment));
 
 ALTER TABLE user

@@ -1,38 +1,30 @@
 <?php
+
+if(!isset($_SESSION)){ session_start(); }
+
 include("../../fpdf/fpdf.php");
 include_once '../dao/Database.php';
-include_once '../dao/AnnualStatementDAO/AuxiliaryCostDAOImpl.php';
+include_once '../dao/annualStatementDAO/AuxiliaryCostDAOImpl.php';
 
 // Begin configuration
 
 $textColour = array( 0, 0, 0 );
-$headerColour = array( 100, 100, 100 );
+$headerColour = array( 0, 0, 0 );
 $tableHeaderTopTextColour = array( 255, 255, 255 );
-$tableHeaderTopFillColour = array( 125, 152, 179 );
-$tableHeaderTopProductTextColour = array( 0, 0, 0 );
-$tableHeaderTopProductFillColour = array( 143, 173, 204 );
-$tableHeaderLeftTextColour = array( 99, 42, 57 );
-$tableHeaderLeftFillColour = array( 184, 207, 229 );
-$tableBorderColour = array( 50, 50, 50 );
-$tableRowFillColour = array( 213, 170, 170 );
+$tableHeaderTopFillColour = array( 0, 50, 140 );
+$tableBorderColour = array( 0, 50, 140 );
+$tableRowFillColour = array( 127, 184, 255 );
 $reportName = ("Nebenkostenabrechnung");
 $columnLabels = array( "MieterID", "Vorname", "Nachname", "Bereich", "Bezahlt", "Offen" , "Total" );
-
-
-$chartColours = array(
-                  array( 255, 100, 100 ),
-                  array( 100, 255, 100 ),
-                  array( 100, 100, 255 ),
-                  array( 255, 255, 100 ),
-                );
-
 
 // End configuration
 
 // Data receive
 
-            $date_begin = "2016-01-01";
-            $date_end = "2016-12-31";
+            $date_begin = $_SESSION['date_begin'];
+            $date_end = $_SESSION['date_end'];
+            $date_begin_fm = (DateTime::createFromFormat('Y-m-d', $date_begin));
+            $date_end_fm = (DateTime::createFromFormat('Y-m-d', $date_end));
             
             $invoiceTypes = array("Miete", "Reparatur", "Oel" , "Wasser", "Strom", "Hauswart", "Diverses");
 
@@ -61,7 +53,9 @@ $pdf->AddPage();
 $pdf->SetTextColor( $headerColour[0], $headerColour[1], $headerColour[2] );
 $pdf->SetFont( 'Arial', '', 17 );
 $pdf->Cell( 0, 15, $reportName, 0, 0, 'C' );
-$pdf->Ln(15);
+$pdf->Ln(8);
+$pdf->SetFont( 'Arial', '', 14 );
+$pdf->Cell( 0, 15, 'Von: ' . $date_begin_fm->format('d.m.Y') . '   Bis: ' . $date_end_fm->format('d.m.Y') , 0, 0, 'C' );
 
 /**
  * Create Datatable 1
@@ -77,9 +71,9 @@ $pdf->SetTextColor( $tableHeaderTopTextColour[0], $tableHeaderTopTextColour[1], 
     $pdf->SetFillColor( $tableHeaderTopFillColour[0], $tableHeaderTopFillColour[1], $tableHeaderTopFillColour[2] );
 
       $pdf->Cell( 22, 10, $columnLabels[0], 1, 0, 'C', true );
-      $pdf->Cell( 35, 10, $columnLabels[1], 1, 0, 'C', true );
-      $pdf->Cell( 35, 10, $columnLabels[2], 1, 0, 'C', true );
-      $pdf->Cell( 25, 10, $columnLabels[3], 1, 0, 'C', true );
+      $pdf->Cell( 35, 10, $columnLabels[1], 1, 0, 'L', true );
+      $pdf->Cell( 35, 10, $columnLabels[2], 1, 0, 'L', true );
+      $pdf->Cell( 25, 10, $columnLabels[3], 1, 0, 'L', true );
       $pdf->Cell( 23, 10, $columnLabels[4], 1, 0, 'C', true );
       $pdf->Cell( 23, 10, $columnLabels[5], 1, 0, 'C', true );
       $pdf->Cell( 23, 10, $columnLabels[6], 1, 0, 'C', true );
@@ -105,9 +99,9 @@ foreach ( $auxTenants as $auxTenant ) {
             $pdf->SetFillColor( $tableHeaderTopFillColour[0], $tableHeaderTopFillColour[1], $tableHeaderTopFillColour[2] );
 
               $pdf->Cell( 22, 10, $columnLabels[0], 1, 0, 'C', true );
-              $pdf->Cell( 35, 10, $columnLabels[1], 1, 0, 'C', true );
-              $pdf->Cell( 35, 10, $columnLabels[2], 1, 0, 'C', true );
-              $pdf->Cell( 25, 10, $columnLabels[3], 1, 0, 'C', true );
+              $pdf->Cell( 35, 10, $columnLabels[1], 1, 0, 'L', true );
+              $pdf->Cell( 35, 10, $columnLabels[2], 1, 0, 'L', true );
+              $pdf->Cell( 25, 10, $columnLabels[3], 1, 0, 'L', true );
               $pdf->Cell( 23, 10, $columnLabels[4], 1, 0, 'C', true );
               $pdf->Cell( 23, 10, $columnLabels[5], 1, 0, 'C', true );
               $pdf->Cell( 23, 10, $columnLabels[6], 1, 0, 'C', true );
@@ -120,8 +114,8 @@ foreach ( $auxTenants as $auxTenant ) {
     $pdf->SetFont( 'Arial', '', 10 );
 
     $pdf->Cell(22, 10, ($auxTenant->getId_Tenant()), 'LT', 0, 'C', $fill);
-    $pdf->Cell(35, 10, ($auxTenant->getFirstname()), 'T', 0, 'C', $fill);
-    $pdf->Cell(35, 10, ($auxTenant->getLastname()), 'T', 0, 'C', $fill);
+    $pdf->Cell(35, 10, utf8_decode(($auxTenant->getFirstname())), 'T', 0, 'L', $fill);
+    $pdf->Cell(35, 10, utf8_decode(($auxTenant->getLastname())), 'T', 0, 'L', $fill);
     $pdf->Cell(25, 10, (""), 'T', 0, 'C', $fill);
     $pdf->Cell(23, 10, (""), 'T', 0, 'C', $fill);
     $pdf->Cell(23, 10, (""), 'T', 0, 'C', $fill);
@@ -131,8 +125,8 @@ foreach ( $auxTenants as $auxTenant ) {
         $pdf->Cell(22, 10, (""), 'L', 0, 'C', $fill);
         $pdf->Cell(35, 10, (""), 0, 0, 'C', $fill);
         $pdf->Cell(35, 10, (""), 0, 0, 'C', $fill);
-        $pdf->Cell(25, 10, ($auxInvoiceType->getInvoice_type()), 0, 0, 'C', $fill);
-        $pdf->Cell(23, 10, ($auxInvoiceType->getAmount_payed()), 0, 0, 'C', $fill);
+        $pdf->Cell(25, 10, ($auxInvoiceType->getInvoice_type()), 0, 0, 'L', $fill);
+        $pdf->Cell(23, 10, ($auxInvoiceType->getAmount_payed()), 0, 0, 'R', $fill);
         $pdf->Cell(23, 10, ($auxInvoiceType->getAmount_open()), 0, 0, 'R', $fill);
         $pdf->Cell(23, 10, (""), 'R', 0, 'C', $fill);
         $pdf->Ln();
@@ -144,7 +138,7 @@ foreach ( $auxTenants as $auxTenant ) {
     $pdf->Cell(23, 10, (""), 'B', 0, 'C', $fill);
     $pdf->Cell(23, 10, (""), 'B', 0, 'C', $fill);
     $pdf->SetFont( 'Arial', 'B', 10 );
-    $pdf->Cell(23, 10, ($auxTenant->getTotalAmount()), 'RB', 0, 'R', $fill);
+    $pdf->Cell(23, 10, ('CHF '.$auxTenant->getTotalAmount()), 'RB', 0, 'R', $fill);
     $pdf->Ln();
 
   $fill = !$fill;
