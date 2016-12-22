@@ -17,4 +17,4 @@ if (isset($_GET['controller']) && isset($_GET['action'])) {
     $action = 'show';
 }
 
-require_once('layout.php');
+require_once('../app/layout.php');

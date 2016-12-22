@@ -15,7 +15,7 @@ if(!isset($_SESSION['login_user']))
 
         <form class="form-horizontal" action="?controller=Tenancy_agreement&action=delete" method="post">
             <input type="hidden" name="id_tenancy_agreement" value="<?php echo $tenancy_agreement->getId_tenancy_agreement(); ?>"/>
-            <p class="alert alert-error">Wollen Sie den Eintrag löschen ?</p>
+            <p class="alert alert-error">Wollen Sie den Eintrag löschen ? Die damit verbundenen Rechnungen werden ebenfalls gelöscht.</p>
             <div class="form-actions">
                 <button type="submit" class="btn btn-danger">Ja</button>
                 <a class="btn" href="?controller=Tenancy_agreement&action=show">Nein</a>
