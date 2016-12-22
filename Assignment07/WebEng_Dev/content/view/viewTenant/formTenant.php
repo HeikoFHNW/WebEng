@@ -3,11 +3,11 @@
   <div class="controls">
     <select name="title" 
             value="<?php echo !empty($tenant->getTitle()) ? $tenant->getTitle() : ''; ?>">
-      <option>Herr</option>
-      <option>Frau</option>
-      <option>Fam.</option>
-      <option>Dr.</option>
-      <option>Prof.</option>
+      <option value="Herr" <?php if ($tenant->getTitle() == 'Herr') echo ' selected="selected"'; ?>>Herr</option>
+      <option value="Frau" <?php if ($tenant->getTitle() == 'Frau') echo ' selected="selected"'; ?>>Frau</option>
+      <option value="Fam." <?php if ($tenant->getTitle() == 'Fam.') echo ' selected="selected"'; ?>>Fam.</option>
+      <option value="Dr." <?php if ($tenant->getTitle() == 'Dr.') echo ' selected="selected"'; ?>>Dr.</option>
+      <option value="Prof." <?php if ($tenant->getTitle() == 'Prof.') echo ' selected="selected"'; ?>>Prof.</option>
     </select>
   </div>
 </div>
@@ -48,9 +48,9 @@
   <label class="control-label" for="sel1">Zivilstand</label>
   <div class="controls">
     <select name="marital_status">
-      <option>ledig</option>
-      <option>verheiratet</option>
-      <option>Konkubinat</option>
+      <option value="ledig" <?php if ($tenant->getMarital_status() == 'ledig') echo ' selected="selected"'; ?>>ledig</option>
+      <option value="verheiratet" <?php if ($tenant->getMarital_status() == 'verheiratet') echo ' selected="selected"'; ?>>verheiratet</option>
+      <option value="Konkubinat" <?php if ($tenant->getMarital_status() == 'Konkubinat') echo ' selected="selected"'; ?>>Konkubinat</option>
     </select>
   </div>
 </div>

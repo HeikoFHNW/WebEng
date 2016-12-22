@@ -42,15 +42,14 @@
 <div class="control-group <?php echo !empty($invoiceValidator->getInvoice_typeError()) ? 'error' : ''; ?>">
     <label class="control-label">Rechnungstyp</label>
     <div class="controls">
-        <select name="invoice_type" type="text" id="fI_invoice_type" placeholder="Miete/Reparatur/Nebenkosten"
-               value="<?php echo !empty($invoice->getInvoice_type()) ? $invoice->getInvoice_type() : ''; ?>">
-            <option>Miete</option>
-            <option>Reparatur</option>
-            <option>Oel</option>
-            <option>Wasser</option>
-            <option>Strom</option>
-            <option>Hauswart</option>
-            <option>Diverses</option>
+        <select name="invoice_type" type="text" id="fI_invoice_type" placeholder="Miete/Reparatur/Nebenkosten">
+            <option value="Miete" <?php if ($invoice->getInvoice_type() == 'Miete') echo ' selected="selected"'; ?>>Miete</option>
+            <option value="Reparatur" <?php if ($invoice->getInvoice_type() == 'Reparatur') echo ' selected="selected"'; ?>>Reparatur</option>
+            <option value="Oel" <?php if ($invoice->getInvoice_type() == 'Oel') echo ' selected="selected"'; ?>>Oel</option>
+            <option value="Wasser" <?php if ($invoice->getInvoice_type() == 'Wasser') echo ' selected="selected"'; ?>>Wasser</option>
+            <option value="Strom" <?php if ($invoice->getInvoice_type() == 'Strom') echo ' selected="selected"'; ?>>Strom</option>
+            <option value="Hauswart" <?php if ($invoice->getInvoice_type() == 'Hauswart') echo ' selected="selected"'; ?>>Hauswart</option>
+            <option value="Diverses" <?php if ($invoice->getInvoice_type() == 'Diverses') echo ' selected="selected"'; ?>>Diverses</option>
                <?php if (!empty($invoiceValidator->getInvoice_typeError())): ?>
                <span class="help-inline"><?php echo $invoiceValidator->getInvoice_typeError(); ?></span>
                <?php endif; ?>
